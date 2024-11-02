@@ -1,9 +1,10 @@
+from django.contrib.auth import login
 from django.http import Http404
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
 
-from project_first_app.forms import OwnerForm, CarForm
+from project_first_app.forms import OwnerForm, CarForm, CustomUserCreationForm
 from project_first_app.models import Owner, Car
 
 
@@ -62,3 +63,27 @@ def add_owner(request):
     else:
         form = OwnerForm()
     return render(request, 'add_owner.html', {'form': form})
+
+
+def register(request):
+    if request.method == 'POST':
+        user_form = CustomUserCreationForm(request.POST)
+        if user_form.is_valid():
+            user = user_form.save()
+            login(request, user)
+            return redirect('create_owner')
+    else:
+        user_form = CustomUserCreationForm()
+    return render(request, 'register.html', {'user_form': user_form})
+
+
+def create_owner(request):
+    if request.method == 'POST':
+        owner_form = OwnerForm(request.POST)
+        if owner_form.is_valid():
+            owner = owner_form.save(commit=False)
+            owner.user = request.user
+            owner.save()
+    else:
+        owner_form = OwnerForm()
+    return render(request, 'create_owner.html', {'owner_form': owner_form})
