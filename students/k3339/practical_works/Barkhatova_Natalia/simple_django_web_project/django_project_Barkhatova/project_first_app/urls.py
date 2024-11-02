@@ -10,5 +10,7 @@ urlpatterns = [
     path('cars/<int:pk>/', CarDetailView.as_view(), name='car_detail'),
     path('cars/add/', CarCreateView.as_view(), name='car_add'),
     path('cars/<int:pk>/update/', CarUpdateView.as_view(), name='car_update'),
-    path('cars/<int:pk>/delete/', CarDeleteView.as_view(), name='car_delete')
+    path('cars/<int:pk>/delete/', CarDeleteView.as_view(), name='car_delete'),
+    path('register/', views.register, name='register'),
+    path('create_owner/', views.create_owner, name='create_owner'),
 ]
