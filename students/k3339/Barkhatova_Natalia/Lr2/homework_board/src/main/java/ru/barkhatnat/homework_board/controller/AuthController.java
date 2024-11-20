@@ -25,23 +25,6 @@ public class AuthController {
         return "login";
     }
 
-    @GetMapping("/me")
-    public String currentUser(Model model) {
-        var authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.getPrincipal() instanceof UserPrincipal userPrincipal) {
-            model.addAttribute("email", userPrincipal.getEmail());
-            model.addAttribute("role", userPrincipal);
-        }
-        return "me";
-    }
-
-
-    @GetMapping("/secure")
-    public String securePage() {
-        return "secure";
-    }
-
-
     @GetMapping("/logout-success")
     public String logoutPage() {
         return "logout";
