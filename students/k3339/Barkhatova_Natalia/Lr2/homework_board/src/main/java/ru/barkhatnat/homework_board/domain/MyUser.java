@@ -14,16 +14,20 @@ import java.util.UUID;
 @NoArgsConstructor
 public class MyUser {
 
-    public MyUser(String email, String password, Role role) {
+    public MyUser(String email, String password, Role role, String name, String lastName, String middleName) {
         this.email = email;
         this.password = password;
         this.role = role;
+        this.name = name;
+        this.lastName = lastName;
+        this.middleName = middleName;
     }
 
     public enum Role {
         TEACHER,
         STUDENT
     }
+
     @Id
     @UuidGenerator
     private UUID id;
@@ -37,4 +41,13 @@ public class MyUser {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
+
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    private String lastName;
+
+    @Column
+    private String middleName;
 }
