@@ -2,6 +2,7 @@ package ru.barkhatnat.homework_board.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 
@@ -11,11 +12,8 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-public class Student extends Person {
-
-    @Id
-    @UuidGenerator
-    private UUID id;
+@NoArgsConstructor
+public class Student extends MyUser {
 
     @ManyToMany
     private List<Homework> homeworks;
@@ -33,4 +31,12 @@ public class Student extends Person {
 
     @OneToMany(mappedBy = "student")
     private List<Submission> submissions;
+
+    public Student(String email, String password, Role role, String name, String lastName, String middleName, List<Homework> homeworks, List<Submission> submissions, Classroom classroom, List<Subject> subjects) {
+        super(email, password, role, name, lastName, middleName);
+        this.homeworks = homeworks;
+        this.submissions = submissions;
+        this.classroom = classroom;
+        this.subjects = subjects;
+    }
 }

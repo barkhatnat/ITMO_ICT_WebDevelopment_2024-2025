@@ -7,9 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.barkhatnat.homework_board.domain.MyUser;
-import ru.barkhatnat.homework_board.domain.security.UserPrincipal;
 import ru.barkhatnat.homework_board.exception.UserAlreadyExistsException;
 import ru.barkhatnat.homework_board.service.MyUserService;
 
@@ -38,7 +38,7 @@ public class AuthController {
     }
 
     @PostMapping("/registration")
-    public String createAccount(MyUser myUser, BindingResult bindingResult, Model model) {
+    public String createAccount(@ModelAttribute MyUser myUser, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("errors", bindingResult.getAllErrors());
             model.addAttribute("roles", MyUser.Role.values());
