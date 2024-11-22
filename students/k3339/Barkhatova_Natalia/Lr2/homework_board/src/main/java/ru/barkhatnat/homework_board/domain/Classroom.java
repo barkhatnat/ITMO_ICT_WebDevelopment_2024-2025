@@ -29,4 +29,7 @@ public class Classroom {
 
     @OneToMany(mappedBy = "classroom")
     private List<Homework> homeworks;
+
+    @ManyToMany
+    private List<Student> students;
 }
