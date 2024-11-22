@@ -33,8 +33,7 @@ public class MyUserService {
             user = studentRepository.save(new Student(myUser.getEmail(),
                     encodedPassword, myUser.getRole(), myUser.getName(),
                     myUser.getLastName(), myUser.getMiddleName(),
-                    Collections.emptyList(), Collections.emptyList(), null,
-                    Collections.emptyList()));
+                    Collections.emptyList(), Collections.emptyList(), Collections.emptyList()));
         } else {
             user = teacherRepository.save(new Teacher(myUser.getEmail(),
                     encodedPassword, myUser.getRole(), myUser.getName(),

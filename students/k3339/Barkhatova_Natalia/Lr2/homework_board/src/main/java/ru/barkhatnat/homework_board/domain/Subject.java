@@ -23,9 +23,6 @@ public class Subject {
     @JoinColumn(name = "teacher_id", nullable = false)
     private Teacher teacher;
 
-    @ManyToMany(mappedBy = "subjects")
-    private List<Student> students;
-
     @OneToMany(mappedBy = "subject")
     private List<Classroom> classrooms;
 
