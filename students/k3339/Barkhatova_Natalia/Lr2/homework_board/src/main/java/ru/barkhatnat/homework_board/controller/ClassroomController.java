@@ -59,7 +59,7 @@ public class ClassroomController {
     public String showEditForm(@PathVariable UUID id, Model model) {
         Classroom classroom = classroomRepository.findById(id)
                 .orElseThrow(() -> new ClassroomNotFoundException(id));
-        List<Subject> teacherSubjects = subjectRepository.findByTeacherEmail(classroom.getTeacher().getEmail());  // Находим все предметы учителя
+        List<Subject> teacherSubjects = subjectRepository.findByTeacherEmail(classroom.getTeacher().getEmail());
         model.addAttribute("classroom", classroom);
         model.addAttribute("teacherSubjects", teacherSubjects);
         model.addAttribute("subject", new Subject());
