@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.barkhatnat.homework_board.domain.Classroom;
 import ru.barkhatnat.homework_board.domain.Homework;
 import ru.barkhatnat.homework_board.domain.MyUser;
+import ru.barkhatnat.homework_board.domain.Subject;
 import ru.barkhatnat.homework_board.exception.ClassroomNotFoundException;
 import ru.barkhatnat.homework_board.exception.HomeworkNotFoundException;
 import ru.barkhatnat.homework_board.exception.TeacherNotFoundException;
@@ -16,6 +17,7 @@ import ru.barkhatnat.homework_board.repository.HomeworkRepository;
 import ru.barkhatnat.homework_board.repository.MyUserRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Controller
@@ -95,6 +97,17 @@ public class HomeworkController {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
         return myUserRepository.findByEmail(email)
                 .orElseThrow(() -> new TeacherNotFoundException(email));
+    }
+
+    @GetMapping("/{id}")
+    public String getHomeworkDetails(@PathVariable UUID id, Model model) {
+        Optional<Homework> homework = homeworkRepository.findById(id);
+        if (homework.isPresent()) {
+            model.addAttribute("homework", homework.get());
+            return "homework/details";
+        } else {
+            return "redirect:/homeworks";
+        }
     }
 }
 
