@@ -10,7 +10,7 @@ import ru.barkhatnat.homework_board.domain.MyUser;
 import ru.barkhatnat.homework_board.domain.Subject;
 import ru.barkhatnat.homework_board.domain.Teacher;
 import ru.barkhatnat.homework_board.exception.SubjectNotFoundException;
-import ru.barkhatnat.homework_board.exception.TeacherNotFoundException;
+import ru.barkhatnat.homework_board.exception.UserNotFoundException;
 import ru.barkhatnat.homework_board.repository.MyUserRepository;
 import ru.barkhatnat.homework_board.repository.SubjectRepository;
 
@@ -19,7 +19,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/subjects")
+@RequestMapping("teacher/subjects")
 @RequiredArgsConstructor
 public class SubjectController {
 
@@ -30,13 +30,13 @@ public class SubjectController {
     public String getAllSubjects(Model model) {
         List<Subject> subjects = subjectRepository.findAll();
         model.addAttribute("subjects", subjects);
-        return "subject/list";
+        return "teacher/subject/list";
     }
 
     @GetMapping("/create")
     public String showCreateForm(Model model) {
         model.addAttribute("subject", new Subject());
-        return "subject/form";
+        return "teacher/subject/form";
     }
 
     @PostMapping
@@ -48,12 +48,10 @@ public class SubjectController {
         if (teacher.isPresent()) {
             subject.setTeacher((Teacher) teacher.get());
         } else {
-            throw new TeacherNotFoundException(email);
+            throw new UserNotFoundException(email);
         }
-
-
         subjectRepository.save(subject);
-        return "redirect:/subjects";
+        return "redirect:/teacher/subjects";
     }
 
     @GetMapping("/{id}/edit")
@@ -61,7 +59,7 @@ public class SubjectController {
         Subject subject = subjectRepository.findById(id)
                 .orElseThrow(() -> new SubjectNotFoundException(id));
         model.addAttribute("subject", subject);
-        return "subject/form";
+        return "teacher/subject/form";
     }
 
     @PostMapping("/edit")
@@ -69,24 +67,12 @@ public class SubjectController {
         Subject existingSubject = subjectRepository.findById(subject.getId()).get();
         existingSubject.setName(subject.getName());
         subjectRepository.save(existingSubject);
-        return "redirect:/subjects";
+        return "redirect:/teacher/subjects";
     }
-
 
     @GetMapping("/{id}/delete")
     public String deleteSubject(@PathVariable UUID id) {
         subjectRepository.deleteById(id);
-        return "redirect:/subjects";
-    }
-
-    @GetMapping("/{id}")
-    public String getSubjectDetails(@PathVariable UUID id, Model model) {
-        Optional<Subject> subject = subjectRepository.findById(id);
-        if (subject.isPresent()) {
-            model.addAttribute("subject", subject.get());
-            return "subject/details";
-        } else {
-            return "redirect:/subjects";
-        }
+        return "redirect:/teacher/subjects";
     }
 }
