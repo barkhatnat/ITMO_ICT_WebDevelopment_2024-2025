@@ -20,7 +20,7 @@
     </nav>
 
     <h1 class="mb-4">Список домашних заданий</h1>
-    <a href="/homeworks/create" class="btn btn-primary mb-3">Добавить новое задание</a>
+    <a href="/teacher/homeworks/create" class="btn btn-primary mb-3">Добавить новое задание</a>
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -38,9 +38,10 @@
             <td th:text="${homework.maxGrade}"></td>
             <td th:text="${homework.isActive ? 'Да' : 'Нет'}"></td>
             <td>
-                <a th:href="@{/homeworks/{id}(id=${homework.id})}" class="btn btn-info btn-sm">Подробнее</a>
-                <a th:href="@{/homeworks/{id}/edit(id=${homework.id})}" class="btn btn-warning btn-sm">Редактировать</a>
-                <a th:href="@{/homeworks/{id}/delete(id=${homework.id})}" class="btn btn-danger btn-sm">Удалить</a>
+                <a th:href="@{/teacher/homeworks/{id}(id=${homework.id})}" class="btn btn-info btn-sm">Подробнее</a>
+                <a th:href="@{/teacher/homeworks/{id}/edit(id=${homework.id})}" class="btn btn-warning btn-sm">Редактировать</a>
+                <a th:href="@{/teacher/homeworks/{id}/delete(id=${homework.id})}" class="btn btn-danger btn-sm">Удалить</a>
+                <a th:href="@{/teacher/submissions/{id}(id=${homework.id})}" class="btn btn-primary btn-sm">Сдачи</a>
             </td>
         </tr>
         </tbody>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Детали предмета</title>
+    <title>Список предметов</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/css/bootstrap.min.css">
 </head>
 <body>
@@ -19,18 +19,27 @@
         </div>
     </nav>
 
-    <h1 class="mb-4">Детали предмета</h1>
+    <h1 class="mb-4">Список предметов</h1>
+    <a href="/teacher/subjects/create" class="btn btn-primary mb-3">Создать новый предмет</a>
     <table class="table table-bordered">
+        <thead>
         <tr>
             <th>Название</th>
-            <td th:text="${subject.name}"></td>
-        </tr>
-        <tr>
             <th>Преподаватель</th>
-            <td th:text="${subject.teacher != null ? subject.teacher.lastName + ' ' + subject.teacher.name + ' ' + (subject.teacher.middleName != null ? subject.teacher.middleName : '') : 'Не назначен'}"></td>
+            <th>Действия</th>
         </tr>
+        </thead>
+        <tbody>
+        <tr th:each="subject : ${subjects}">
+            <td th:text="${subject.name}"></td>
+            <td th:text="${subject.teacher != null ? subject.teacher.lastName + ' ' + subject.teacher.name + ' ' + (subject.teacher.middleName != null ? subject.teacher.middleName : '') : 'Не назначен'}"></td>
+            <td>
+                <a th:href="@{/teacher/subjects/{id}/edit(id=${subject.id})}" class="btn btn-warning btn-sm">Редактировать</a>
+                <a th:href="@{/teacher/subjects/{id}/delete(id=${subject.id})}" class="btn btn-danger btn-sm">Удалить</a>
+            </td>
+        </tr>
+        </tbody>
     </table>
-    <a href="/subjects" class="btn btn-secondary">Назад к списку</a>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0-alpha1/js/bootstrap.bundle.min.js"></script>
