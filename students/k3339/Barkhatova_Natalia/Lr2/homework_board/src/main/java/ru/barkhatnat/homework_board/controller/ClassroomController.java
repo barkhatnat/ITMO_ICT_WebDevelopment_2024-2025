@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.barkhatnat.homework_board.domain.*;
 import ru.barkhatnat.homework_board.exception.ClassroomNotFoundException;
-import ru.barkhatnat.homework_board.exception.TeacherNotFoundException;
+import ru.barkhatnat.homework_board.exception.UserNotFoundException;
 import ru.barkhatnat.homework_board.repository.ClassroomRepository;
 import ru.barkhatnat.homework_board.repository.MyUserRepository;
 import ru.barkhatnat.homework_board.repository.StudentRepository;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/classrooms")
+@RequestMapping("teacher/classrooms")
 @RequiredArgsConstructor
 public class ClassroomController {
 
@@ -30,7 +30,7 @@ public class ClassroomController {
     public String getAllClassrooms(Model model) {
         List<Classroom> classrooms = classroomRepository.findAll();
         model.addAttribute("classrooms", classrooms);
-        return "classroom/list";
+        return "teacher/classroom/list";
     }
 
     @GetMapping("/create")
@@ -41,7 +41,7 @@ public class ClassroomController {
         model.addAttribute("classroom", new Classroom());
         model.addAttribute("subject", new Subject());
         model.addAttribute("students", studentRepository.findAll());
-        return "classroom/form";
+        return "teacher/classroom/form";
     }
 
     @PostMapping
@@ -52,7 +52,7 @@ public class ClassroomController {
             student.getClassrooms().add(classroom);
         }
         classroomRepository.save(classroom);
-        return "redirect:/classrooms";
+        return "redirect:/teacher/classrooms";
     }
 
     @GetMapping("/{id}/edit")
@@ -64,7 +64,7 @@ public class ClassroomController {
         model.addAttribute("teacherSubjects", teacherSubjects);
         model.addAttribute("subject", new Subject());
         model.addAttribute("students", studentRepository.findAll());
-        return "classroom/form";
+        return "teacher/classroom/form";
     }
 
     @PostMapping("/edit")
@@ -73,26 +73,26 @@ public class ClassroomController {
         existingClassroom.setName(classroom.getName());
         existingClassroom.setStudents(classroom.getStudents());
         classroomRepository.save(existingClassroom);
-        return "redirect:/classrooms";
+        return "redirect:/teacher/classrooms";
     }
 
     @GetMapping("/{id}/delete")
     public String deleteClassroom(@PathVariable UUID id) {
         classroomRepository.deleteById(id);
-        return "redirect:/classrooms";
+        return "redirect:/teacher/classrooms";
     }
 
     @GetMapping("/students/{id}/classroom")
     public String getClassroomDetails(@PathVariable UUID id, Model model) {
         List<Student> students = studentRepository.findByClassroomId(id);
         model.addAttribute("students", students);
-        return "classroom/students";
+        return "teacher/classroom/students";
     }
 
     private MyUser getCurrentUser() {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
         return myUserRepository.findByEmail(email)
-                .orElseThrow(() -> new TeacherNotFoundException(email));
+                .orElseThrow(() -> new UserNotFoundException(email));
     }
 
 }
