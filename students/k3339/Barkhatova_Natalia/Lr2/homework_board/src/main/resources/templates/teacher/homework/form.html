@@ -21,7 +21,7 @@
 
     <h1 class="mb-4"
         th:text="${homework.id != null ? 'Редактирование домашнего задания' : 'Создание нового домашнего задания'}"></h1>
-    <form th:action="${homework.id != null ? '/homeworks/edit' : '/homeworks'}" th:object="${homework}" method="post">
+    <form th:action="${homework.id != null ? '/teacher/homeworks/edit' : '/teacher/homeworks'}" th:object="${homework}" method="post">
         <input type="hidden" th:field="*{id}"/>
 
         <div class="mb-3">
@@ -62,7 +62,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Сохранить</button>
-        <a href="/homeworks" class="btn btn-secondary ms-2">Отмена</a>
+        <a href="/teacher/homeworks" class="btn btn-secondary ms-2">Отмена</a>
     </form>
 
 </div>

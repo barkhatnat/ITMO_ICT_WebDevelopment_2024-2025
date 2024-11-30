@@ -20,7 +20,7 @@
     </nav>
 
     <h1 class="mb-4" th:text="${classroom.id != null ? 'Редактирование класса' : 'Создание нового класса'}"></h1>
-    <form th:action="@{/classrooms}" th:object="${classroom}" method="post">
+    <form th:action="@{/teacher/classrooms}" th:object="${classroom}" method="post">
         <input type="hidden" th:field="*{id}" />
         <div class="mb-3">
             <label for="name" class="form-label">Название</label>
@@ -43,7 +43,7 @@
         </select>
         </div>
         <button type="submit" class="btn btn-primary">Сохранить</button>
-        <a href="/classrooms" class="btn btn-secondary">Отменить</a>
+        <a href="/teacher/classrooms" class="btn btn-secondary">Отменить</a>
     </form>
 </div>
 

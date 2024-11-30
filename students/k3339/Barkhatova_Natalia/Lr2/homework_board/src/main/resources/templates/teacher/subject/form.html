@@ -20,14 +20,14 @@
     </nav>
 
     <h1 class="mb-4" th:text="${subject.id != null ? 'Редактирование предмета' : 'Создание нового предмета'}"></h1>
-    <form th:action="${subject.id != null ? '/subjects/edit' : '/subjects'}"          th:object="${subject}" method="post">
+    <form th:action="${subject.id != null ? '/teacher/subjects/edit' : '/teacher/subjects'}"          th:object="${subject}" method="post">
         <input type="hidden" th:field="*{id}" />
         <div class="mb-3">
             <label for="name" class="form-label">Название</label>
             <input type="text" class="form-control" id="name" th:field="*{name}" required>
         </div>
         <button type="submit" class="btn btn-primary">Сохранить</button>
-        <a href="/subjects" class="btn btn-secondary">Отменить</a>
+        <a href="/teacher/subjects" class="btn btn-secondary">Отменить</a>
     </form>
 </div>
 
