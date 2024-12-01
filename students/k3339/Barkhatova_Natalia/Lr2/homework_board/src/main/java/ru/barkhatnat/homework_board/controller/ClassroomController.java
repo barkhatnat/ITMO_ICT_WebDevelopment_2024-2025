@@ -8,12 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import ru.barkhatnat.homework_board.domain.*;
 import ru.barkhatnat.homework_board.exception.ClassroomNotFoundException;
 import ru.barkhatnat.homework_board.exception.UserNotFoundException;
-import ru.barkhatnat.homework_board.repository.ClassroomRepository;
-import ru.barkhatnat.homework_board.repository.MyUserRepository;
-import ru.barkhatnat.homework_board.repository.StudentRepository;
-import ru.barkhatnat.homework_board.repository.SubjectRepository;
+import ru.barkhatnat.homework_board.repository.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Controller
@@ -25,6 +24,8 @@ public class ClassroomController {
     private final MyUserRepository myUserRepository;
     private final StudentRepository studentRepository;
     private final SubjectRepository subjectRepository;
+    private final SubmissionRepository submissionRepository;
+    private final HomeworkRepository homeworkRepository;
 
     @GetMapping
     public String getAllClassrooms(Model model) {
@@ -95,4 +96,34 @@ public class ClassroomController {
                 .orElseThrow(() -> new UserNotFoundException(email));
     }
 
+    @GetMapping("/{id}/grades")
+    public String viewClassroomGrades(
+            @PathVariable UUID id,
+            Model model) {
+
+        // Получаем класс
+        Classroom classroom = classroomRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Classroom not found"));
+
+        // Получаем всех студентов и задания для класса
+        List<Student> students = studentRepository.findByClassroomId(id);
+        List<Homework> homeworks = homeworkRepository.findByClassroomId(id);
+        List<Submission> submissions = submissionRepository.findByClassroomId(id);
+        Map<Student, Map<Integer, Submission>> studentGrades = new HashMap<>();
+        for (Student student : students) {
+            studentGrades.put(student, new HashMap<>());
+        }
+        for (Submission submission : submissions) {
+            Student student = submission.getStudent();
+            if (studentGrades.containsKey(student)) {
+                studentGrades.get(student).put(submission.getHomework().getNumber(), submission);
+            }
+        }
+        model.addAttribute("classroom", classroom);
+        model.addAttribute("students", students);
+        model.addAttribute("studentGrades", studentGrades);
+        model.addAttribute("homeworks", homeworks);
+
+        return "teacher/classroom/journal";
+    }
 }

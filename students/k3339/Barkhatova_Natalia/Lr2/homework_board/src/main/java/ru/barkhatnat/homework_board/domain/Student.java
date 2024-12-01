@@ -1,11 +1,14 @@
 package ru.barkhatnat.homework_board.domain;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -27,5 +30,21 @@ public class Student extends MyUser {
         this.homeworks = homeworks;
         this.submissions = submissions;
         this.classrooms = classrooms;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Student student = (Student) o;
+        return Objects.equals(homeworks, student.homeworks) &&
+                Objects.equals(classrooms, student.classrooms) &&
+                Objects.equals(submissions, student.submissions);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), homeworks, classrooms, submissions);
     }
 }
