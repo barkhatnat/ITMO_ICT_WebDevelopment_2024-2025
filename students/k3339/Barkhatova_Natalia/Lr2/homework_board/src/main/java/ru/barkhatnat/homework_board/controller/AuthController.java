@@ -67,11 +67,10 @@ public class AuthController {
                 .toList();
 
         if (roles.contains("ROLE_TEACHER")) {
-            return "teacher-dashboard";
+            return "teacher/teacher-dashboard";
         } else if (roles.contains("ROLE_STUDENT")) {
-            return "student-dashboard";
+            return "student/student-dashboard";
         }
-
         return "access-denied";
     }
 }
