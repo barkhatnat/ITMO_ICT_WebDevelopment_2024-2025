@@ -1,5 +1,6 @@
 package ru.barkhatnat.homework_board.domain;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
@@ -22,7 +23,7 @@ public class Student extends MyUser {
     @ManyToMany(mappedBy = "students")
     private List<Classroom> classrooms;
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Submission> submissions;
 
     public Student(String email, String password, Role role, String name, String lastName, String middleName, List<Homework> homeworks, List<Submission> submissions, List<Classroom> classrooms) {

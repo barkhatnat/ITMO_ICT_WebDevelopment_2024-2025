@@ -40,7 +40,6 @@ public class Homework {
     @NotNull
     private int maxGrade;
 
-    @OneToMany(mappedBy = "homework")
+    @OneToMany(mappedBy = "homework", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Submission> submissions;
-
 }

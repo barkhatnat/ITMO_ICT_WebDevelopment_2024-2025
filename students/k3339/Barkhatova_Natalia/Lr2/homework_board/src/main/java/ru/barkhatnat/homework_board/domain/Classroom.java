@@ -27,7 +27,7 @@ public class Classroom {
     @JoinColumn(name = "teacher_id", nullable = false)
     private Teacher teacher;
 
-    @OneToMany(mappedBy = "classroom")
+    @OneToMany(mappedBy = "classroom",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Homework> homeworks;
 
     @ManyToMany
