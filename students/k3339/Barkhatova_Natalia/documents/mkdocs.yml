@@ -7,6 +7,8 @@ nav:
       - "Task 3": lab1/task3.md
       - "Task 4": lab1/task4.md
       - "Task 5": lab1/task5.md
+  - Lab 2:
+      - "Описание": lab2/part1.md
 theme:
   name: null
   custom_dir: 'cinder'
