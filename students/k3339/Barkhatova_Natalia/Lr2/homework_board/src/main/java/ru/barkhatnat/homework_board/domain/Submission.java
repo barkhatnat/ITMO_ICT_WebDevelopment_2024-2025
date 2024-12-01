@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -15,6 +16,7 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
+@EqualsAndHashCode
 public class Submission {
     @Id
     @UuidGenerator

@@ -14,9 +14,9 @@ public interface SubmissionRepository extends JpaRepository<Submission, UUID> {
     @Query("SELECT s FROM Submission s JOIN s.homework h WHERE h.id = :homeworkId")
     List<Submission> findByHomeworkId(@Param("homeworkId") UUID homeworkId);
 
-    @Query("SELECT s FROM Submission s JOIN s.student st WHERE st.id = :studentId")
-    List<Submission> findByStudentId(@Param("studentId") UUID studentId);
-
     @Query("SELECT s FROM Submission s JOIN s.student st JOIN s.homework h WHERE st.id = :studentId and h.id = :homeworkId")
     List<Submission> findByHomeworkIdAndStudentId(@Param("homeworkId") UUID homeworkId, @Param("studentId") UUID studentId);
+
+    @Query("SELECT s FROM Submission s JOIN s.student st JOIN st.classrooms c WHERE c.id = :classroomId")
+    List<Submission> findByClassroomId(@Param("classroomId") UUID classroomId);
 }
