@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    
+    <title>Описание - web_labs</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../css/base.min.css" rel="stylesheet">
+    <link href="../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../..">web_labs</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lab 1 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../lab1/task1/">Task 1</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../lab1/task2/">Task 2</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../lab1/task3/">Task 3</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../lab1/task4/">Task 4</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../lab1/task5/">Task 5</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lab 2 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li class="active">
+    <a href="./">Описание</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../../lab1/task5/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li class="disabled">
+                        <a rel="next" >
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#_1">Задание:</a></li>
+        <li class="first-level "><a href="#_2">Стек:</a></li>
+        <li class="first-level "><a href="#_3">Ход работы:</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<p>Мой вариант №2 - "Доска домашних заданий"</p>
+<h3 id="_1">Задание:</h3>
+<p>О домашнем задании должна храниться следующая информация: предмет,
+преподаватель, дата выдачи, период выполнения, текст задания, информация о штрафах.
+Необходимо реализовать следующий функционал:
+- Регистрация новых пользователей.
+- Просмотр домашних заданий по всем дисциплинам (сроки выполнения,
+описание задания).
+- Сдача домашних заданий в текстовом виде.
+- Администратор (учитель) должен иметь возможность поставить оценку за
+задание средствами Django-admin.
+- В клиентской части должна формироваться таблица, отображающая оценки
+всех учеников класса.</p>
+<h3 id="_2">Стек:</h3>
+<ul>
+<li><strong>Язык:</strong> Java 21.</li>
+<li><strong>Фреймворк:</strong> Spring Boot</li>
+<li><strong>База данных:</strong> PostgreSQL</li>
+<li><strong>Шаблонизатор:</strong> Thymeleaf</li>
+<li><strong>Безопасность:</strong> Spring Security</li>
+<li><strong>Дополнительно:</strong> Lombok</li>
+<li><strong>Система сборки:</strong> Maven.</li>
+</ul>
+<h3 id="_3">Ход работы:</h3>
+<p>Я реализовала такие сущности как Classroom, Homework, MyUser, Student, Teacher, Subject, Submission и Teacher и настроила связи между ними. Например:</p>
+<pre><code>@Entity  
+@Getter  
+@Setter  
+public class Classroom {  
+    @Id  
+    @UuidGenerator    private UUID id;  
+
+    @Column(nullable = false, unique = true, length = 10)  
+    private String name;  
+
+    @ManyToOne  
+    @JoinColumn(name = &quot;subject_id&quot;, nullable = false)  
+    private Subject subject;  
+
+    @ManyToOne  
+    @JoinColumn(name = &quot;teacher_id&quot;, nullable = false)  
+    private Teacher teacher;  
+
+    @OneToMany(mappedBy = &quot;classroom&quot;)  
+    private List&lt;Homework&gt; homeworks;  
+
+    @ManyToMany  
+    private List&lt;Student&gt; students;  
+}
+</code></pre>
+<p>На основе этих сущностей была автоматически сгенерирована схема базы данных PostgreSQL.</p>
+<p>Затем были созданы репозитории</p>
+<pre><code>@Repository  
+public interface ClassroomRepository extends JpaRepository&lt;Classroom, UUID&gt; {  
+    List&lt;Classroom&gt; findByTeacherEmail(String email);  
+}
+</code></pre>
+<p>И контроллеры </p>
+<pre><code> @Controller  
+@RequestMapping(&quot;teacher/classrooms&quot;)  
+@RequiredArgsConstructor  
+public class ClassroomController {  
+
+    private final ClassroomRepository classroomRepository;  
+    private final MyUserRepository myUserRepository;  
+    private final StudentRepository studentRepository;  
+    private final SubjectRepository subjectRepository;  
+    private final SubmissionRepository submissionRepository;  
+    private final HomeworkRepository homeworkRepository;  
+
+    @GetMapping  
+    public String getAllClassrooms(Model model) {  
+        List&lt;Classroom&gt; classrooms = classroomRepository.findAll();  
+        model.addAttribute(&quot;classrooms&quot;, classrooms);  
+        return &quot;teacher/classroom/list&quot;;  
+    }  
+
+    @GetMapping(&quot;/create&quot;)  
+    public String showCreateForm(Model model) {  
+        MyUser teacher = getCurrentUser();  
+        List&lt;Subject&gt; teacherSubjects = subjectRepository.findByTeacherEmail(teacher.getEmail());  
+        model.addAttribute(&quot;teacherSubjects&quot;, teacherSubjects);  
+        model.addAttribute(&quot;classroom&quot;, new Classroom());  
+        model.addAttribute(&quot;subject&quot;, new Subject());  
+        model.addAttribute(&quot;students&quot;, studentRepository.findAll());  
+        return &quot;teacher/classroom/form&quot;;  
+    }  
+
+    @PostMapping  
+    public String createClassroom(@ModelAttribute Classroom classroom) {  
+        MyUser teacher = getCurrentUser();  
+        classroom.setTeacher((Teacher) teacher);  
+        for (Student student : classroom.getStudents()) {  
+            student.getClassrooms().add(classroom);  
+        }  
+        classroomRepository.save(classroom);  
+        return &quot;redirect:/teacher/classrooms&quot;;  
+    }  
+
+    @GetMapping(&quot;/{id}/edit&quot;)  
+    public String showEditForm(@PathVariable UUID id, Model model) {  
+        Classroom classroom = classroomRepository.findById(id)  
+                .orElseThrow(() -&gt; new ClassroomNotFoundException(id));  
+        List&lt;Subject&gt; teacherSubjects = subjectRepository.findByTeacherEmail(classroom.getTeacher().getEmail());  
+        model.addAttribute(&quot;classroom&quot;, classroom);  
+        model.addAttribute(&quot;teacherSubjects&quot;, teacherSubjects);  
+        model.addAttribute(&quot;subject&quot;, new Subject());  
+        model.addAttribute(&quot;students&quot;, studentRepository.findAll());  
+        return &quot;teacher/classroom/form&quot;;  
+    }  
+
+    @PostMapping(&quot;/edit&quot;)  
+    public String updateClassroom(@ModelAttribute Classroom classroom) {  
+        Classroom existingClassroom = classroomRepository.findById(classroom.getId()).get();  
+        existingClassroom.setName(classroom.getName());  
+        existingClassroom.setStudents(classroom.getStudents());  
+        classroomRepository.save(existingClassroom);  
+        return &quot;redirect:/teacher/classrooms&quot;;  
+    }  
+
+    @GetMapping(&quot;/{id}/delete&quot;)  
+    public String deleteClassroom(@PathVariable UUID id) {  
+        classroomRepository.deleteById(id);  
+        return &quot;redirect:/teacher/classrooms&quot;;  
+    }  
+
+    @GetMapping(&quot;/students/{id}/classroom&quot;)  
+    public String getClassroomDetails(@PathVariable UUID id, Model model) {  
+        List&lt;Student&gt; students = studentRepository.findByClassroomId(id);  
+        model.addAttribute(&quot;students&quot;, students);  
+        return &quot;teacher/classroom/students&quot;;  
+    }  
+
+    private MyUser getCurrentUser() {  
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();  
+        return myUserRepository.findByEmail(email)  
+                .orElseThrow(() -&gt; new UserNotFoundException(email));  
+    }  
+
+    @GetMapping(&quot;/{id}/grades&quot;)  
+    public String viewClassroomGrades(  
+            @PathVariable UUID id,  
+            Model model) {  
+
+        Classroom classroom = classroomRepository.findById(id)  
+                .orElseThrow(() -&gt; new IllegalArgumentException(&quot;Classroom not found&quot;));  
+
+       List&lt;Student&gt; students = studentRepository.findByClassroomId(id);  
+        List&lt;Homework&gt; homeworks = homeworkRepository.findByClassroomId(id);  
+        List&lt;Submission&gt; submissions = submissionRepository.findByClassroomId(id);  
+        Map&lt;Student, Map&lt;Integer, Submission&gt;&gt; studentGrades = new HashMap&lt;&gt;();  
+        for (Student student : students) {  
+            studentGrades.put(student, new HashMap&lt;&gt;());  
+        }  
+        for (Submission submission : submissions) {  
+            Student student = submission.getStudent();  
+            if (studentGrades.containsKey(student)) {  
+                studentGrades.get(student).put(submission.getHomework().getNumber(), submission);  
+            }  
+        }  
+        model.addAttribute(&quot;classroom&quot;, classroom);  
+        model.addAttribute(&quot;students&quot;, students);  
+        model.addAttribute(&quot;studentGrades&quot;, studentGrades);  
+        model.addAttribute(&quot;homeworks&quot;, homeworks);  
+
+        return &quot;teacher/classroom/journal&quot;;  
+    }  
+}
+</code></pre>
+<p>HTML-templates разделены на 2 группы - teacher и student</p>
+<p>Настроена форма аутентификации, пользователи будут вводить свои логин и пароль на специальной странице входа. После успешного входа они будут перенаправлены на страницу "/home". Доступ к определенным страницам ограничен ролями: пользователи с ролью "TEACHER" могут заходить на страницы, начинающиеся с "/teacher", а пользователи с ролью "STUDENT" — на страницы, начинающиеся с "/student". Все остальные страницы доступны только аутентифицированным пользователям. Пароли пользователей хранятся в базе в зашифрованном виде с помощью BCrypt. Также настроен выход из системы по URL "/logout", после чего пользователь снова попадет на страницу входа.</p>
+<pre><code>@Configuration  
+@EnableWebSecurity  
+public class SecurityConfig {  
+
+    @Bean  
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {  
+        http  
+                .cors(AbstractHttpConfigurer::disable)  
+                .csrf(AbstractHttpConfigurer::disable)  
+                .securityMatcher(&quot;/**&quot;)  
+                .authorizeHttpRequests(auth -&gt; auth  
+                        .requestMatchers(&quot;/login&quot;).permitAll()  
+                        .requestMatchers(&quot;/registration&quot;).permitAll()  
+                        .requestMatchers(&quot;/teacher/**&quot;).hasRole(&quot;TEACHER&quot;)  
+                        .requestMatchers(&quot;/student/**&quot;).hasRole(&quot;STUDENT&quot;)  
+                        .anyRequest().authenticated()  
+                )  
+                .formLogin(form -&gt; form  
+                        .loginPage(&quot;/login&quot;)  
+                        .defaultSuccessUrl(&quot;/home&quot;, true)  
+                        .permitAll()  
+                )  
+                .logout(logout -&gt; logout  
+                        .logoutUrl(&quot;/logout&quot;)  
+                        .logoutSuccessUrl(&quot;/login&quot;)  
+                        .permitAll()  
+                );  
+
+        return http.build();  
+    }  
+
+    @Bean  
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {  
+        return authenticationConfiguration.getAuthenticationManager();  
+    }  
+
+    @Bean  
+    public PasswordEncoder passwordEncoder() {  
+        return new BCryptPasswordEncoder();  
+    }  
+}
+</code></pre>
+<p>Были написаны необходимые контроллеры и html templates с использованием bootstrap.</p></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../.."</script>
+    
+    <script src="../../js/base.js"></script>
+    <script src="../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>
