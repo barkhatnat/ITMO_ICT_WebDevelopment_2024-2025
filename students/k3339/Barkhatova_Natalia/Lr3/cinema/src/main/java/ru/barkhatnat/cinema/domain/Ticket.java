@@ -1,6 +1,9 @@
 package ru.barkhatnat.cinema.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 import ru.barkhatnat.cinema.domain.enums.TicketStatus;
@@ -26,24 +29,31 @@ public class Ticket {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
+    @NotNull(message = "User cannot be null")
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "session_id", nullable = false)
+    @NotNull(message = "Session cannot be null")
     private Session session;
 
     @ManyToOne
     @JoinColumn(name = "seat_id", nullable = false)
+    @NotNull(message = "Seat cannot be null")
     private Seat seat;
 
     @Column(name = "purchased_at", nullable = false)
+    @NotNull(message = "Purchased date cannot be null")
     private LocalDateTime purchasedAt;
 
     @Column(name = "ticket_code", unique = true, nullable = false, length = 10)
+    @NotBlank(message = "Ticket code cannot be blank")
+    @Size(max = 10, message = "Ticket code must be at most 10 characters")
     private String ticketCode;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @NotNull(message = "Ticket status cannot be null")
     private TicketStatus status;
 
     public Ticket(User user, Session session, Seat seat, LocalDateTime purchasedAt, String ticketCode, TicketStatus status) {

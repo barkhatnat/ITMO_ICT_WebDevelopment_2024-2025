@@ -2,6 +2,7 @@ package ru.barkhatnat.cinema.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 import ru.barkhatnat.cinema.domain.enums.SeatType;
@@ -23,14 +24,16 @@ public class Seat {
 
     @ManyToOne
     @JoinColumn(name = "row_id", nullable = false)
+    @NotNull(message = "Row cannot be null")
     private Row row;
 
     @Column(nullable = false)
-    @Min(1)
+    @Min(value = 1, message = "Seat number must be greater than or equal to 1")
     private Integer number;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @NotNull(message = "Seat type cannot be null")
     private SeatType type;
 
     @OneToMany(mappedBy = "seat", cascade = CascadeType.ALL, orphanRemoval = true)

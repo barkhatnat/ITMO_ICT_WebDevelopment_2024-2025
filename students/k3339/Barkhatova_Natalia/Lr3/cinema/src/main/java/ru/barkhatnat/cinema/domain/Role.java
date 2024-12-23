@@ -1,6 +1,7 @@
 package ru.barkhatnat.cinema.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 import ru.barkhatnat.cinema.domain.enums.RoleName;
@@ -22,6 +23,7 @@ public class Role {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @NotNull(message = "Role name cannot be null")
     private RoleName name;
 
     @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)

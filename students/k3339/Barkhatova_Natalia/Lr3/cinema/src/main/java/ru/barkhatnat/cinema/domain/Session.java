@@ -2,6 +2,7 @@ package ru.barkhatnat.cinema.domain;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
@@ -22,17 +23,20 @@ public class Session {
 
     @ManyToOne
     @JoinColumn(name = "movie_id", nullable = false)
+    @NotNull(message = "Movie cannot be null")
     private Movie movie;
 
     @ManyToOne
     @JoinColumn(name = "hall_id", nullable = false)
+    @NotNull(message = "Hall cannot be null")
     private Hall hall;
 
     @Column(name = "start_time", nullable = false, columnDefinition = "TIMESTAMP")
+    @NotNull(message = "Start time cannot be null")
     private LocalDateTime startTime;
 
     @Column(nullable = false)
-    @Min(0)
+    @Min(value = 0, message = "Price must be greater than or equal to 0")
     private Integer price;
 
     @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)

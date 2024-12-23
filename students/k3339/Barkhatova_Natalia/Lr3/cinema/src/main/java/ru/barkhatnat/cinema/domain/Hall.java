@@ -1,11 +1,16 @@
 package ru.barkhatnat.cinema.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.FieldNameConstants;
 import org.hibernate.annotations.UuidGenerator;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -20,9 +25,12 @@ public class Hall {
     private UUID id;
 
     @Column(nullable = false, length = 32)
+    @NotBlank(message = "Hall name cannot be blank")
+    @Size(max = 32, message = "Hall name should not exceed 32 characters")
     private String name;
 
     @Column(nullable = false, columnDefinition = "integer default 0")
+    @Min(value = 0, message = "Capacity cannot be negative")
     private Integer capacity;
 
     @OneToMany(mappedBy = "hall", cascade = CascadeType.ALL, orphanRemoval = true)
