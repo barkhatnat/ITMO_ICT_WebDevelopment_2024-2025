@@ -1,10 +1,10 @@
 package ru.barkhatnat.cinema.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
-import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -28,13 +28,13 @@ public class Session {
     @JoinColumn(name = "hall_id", nullable = false)
     private Hall hall;
 
-    @Column(name = "start_time", nullable = false)
+    @Column(name = "start_time", nullable = false, columnDefinition = "TIMESTAMP")
     private LocalDateTime startTime;
 
     @Column(nullable = false)
+    @Min(0)
     private Integer price;
 
-    @OneToMany(mappedBy = "session")
+    @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OccupiedSeats> occupiedSeats;
 }
-

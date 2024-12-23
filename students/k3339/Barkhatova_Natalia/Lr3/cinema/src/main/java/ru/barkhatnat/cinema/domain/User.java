@@ -20,25 +20,27 @@ public class User {
     @UuidGenerator
     private UUID id;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true, nullable = false, length = 50)
     private String email;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     private String password;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     private String first_name;
-    @Column(nullable = false)
+
+    @Column(nullable = false, length = 50)
     private String last_name;
-    @Column(nullable = true)
+
+    @Column(nullable = true, length = 50)
     private String middle_name;
 
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;
 
-    @OneToMany(mappedBy = "user")
-    List<Ticket> tickets = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Ticket> tickets = new ArrayList<>();
 
     public User(String email, String password, String first_name, String last_name, String middle_name, Role role, List<Ticket> tickets) {
         this.email = email;

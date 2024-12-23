@@ -1,10 +1,10 @@
 package ru.barkhatnat.cinema.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 import ru.barkhatnat.cinema.domain.enums.SeatType;
-import ru.barkhatnat.cinema.domain.enums.TicketStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,17 +26,18 @@ public class Seat {
     private Row row;
 
     @Column(nullable = false)
+    @Min(1)
     private Integer number;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private SeatType type;
 
-    @OneToMany(mappedBy = "seat")
+    @OneToMany(mappedBy = "seat", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ticket> tickets = new ArrayList<>();
 
-    @OneToMany(mappedBy = "seat")
-    private List<OccupiedSeats> occupiedSeats;
+    @OneToMany(mappedBy = "seat", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OccupiedSeats> occupiedSeats = new ArrayList<>();
 
     public Seat(Row row, Integer number, SeatType type, List<Ticket> tickets) {
         this.row = row;

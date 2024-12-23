@@ -14,6 +14,11 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(
+        uniqueConstraints = {
+                @UniqueConstraint(name = "uc_session_seat", columnNames = {"session_id", "seat_id"})
+        }
+)
 public class Ticket {
     @Id
     @UuidGenerator
@@ -34,7 +39,7 @@ public class Ticket {
     @Column(name = "purchased_at", nullable = false)
     private LocalDateTime purchasedAt;
 
-    @Column(name = "ticket_code", nullable = false)
+    @Column(name = "ticket_code", unique = true, nullable = false, length = 10)
     private String ticketCode;
 
     @Enumerated(EnumType.STRING)

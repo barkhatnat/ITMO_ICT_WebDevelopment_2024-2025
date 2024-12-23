@@ -1,9 +1,6 @@
 package ru.barkhatnat.cinema.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
@@ -32,7 +29,7 @@ public class Movie {
     @Column(length = 512)
     private String description;
 
-    @OneToMany
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Session> sessions = new ArrayList<>();
 
     public Movie(String name, Duration duration, String description, List<Session> sessions) {

@@ -3,6 +3,7 @@ package ru.barkhatnat.cinema.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
+import ru.barkhatnat.cinema.domain.enums.RoleName;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,13 +20,14 @@ public class Role {
     @UuidGenerator
     private UUID id;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String name;
+    private RoleName name;
 
-    @OneToMany(mappedBy = "role")
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<User> users = new ArrayList<>();
 
-    public Role(String name, List<User> users) {
+    public Role(RoleName name, List<User> users) {
         this.name = name;
         this.users = users;
     }

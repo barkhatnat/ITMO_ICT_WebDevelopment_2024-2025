@@ -25,10 +25,10 @@ public class Hall {
     @Column(nullable = false, columnDefinition = "integer default 0")
     private Integer capacity;
 
-    @OneToMany(mappedBy = "hall")
+    @OneToMany(mappedBy = "hall", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Row> rows = new ArrayList<>();
 
-    @OneToMany(mappedBy = "hall")
+    @OneToMany(mappedBy = "hall", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Session> sessions = new ArrayList<>();
 
     public Hall(String name, Integer capacity, List<Row> rows, List<Session> sessions) {
