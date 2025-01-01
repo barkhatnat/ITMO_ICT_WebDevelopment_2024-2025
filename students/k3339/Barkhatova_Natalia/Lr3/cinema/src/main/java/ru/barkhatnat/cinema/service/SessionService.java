@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import ru.barkhatnat.cinema.domain.Session;
-import ru.barkhatnat.cinema.domain.Ticket;
 import ru.barkhatnat.cinema.dto.create.SessionCreateDto;
 import ru.barkhatnat.cinema.dto.regular.SessionDto;
 import ru.barkhatnat.cinema.dto.update.SessionUpdateDto;
@@ -34,7 +33,7 @@ public class SessionService {
     public SessionUpdateDto update(UUID id, SessionUpdateDto sessionUpdateDto) {
         Session session = sessionRepository.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Entity with id `%s` not found".formatted(id)));
-        sessionMapper.updateWithNull(sessionUpdateDto, session);
+        sessionMapper.updateWithNull(sessionUpdateDto, session, hallRepository, movieRepository);
         Session updatedSession = sessionRepository.save(session);
         return sessionMapper.toSessionUpdateDto(updatedSession);
     }

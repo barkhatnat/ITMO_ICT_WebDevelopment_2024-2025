@@ -14,8 +14,6 @@ import java.util.UUID;
 public interface UserMapper {
     UserDto toUserDto(User user);
 
-
-
     @Mapping(target = "role", source = "roleId", qualifiedByName = "mapRole")
     User toEntity(UserCreateDto userCreateDto, @Context RoleRepository roleRepository);
 
@@ -33,7 +31,8 @@ public interface UserMapper {
 
     UserUpdateDto toUserUpdateDto(User user);
 
-    User updateWithNull(UserUpdateDto userUpdateDto, @MappingTarget User user);
+    @Mapping(target = "role", source = "roleId", qualifiedByName = "mapRole")
+    User updateWithNull(UserUpdateDto userUpdateDto, @MappingTarget User user, @Context RoleRepository roleRepository);
 
     User toEntity(UserDto userDto);
 }

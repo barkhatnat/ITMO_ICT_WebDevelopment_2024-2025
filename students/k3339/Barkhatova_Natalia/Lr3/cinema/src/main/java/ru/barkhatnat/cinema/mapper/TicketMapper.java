@@ -45,5 +45,9 @@ public interface TicketMapper {
 
     TicketUpdateDto toTicketUpdateDto(Ticket ticket);
 
-    Ticket updateWithNull(TicketUpdateDto ticketUpdateDto, @MappingTarget Ticket ticket);
+    @Mapping(target = "user", source = "userId", qualifiedByName = "mapUser")
+    @Mapping(target = "session", source = "sessionId", qualifiedByName = "mapSession")
+    @Mapping(target = "seat", source = "seatId", qualifiedByName = "mapSeat")
+    Ticket updateWithNull(TicketUpdateDto ticketUpdateDto, @MappingTarget Ticket ticket, @Context UserRepository userRepository,
+                          @Context SessionRepository sessionRepository, @Context SeatRepository seatRepository);
 }

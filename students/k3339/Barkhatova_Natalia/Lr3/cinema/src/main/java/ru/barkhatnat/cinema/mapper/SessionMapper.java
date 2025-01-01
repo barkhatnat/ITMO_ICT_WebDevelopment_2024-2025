@@ -39,5 +39,9 @@ public interface SessionMapper {
 
     SessionUpdateDto toSessionUpdateDto(Session session);
 
-    Session updateWithNull(SessionUpdateDto sessionUpdateDto, @MappingTarget Session session);
+    @Mapping(target = "hall", source = "hallId", qualifiedByName = "mapHall")
+    @Mapping(target = "movie", source = "movieId", qualifiedByName = "mapMovie")
+    Session updateWithNull(SessionUpdateDto sessionUpdateDto, @MappingTarget Session session, @Context HallRepository hallRepository,
+                           @Context MovieRepository movieRepository
+    );
 }

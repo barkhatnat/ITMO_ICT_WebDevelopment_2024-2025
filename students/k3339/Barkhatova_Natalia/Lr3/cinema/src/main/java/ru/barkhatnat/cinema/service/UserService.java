@@ -50,7 +50,13 @@ public class UserService {
     public UserUpdateDto update(UUID id, UserUpdateDto userUpdateDto) {
         User user = userRepository.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Entity with id `%s` not found".formatted(id)));
-        userMapper.updateWithNull(userUpdateDto, user);
+        UserUpdateDto updatedUserDto = userUpdateDto;
+        if (userUpdateDto.password() != null && !userUpdateDto.password().isEmpty()) {
+            String encodedPassword = passwordEncoder.encode(userUpdateDto.password());
+            updatedUserDto = new UserUpdateDto(userUpdateDto.email(), encodedPassword, userUpdateDto.firstName(),
+                    userUpdateDto.lastName(), userUpdateDto.middleName(), userUpdateDto.roleId());
+        }
+        userMapper.updateWithNull(updatedUserDto, user, roleRepository);
         User updatedUser = userRepository.save(user);
         return userMapper.toUserUpdateDto(updatedUser);
     }

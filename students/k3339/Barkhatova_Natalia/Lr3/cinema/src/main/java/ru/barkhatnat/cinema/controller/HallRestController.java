@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/rest/halls")
+@RequestMapping("/rest/admin/halls")
 @RequiredArgsConstructor
 public class HallRestController {
 

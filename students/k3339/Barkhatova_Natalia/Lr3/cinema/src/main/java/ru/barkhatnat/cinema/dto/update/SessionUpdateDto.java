@@ -2,8 +2,6 @@ package ru.barkhatnat.cinema.dto.update;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import ru.barkhatnat.cinema.dto.regular.HallDto;
-import ru.barkhatnat.cinema.dto.regular.MovieDto;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -13,10 +11,10 @@ import java.util.UUID;
  */
 public record SessionUpdateDto(
         @NotNull(message = "Movie cannot be null")
-        MovieDto movie,
+        UUID movieId,
 
         @NotNull(message = "Hall cannot be null")
-        HallDto hall,
+        UUID hallId,
 
         @NotNull(message = "Start time cannot be null")
         LocalDateTime startTime,

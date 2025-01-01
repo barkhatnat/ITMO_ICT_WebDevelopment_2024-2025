@@ -28,5 +28,6 @@ public interface RowMapper {
 
     RowUpdateDto toRowUpdateDto(Row row);
 
-    Row updateWithNull(RowUpdateDto rowUpdateDto, @MappingTarget Row row);
+    @Mapping(target = "hall", source = "hallId", qualifiedByName = "mapHall")
+    Row updateWithNull(RowUpdateDto rowUpdateDto, @MappingTarget Row row, @Context HallRepository hallRepository);
 }

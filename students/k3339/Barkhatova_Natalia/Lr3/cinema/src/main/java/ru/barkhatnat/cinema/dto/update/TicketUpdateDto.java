@@ -1,9 +1,6 @@
 package ru.barkhatnat.cinema.dto.update;
 
 import jakarta.validation.constraints.NotNull;
-import ru.barkhatnat.cinema.dto.regular.UserDto;
-import ru.barkhatnat.cinema.dto.regular.SeatDto;
-import ru.barkhatnat.cinema.dto.regular.SessionDto;
 
 import java.util.UUID;
 
@@ -12,11 +9,11 @@ import java.util.UUID;
  */
 public record TicketUpdateDto(
         @NotNull(message = "User cannot be null")
-        UserDto user,
+        UUID userId,
 
         @NotNull(message = "Session cannot be null")
-        SessionDto session,
+        UUID sessionId,
 
         @NotNull(message = "Seat cannot be null")
-        SeatDto seat) {
+        UUID seatId) {
 }

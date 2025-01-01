@@ -4,7 +4,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.barkhatnat.cinema.domain.Seat;
 import ru.barkhatnat.cinema.dto.create.SeatCreateDto;
 import ru.barkhatnat.cinema.dto.regular.SeatDto;
 import ru.barkhatnat.cinema.dto.update.SeatUpdateDto;
@@ -14,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/rest/seats")
+@RequestMapping("/rest/admin/seats")
 @RequiredArgsConstructor
 public class SeatRestController {
 

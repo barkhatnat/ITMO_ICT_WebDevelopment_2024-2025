@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/rest/sessions")
+@RequestMapping("/rest/admin/sessions")
 @RequiredArgsConstructor
 public class SessionRestController {
 

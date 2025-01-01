@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/rest/movies")
+@RequestMapping("/rest/admin/movies")
 @RequiredArgsConstructor
 public class MovieRestController {
 

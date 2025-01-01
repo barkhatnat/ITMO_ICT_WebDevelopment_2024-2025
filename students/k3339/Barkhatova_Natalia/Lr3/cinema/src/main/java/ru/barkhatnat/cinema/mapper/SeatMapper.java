@@ -29,5 +29,6 @@ public interface SeatMapper {
 
     SeatUpdateDto toSeatUpdateDto(Seat seat);
 
-    Seat updateWithNull(SeatUpdateDto seatUpdateDto, @MappingTarget Seat seat);
+    @Mapping(target = "row", source = "rowId", qualifiedByName = "mapRow")
+    Seat updateWithNull(SeatUpdateDto seatUpdateDto, @MappingTarget Seat seat, @Context RowRepository rowRepository);
 }

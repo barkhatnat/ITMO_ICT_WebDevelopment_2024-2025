@@ -2,7 +2,6 @@ package ru.barkhatnat.cinema.dto.update;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import ru.barkhatnat.cinema.dto.regular.HallDto;
 
 import java.util.UUID;
 
@@ -14,5 +13,5 @@ public record RowUpdateDto(
         Integer number,
 
         @NotNull(message = "Hall cannot be null")
-        HallDto hall) {
+        UUID hallId) {
 }

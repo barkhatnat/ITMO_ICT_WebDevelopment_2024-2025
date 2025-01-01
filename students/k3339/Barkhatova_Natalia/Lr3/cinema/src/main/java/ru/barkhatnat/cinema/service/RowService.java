@@ -50,7 +50,7 @@ public class RowService {
     public RowUpdateDto update(UUID id, RowUpdateDto rowUpdateDto) {
         Row row = rowRepository.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Entity with id `%s` not found".formatted(id)));
-        rowMapper.updateWithNull(rowUpdateDto, row);
+        rowMapper.updateWithNull(rowUpdateDto, row, hallRepository);
         Row resultRow = rowRepository.save(row);
         return rowMapper.toRowUpdateDto(resultRow);
     }

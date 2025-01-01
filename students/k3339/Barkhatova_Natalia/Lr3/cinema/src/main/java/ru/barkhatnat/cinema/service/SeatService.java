@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import ru.barkhatnat.cinema.domain.Seat;
-import ru.barkhatnat.cinema.domain.Ticket;
 import ru.barkhatnat.cinema.dto.create.SeatCreateDto;
 import ru.barkhatnat.cinema.dto.regular.SeatDto;
 import ru.barkhatnat.cinema.dto.update.SeatUpdateDto;
@@ -51,7 +50,7 @@ public class SeatService {
     public SeatUpdateDto update(UUID id, SeatUpdateDto seatUpdateDto) {
         Seat seat = seatRepository.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Entity with id `%s` not found".formatted(id)));
-        seatMapper.updateWithNull(seatUpdateDto, seat);
+        seatMapper.updateWithNull(seatUpdateDto, seat, rowRepository);
         Seat updatedSeat = seatRepository.save(seat);
         return seatMapper.toSeatUpdateDto(updatedSeat);
     }

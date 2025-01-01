@@ -3,7 +3,6 @@ package ru.barkhatnat.cinema.dto.update;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import ru.barkhatnat.cinema.domain.enums.SeatType;
-import ru.barkhatnat.cinema.dto.regular.RowDto;
 
 import java.util.UUID;
 
@@ -12,7 +11,7 @@ import java.util.UUID;
  */
 public record SeatUpdateDto(
         @NotNull(message = "Row cannot be null")
-        RowDto row,
+        UUID rowId,
 
         @Min(message = "Seat number must be greater than or equal to 1", value = 1)
         Integer number,

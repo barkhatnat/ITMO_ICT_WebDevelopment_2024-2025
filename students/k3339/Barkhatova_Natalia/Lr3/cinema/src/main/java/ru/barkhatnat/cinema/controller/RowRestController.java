@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/rest/rows")
+@RequestMapping("/rest/admin/rows")
 @RequiredArgsConstructor
 public class RowRestController {
 
