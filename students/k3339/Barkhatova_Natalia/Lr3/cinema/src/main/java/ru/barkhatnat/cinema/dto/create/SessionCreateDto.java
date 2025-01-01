@@ -6,16 +6,17 @@ import ru.barkhatnat.cinema.dto.regular.HallDto;
 import ru.barkhatnat.cinema.dto.regular.MovieDto;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 /**
  * DTO for {@link ru.barkhatnat.cinema.domain.Session}
  */
 public record SessionCreateDto(
         @NotNull(message = "Movie cannot be null")
-        MovieDto movie,
+        UUID movieId,
 
         @NotNull(message = "Hall cannot be null")
-        HallDto hall,
+        UUID hallId,
 
         @NotNull(message = "Start time cannot be null")
         LocalDateTime startTime,

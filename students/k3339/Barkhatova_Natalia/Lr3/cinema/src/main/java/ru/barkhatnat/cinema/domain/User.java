@@ -30,24 +30,23 @@ public class User {
     @Size(max = 50, message = "Email must be at most 50 characters")
     private String email;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false)
     @NotBlank(message = "Password cannot be blank")
-    @Size(min = 6, max = 50, message = "Password must be between 6 and 50 characters")
     private String password;
 
     @Column(nullable = false, length = 50)
     @NotBlank(message = "First name cannot be blank")
     @Size(max = 50, message = "First name must be at most 50 characters")
-    private String first_name;
+    private String firstName;
 
     @Column(nullable = false, length = 50)
     @NotBlank(message = "Last name cannot be blank")
     @Size(max = 50, message = "Last name must be at most 50 characters")
-    private String last_name;
+    private String lastName;
 
     @Column(nullable = true, length = 50)
     @Size(max = 50, message = "Middle name must be at most 50 characters")
-    private String middle_name;
+    private String middleName;
 
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
@@ -57,12 +56,12 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ticket> tickets = new ArrayList<>();
 
-    public User(String email, String password, String first_name, String last_name, String middle_name, Role role, List<Ticket> tickets) {
+    public User(String email, String password, String firstName, String lastName, String middleName, Role role, List<Ticket> tickets) {
         this.email = email;
         this.password = password;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.middle_name = middle_name;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.middleName = middleName;
         this.role = role;
         this.tickets = tickets;
     }

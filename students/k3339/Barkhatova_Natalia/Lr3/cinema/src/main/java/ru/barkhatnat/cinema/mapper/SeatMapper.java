@@ -1,17 +1,25 @@
 package ru.barkhatnat.cinema.mapper;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.MappingConstants;
-import org.mapstruct.MappingTarget;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.*;
+import ru.barkhatnat.cinema.domain.Row;
 import ru.barkhatnat.cinema.dto.regular.SeatDto;
 import ru.barkhatnat.cinema.dto.create.SeatCreateDto;
 import ru.barkhatnat.cinema.domain.Seat;
 import ru.barkhatnat.cinema.dto.update.SeatUpdateDto;
+import ru.barkhatnat.cinema.repository.RowRepository;
+
+import java.util.UUID;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING, uses = {RowMapper.class})
 public interface SeatMapper {
-    Seat toEntity(SeatCreateDto seatCreateDto);
+    @Mapping(target = "row", source = "rowId", qualifiedByName = "mapRow")
+    Seat toEntity(SeatCreateDto seatCreateDto, @Context RowRepository rowRepository);
+
+    @Named("mapRow")
+    default Row mapRow(UUID rowId, @Context RowRepository rowRepository) {
+        return rowRepository.findById(rowId)
+                .orElseThrow(() -> new RuntimeException("Row not found for ID: " + rowId));
+    }
 
     SeatDto toSeatDto(Seat seat);
 

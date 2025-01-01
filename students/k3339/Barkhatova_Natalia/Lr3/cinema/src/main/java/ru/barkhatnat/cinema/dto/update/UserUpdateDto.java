@@ -16,20 +16,19 @@ public record UserUpdateDto(
         @NotBlank(message = "Email cannot be blank")
         String email,
 
-        @Size(message = "Password must be between 6 and 50 characters", min = 6, max = 50)
         @NotBlank(message = "Password cannot be blank")
         String password,
 
         @Size(message = "First name must be at most 50 characters", max = 50)
         @NotBlank(message = "First name cannot be blank")
-        String first_name,
+        String firstName,
 
         @Size(message = "Last name must be at most 50 characters", max = 50)
         @NotBlank(message = "Last name cannot be blank")
-        String last_name,
+        String lastName,
 
         @Size(message = "Middle name must be at most 50 characters", max = 50)
-        String middle_name,
+        String middleName,
 
         @NotNull(message = "Role cannot be null")
         UUID roleId) {
