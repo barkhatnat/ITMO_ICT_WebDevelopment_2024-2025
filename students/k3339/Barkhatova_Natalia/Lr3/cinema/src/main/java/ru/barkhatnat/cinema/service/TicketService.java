@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import ru.barkhatnat.cinema.domain.Ticket;
 import ru.barkhatnat.cinema.domain.enums.RoleName;
+import ru.barkhatnat.cinema.domain.enums.TicketStatus;
 import ru.barkhatnat.cinema.dto.create.TicketCreateDto;
 import ru.barkhatnat.cinema.dto.regular.TicketDto;
 import ru.barkhatnat.cinema.dto.update.TicketUpdateDto;
@@ -17,6 +18,7 @@ import ru.barkhatnat.cinema.repository.SessionRepository;
 import ru.barkhatnat.cinema.repository.TicketRepository;
 import ru.barkhatnat.cinema.repository.UserRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -39,7 +41,8 @@ public class TicketService {
         UUID sessionId = ticket.getSession().getId();
         UUID seatId = ticket.getSeat().getId();
         occupiedSeatsService.markSeatAsFree(sessionId, seatId);
-        ticketRepository.deleteById(id);
+        ticket.setStatus(TicketStatus.AVAILABLE);
+        ticketRepository.save(ticket);
     }
 
     public TicketUpdateDto update(UUID id, TicketUpdateDto ticketUpdateDto) {
@@ -88,6 +91,9 @@ public class TicketService {
         }
         occupiedSeatsService.markSeatAsOccupied(sessionId, seatId);
         Ticket ticket = ticketMapper.toEntity(ticketCreateDto, userRepository, sessionRepository, seatRepository);
+        ticket.setPurchasedAt(LocalDateTime.now());
+        ticket.setTicketCode(generateTicketCode());
+        ticket.setStatus(TicketStatus.SOLD);
         Ticket savedTicket = ticketRepository.save(ticket);
         return ticketMapper.toTicketDto(savedTicket);
     }
@@ -101,5 +107,9 @@ public class TicketService {
                 && userRoleName.equals(RoleName.USER))) {
             throw new ForbiddenException("Access denied");
         }
+    }
+
+    private String generateTicketCode() {
+        return UUID.randomUUID().toString().substring(0, 10).toUpperCase();
     }
 }

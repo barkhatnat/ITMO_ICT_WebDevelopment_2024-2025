@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.barkhatnat.cinema.dto.regular.UserDto;
 import ru.barkhatnat.cinema.dto.update.UserUpdateDto;
-import ru.barkhatnat.cinema.service.TicketService;
 import ru.barkhatnat.cinema.service.UserService;
 
 import java.util.List;
