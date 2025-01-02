@@ -51,6 +51,6 @@ public class TicketRestController {
 
     @PostMapping("/tickets")
     public ResponseEntity<TicketDto> create(@RequestBody @Valid TicketCreateDto ticketCreateDto) {
-        return ResponseEntity.ok(ticketService.create(ticketCreateDto));
+        return ResponseEntity.ok(ticketService.book(ticketCreateDto));
     }
 }

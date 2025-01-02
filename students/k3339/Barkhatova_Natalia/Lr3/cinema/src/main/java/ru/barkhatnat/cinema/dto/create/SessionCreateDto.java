@@ -2,8 +2,6 @@ package ru.barkhatnat.cinema.dto.create;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import ru.barkhatnat.cinema.dto.regular.HallDto;
-import ru.barkhatnat.cinema.dto.regular.MovieDto;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

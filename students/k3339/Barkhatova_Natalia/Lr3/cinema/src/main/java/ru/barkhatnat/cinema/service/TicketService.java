@@ -30,17 +30,32 @@ public class TicketService {
     private final UserRepository userRepository;
     private final SessionRepository sessionRepository;
     private final SeatRepository seatRepository;
+    private final OccupiedSeatsService occupiedSeatsService;
 
 
     public void deleteById(UUID id) {
+        Ticket ticket = ticketRepository.findById(id).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Entity with id `%s` not found".formatted(id)));
+        UUID sessionId = ticket.getSession().getId();
+        UUID seatId = ticket.getSeat().getId();
+        occupiedSeatsService.markSeatAsFree(sessionId, seatId);
         ticketRepository.deleteById(id);
     }
 
     public TicketUpdateDto update(UUID id, TicketUpdateDto ticketUpdateDto) {
-        Ticket ticket = ticketRepository.findById(id).orElseThrow(() ->
+        Ticket existingTicket = ticketRepository.findById(id).orElseThrow(() ->
                 new ResponseStatusException(HttpStatus.NOT_FOUND, "Entity with id `%s` not found".formatted(id)));
-        ticketMapper.updateWithNull(ticketUpdateDto, ticket, userRepository, sessionRepository, seatRepository);
-        Ticket updatedTicket = ticketRepository.save(ticket);
+        UUID oldSessionId = existingTicket.getSession().getId();
+        UUID oldSeatId = existingTicket.getSeat().getId();
+        if (!ticketUpdateDto.sessionId().equals(oldSessionId) || !ticketUpdateDto.seatId().equals(oldSeatId)) {
+            occupiedSeatsService.markSeatAsFree(oldSessionId, oldSeatId);
+            if (occupiedSeatsService.isSeatOccupied(ticketUpdateDto.sessionId(), ticketUpdateDto.seatId())) {
+                throw new ResponseStatusException(HttpStatus.CONFLICT, "New seat is already occupied");
+            }
+            occupiedSeatsService.markSeatAsOccupied(ticketUpdateDto.sessionId(), ticketUpdateDto.seatId());
+        }
+        ticketMapper.updateWithNull(ticketUpdateDto, existingTicket, userRepository, sessionRepository, seatRepository);
+        Ticket updatedTicket = ticketRepository.save(existingTicket);
         return ticketMapper.toTicketUpdateDto(updatedTicket);
     }
 
@@ -65,7 +80,13 @@ public class TicketService {
         return ticketMapper.toTicketDto(ticket);
     }
 
-    public TicketDto create(@Valid TicketCreateDto ticketCreateDto) {
+    public TicketDto book(@Valid TicketCreateDto ticketCreateDto) {
+        UUID sessionId = ticketCreateDto.sessionId();
+        UUID seatId = ticketCreateDto.seatId();
+        if (occupiedSeatsService.isSeatOccupied(sessionId, seatId)) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Seat is already occupied");
+        }
+        occupiedSeatsService.markSeatAsOccupied(sessionId, seatId);
         Ticket ticket = ticketMapper.toEntity(ticketCreateDto, userRepository, sessionRepository, seatRepository);
         Ticket savedTicket = ticketRepository.save(ticket);
         return ticketMapper.toTicketDto(savedTicket);
@@ -75,9 +96,9 @@ public class TicketService {
         RoleName userRoleName = userRepository.findById(userId).get().getRole().getName();
         Optional<Ticket> ticket = ticketRepository.findById(ticketId);
         if (ticket.isEmpty()
-            || ticket.get().getUser() == null
-            || (!ticket.get().getUser().getId().equals(userId)
-            && userRoleName.equals(RoleName.USER))) {
+                || ticket.get().getUser() == null
+                || (!ticket.get().getUser().getId().equals(userId)
+                && userRoleName.equals(RoleName.USER))) {
             throw new ForbiddenException("Access denied");
         }
     }

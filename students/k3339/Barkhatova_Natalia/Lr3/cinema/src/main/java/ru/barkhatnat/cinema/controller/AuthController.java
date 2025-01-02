@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
 import ru.barkhatnat.cinema.domain.security.LoginRequest;
 import ru.barkhatnat.cinema.domain.security.LoginResponse;
 import ru.barkhatnat.cinema.dto.create.UserCreateDto;
@@ -20,7 +19,6 @@ import ru.barkhatnat.cinema.security.CustomUserDetails;
 import ru.barkhatnat.cinema.security.JwtIssuer;
 import ru.barkhatnat.cinema.service.UserService;
 
-import java.net.URI;
 import java.util.List;
 
 @RestController

@@ -17,7 +17,6 @@ import java.util.UUID;
 public class UserRestController {
 
     private final UserService userService;
-    private final TicketService ticketService;
 
     @GetMapping("/admin/users")
     public ResponseEntity<List<UserDto>> findAll() {
