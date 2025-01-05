@@ -26,7 +26,7 @@ public class Movie {
 
     @Column(nullable = false, length = 32)
     @NotBlank(message = "Movie name cannot be blank")
-    @Size(max = 32, message = "Movie name should not exceed 32 characters")
+    @Size(max = 32, min = 1, message = "Movie name should not exceed 32 characters")
     private String name;
 
     @Column(nullable = false)

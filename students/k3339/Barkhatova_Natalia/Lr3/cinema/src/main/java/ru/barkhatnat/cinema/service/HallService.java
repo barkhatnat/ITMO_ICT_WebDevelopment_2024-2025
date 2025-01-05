@@ -53,4 +53,3 @@ public class HallService {
         return hallMapper.toHallDto(resultHall);
     }
 }
-

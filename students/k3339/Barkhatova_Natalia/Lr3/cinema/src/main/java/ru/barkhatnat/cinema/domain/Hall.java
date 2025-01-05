@@ -26,7 +26,7 @@ public class Hall {
 
     @Column(nullable = false, length = 32)
     @NotBlank(message = "Hall name cannot be blank")
-    @Size(max = 32, message = "Hall name should not exceed 32 characters")
+    @Size(max = 32, min = 1, message = "Hall name should not exceed 32 characters")
     private String name;
 
     @Column(nullable = false, columnDefinition = "integer default 0")

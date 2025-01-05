@@ -36,7 +36,7 @@ public class Session {
     private LocalDateTime startTime;
 
     @Column(nullable = false)
-    @Min(value = 0, message = "Price must be greater than or equal to 0")
+    @Min(value = 1, message = "Price must be greater than or equal to 0")
     private Integer price;
 
     @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)

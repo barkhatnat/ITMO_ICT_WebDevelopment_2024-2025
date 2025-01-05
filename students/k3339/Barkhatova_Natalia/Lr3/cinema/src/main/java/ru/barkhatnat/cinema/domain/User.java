@@ -27,7 +27,7 @@ public class User {
     @Column(unique = true, nullable = false, length = 50)
     @NotBlank(message = "Email cannot be blank")
     @Email(message = "Invalid email format")
-    @Size(max = 50, message = "Email must be at most 50 characters")
+    @Size(max = 50, min = 1, message = "Email must be at most 50 characters")
     private String email;
 
     @Column(nullable = false)
@@ -36,16 +36,16 @@ public class User {
 
     @Column(nullable = false, length = 50)
     @NotBlank(message = "First name cannot be blank")
-    @Size(max = 50, message = "First name must be at most 50 characters")
+    @Size(max = 50, min = 1, message = "First name must be at most 50 characters")
     private String firstName;
 
     @Column(nullable = false, length = 50)
     @NotBlank(message = "Last name cannot be blank")
-    @Size(max = 50, message = "Last name must be at most 50 characters")
+    @Size(max = 50, min = 1, message = "Last name must be at most 50 characters")
     private String lastName;
 
     @Column(nullable = true, length = 50)
-    @Size(max = 50, message = "Middle name must be at most 50 characters")
+    @Size(max = 50, min = 1, message = "Middle name must be at most 50 characters")
     private String middleName;
 
     @ManyToOne
