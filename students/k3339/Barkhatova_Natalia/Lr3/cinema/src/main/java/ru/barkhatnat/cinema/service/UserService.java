@@ -13,6 +13,7 @@ import ru.barkhatnat.cinema.dto.update.UserUpdateDto;
 import ru.barkhatnat.cinema.mapper.UserMapper;
 import ru.barkhatnat.cinema.repository.RoleRepository;
 import ru.barkhatnat.cinema.repository.UserRepository;
+import ru.barkhatnat.cinema.util.SecurityUtil;
 
 import java.util.List;
 import java.util.UUID;
@@ -25,6 +26,7 @@ public class UserService {
     private final UserMapper userMapper;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
+    private final SecurityUtil securityUtil;
 
     public List<UserDto> findAll() {
         List<User> users = userRepository.findAll();
@@ -63,5 +65,10 @@ public class UserService {
 
     public void deleteById(UUID id) {
         userRepository.deleteById(id);
+    }
+
+    public UserDto getCurrentUser(){
+        UUID currentUserId = securityUtil.getCurrentUserDetails().getUser().getId();
+        return findById(currentUserId);
     }
 }

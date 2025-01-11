@@ -71,4 +71,17 @@ public class UserRestController {
         userService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/me")
+    @Operation(
+            summary = "Получить текущего пользователя",
+            description = "Возвращает текущего пользователя",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Пользователь успешно получен"),
+                    @ApiResponse(responseCode = "404", description = "Пользователь не найден")
+            })
+    public ResponseEntity<UserDto> getCurrentUser() {
+        UserDto userDto = userService.getCurrentUser();
+        return ResponseEntity.ok(userDto);
+    }
 }
