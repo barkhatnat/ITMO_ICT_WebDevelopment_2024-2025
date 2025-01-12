@@ -104,7 +104,7 @@ public class TicketService {
         if (ticket.isEmpty()
                 || ticket.get().getUser() == null
                 || (!ticket.get().getUser().getId().equals(userId)
-                && userRoleName.equals(RoleName.USER))) {
+                && userRoleName.equals(RoleName.ROLE_USER))) {
             throw new ForbiddenException("Access denied");
         }
     }

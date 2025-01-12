@@ -1,6 +1,6 @@
 package ru.barkhatnat.cinema.domain.enums;
 
 public enum RoleName {
-    ADMIN,
-    USER
+    ROLE_ADMIN,
+    ROLE_USER
 }
