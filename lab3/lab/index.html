@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    
+    <title>Лабораторная работа - web_labs</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../css/base.min.css" rel="stylesheet">
+    <link href="../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../..">web_labs</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lab 1 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../lab1/task1.md">Task 1</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../lab1/task2.md">Task 2</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../lab1/task3.md">Task 3</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../lab1/task4.md">Task 4</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../lab1/task5.md">Task 5</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lab 2 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../lab2/part1/">Описание</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lab 3 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../practice/">Практическая работа</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Лабораторная работа</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../practice/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li class="disabled">
+                        <a rel="next" >
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#1">Этап 1. Создание модели базы данных</a></li>
+        <li class="first-level "><a href="#2">Этап 2. Создание сущностей в проекте.</a></li>
+        <li class="first-level "><a href="#3">Этап 3. Создание репозиториев, сервисов и контроллеров</a></li>
+        <li class="first-level "><a href="#4">Этап 4. Аутентификация и токены</a></li>
+        <li class="first-level "><a href="#5-swagger">Этап 5. Подключение Swagger</a></li>
+        <li class="first-level "><a href="#_1">Демонстрация работы</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="1">Этап 1. Создание модели базы данных</h1>
+<p>Задание: Создать систему для управления продажей билетов в кинотеатре. Кинотеатр имеет несколько залов с уникальными конфигурациями мест, которые определяются количеством рядов и мест в каждом ряду. В системе хранится информация о фильмах, включая название, длительность и описание, а также о проводимых сеансах с указанием времени начала, зала, показываемого фильма и стоимости билета. Администратор управляет залами, фильмами и расписанием сеансов, при этом система предотвращает пересечения сеансов в одном зале. Пользователи могут регистрироваться, приобретать билеты на сеансы и управлять своими билетами через личный кабинет (возможен возврат билета), где отображается история покупок.</p>
+<p><img alt="Описание" src="/assets/Pasted image 20250111145412.png" /></p>
+<h1 id="2">Этап 2. Создание сущностей в проекте.</h1>
+<p>Я создала 9 сущностей и 3 перечисления</p>
+<p><img alt="Описание" src="/assets/Pasted image 20250111145722.png" /></p>
+<p>Для создания доменных моделей я использовала JPA и Lombok, для каждого поля сущности были заданы связи и ограничения. В качестве примера привожу сущность Hall, где можно заметить связи с Row и Session, прямо как в модели базы данных.</p>
+<pre><code>@Entity  
+@Getter  
+@Setter  
+@FieldNameConstants  
+@Builder  
+@AllArgsConstructor  
+@NoArgsConstructor  
+public class Hall {  
+    @Id  
+    @UuidGenerator    
+    private UUID id;  
+
+    @Column(nullable = false, length = 32)  
+    @NotBlank(message = &quot;Hall name cannot be blank&quot;)  
+    @Size(max = 32, min = 1, message = &quot;Hall name should not exceed 32 characters&quot;)  
+    private String name;  
+
+    @Column(nullable = false, columnDefinition = &quot;integer default 0&quot;)  
+    @Min(value = 0, message = &quot;Capacity cannot be negative&quot;)  
+    private Integer capacity;  
+
+    @OneToMany(mappedBy = &quot;hall&quot;, cascade = CascadeType.ALL, orphanRemoval = true)  
+    private List&lt;Row&gt; rows = new ArrayList&lt;&gt;();  
+
+    @OneToMany(mappedBy = &quot;hall&quot;, cascade = CascadeType.ALL, orphanRemoval = true)  
+    private List&lt;Session&gt; sessions = new ArrayList&lt;&gt;();  
+
+    public Hall(String name, Integer capacity, List&lt;Row&gt; rows, List&lt;Session&gt; sessions) {  
+        this.name = name;  
+        this.capacity = capacity;  
+        this.rows = rows;  
+        this.sessions = sessions;  
+    }  
+}
+</code></pre>
+<h1 id="3">Этап 3. Создание репозиториев, сервисов и контроллеров</h1>
+<p>Я решила придерживаться традиционного подхода к разработке REST API и не игнорировать необходимость разделения ответственности между слоями репозиториев, сервисов и контроллеров.
+Для каждой модели были созданы JPA репозитории, некоторые из них имеют кастомные методы.</p>
+<p><img alt="Описание" src="/assets/Pasted image 20250111150306.png" /></p>
+<pre><code>public interface TicketRepository extends JpaRepository&lt;Ticket, UUID&gt;, JpaSpecificationExecutor&lt;Ticket&gt; {  
+    List&lt;Ticket&gt; findByUserId(UUID id);  
+}
+</code></pre>
+<p>Так же для всех моделей были созданы сервисы, где были описаны CRUD и некоторые другие методы.</p>
+<p><img alt="Описание" src="/assets/Pasted image 20250111150408.png" /></p>
+<pre><code>@Service  
+@RequiredArgsConstructor  
+public class HallService {  
+
+    private final HallRepository hallRepository;  
+    private final HallMapper hallMapper;  
+
+    public void deleteById(UUID id) {  
+        hallRepository.deleteById(id);  
+    }  
+
+    public List&lt;HallDto&gt; findAll() {  
+        List&lt;Hall&gt; halls = hallRepository.findAll();  
+        return halls.stream()  
+                .map(hallMapper::toHallDto)  
+                .toList();  
+    }  
+
+    public HallDto findById(UUID id) {  
+        Hall hall = hallRepository.findById(id).orElseThrow(() -&gt;  
+                new ResponseStatusException(HttpStatus.NOT_FOUND, &quot;Entity with id `%s` not found&quot;.formatted(id)));  
+        return hallMapper.toHallDto(hall);  
+    }  
+
+    public HallUpdateDto update(UUID id, HallUpdateDto hallUpdateDto) {  
+        Hall hall = hallRepository.findById(id).orElseThrow(() -&gt;  
+                new ResponseStatusException(HttpStatus.NOT_FOUND, &quot;Entity with id `%s` not found&quot;.formatted(id)));  
+        hallMapper.updateWithNull(hallUpdateDto, hall);  
+        Hall resultHall = hallRepository.save(hall);  
+        return hallMapper.toHallUpdateDto(resultHall);  
+    }  
+
+    public HallDto save(@Valid HallCreateDto hallCreateDto) {  
+        Hall hall = hallMapper.toEntity(hallCreateDto);  
+        Hall resultHall = hallRepository.save(hall);  
+        return hallMapper.toHallDto(resultHall);  
+    }  
+}
+</code></pre>
+<p>Далее я создавала контроллеры для каждой из моделей.</p>
+<p><img alt="Описание" src="/assets/Pasted image 20250111150520.png" /></p>
+<pre><code>@RestController  
+@RequestMapping(&quot;/rest/admin/halls&quot;)  
+@RequiredArgsConstructor  
+public class HallRestController {  
+
+    private final HallService hallService;  
+
+    @DeleteMapping  
+    public ResponseEntity&lt;Void&gt; deleteById(@RequestBody UUID id) {  
+        hallService.deleteById(id);  
+        return ResponseEntity.noContent().build();  
+    }  
+
+    @GetMapping  
+    public ResponseEntity&lt;List&lt;HallDto&gt;&gt; findAll() {  
+        return ResponseEntity.ok(hallService.findAll());  
+    }  
+
+    @GetMapping(&quot;/{id}&quot;)  
+    public ResponseEntity&lt;HallDto&gt; findById(@PathVariable UUID id) {  
+        return ResponseEntity.ok(hallService.findById(id));  
+    }  
+
+    @PutMapping(&quot;/{id}&quot;)  
+    public ResponseEntity&lt;HallUpdateDto&gt; update(@PathVariable UUID id, @RequestBody HallUpdateDto hallUpdateDto) {  
+        return ResponseEntity.ok(hallService.update(id, hallUpdateDto));  
+    }  
+
+    @PostMapping  
+    public ResponseEntity&lt;HallDto&gt; save(@RequestBody @Valid HallCreateDto hallCreateDto) {  
+        return ResponseEntity.ok(hallService.save(hallCreateDto));  
+    }  
+}
+</code></pre>
+<p>Так же я создала множество Dto.</p>
+<p><img alt="Описание" src="/assets/Pasted image 20250111151256.png" /></p>
+<pre><code>public record HallDto(  
+        UUID id,  
+
+        @Size(message = &quot;Hall name should not exceed 32 characters&quot;, max = 32)  
+        @NotBlank(message = &quot;Hall name cannot be blank&quot;)  
+        String name,  
+
+        @Min(message = &quot;Capacity cannot be negative&quot;, value = 0)  
+        Integer capacity,  
+
+        List&lt;RowDto&gt; rows,  
+
+        List&lt;SessionDto&gt; sessions) {  
+}
+</code></pre>
+<h1 id="4">Этап 4. Аутентификация и токены</h1>
+<p>В качестве способа аутентификации я решила использовать JWT токены. Для этого я написала несколько классов, чтобы иметь полный контроль над процессом токенизации.</p>
+<p><img alt="Описание" src="/assets/Pasted image 20250111150802.png" /></p>
+<p>Так же я настраивала SecurityConfig чтобы добавить еще и авторизацию, которая будет работать в зависимости от эндпоинтов (да, сюда еще были добавлены эндпоинты для коррентной работы swagger)</p>
+<pre><code>@Configuration  
+@EnableWebSecurity  
+@RequiredArgsConstructor  
+public class SecurityConfig {  
+
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;  
+    private final CustomUserDetailsService customUserDetailsService;  
+    private final CustomAuthenticationEntryPoint authEntryPoint;  
+
+    @Bean  
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {  
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);  
+        http  
+                .cors(AbstractHttpConfigurer::disable)  
+                .csrf(AbstractHttpConfigurer::disable)  
+                .securityMatcher(&quot;/**&quot;)  
+                .authorizeHttpRequests(authorize -&gt; authorize  
+                        .requestMatchers(&quot;/auth/registration&quot;,  
+                                         &quot;/auth/login&quot;,  
+                                &quot;/v3/api-docs&quot;,  
+                                &quot;/v2/api-docs.**&quot;,  
+                                &quot;/v3/api-docs/**&quot;,  
+                                &quot;/v3/api-docs&quot;,  
+                                &quot;/swagger-ui/**&quot;,  
+                                &quot;/swagger-ui.html&quot;,  
+                                &quot;/swagger-resources/**&quot;,  
+                                &quot;/swagger-resources&quot;,  
+                                &quot;/swagger-ui/index.html&quot; ,  
+                                &quot;/swagger-resources/**&quot;,  
+                                &quot;/configuration/ui&quot;,  
+                                &quot;/configuration/security&quot;,  
+                                &quot;/swagger-ui.html&quot;,  
+                                &quot;/webjars/**&quot;,  
+                                &quot;/v3/api-docs/**&quot;).permitAll()  
+                        .requestMatchers(&quot;/rest/admin/**&quot;).hasRole(&quot;ADMIN&quot;)  
+                        .requestMatchers(&quot;/rest/**&quot;).hasAnyRole(&quot;USER&quot;, &quot;ADMIN&quot;)  
+                        .anyRequest().authenticated()  
+                )  
+                .sessionManagement(sessionManagement -&gt;  
+                        sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))  
+                .formLogin().disable()  
+                .exceptionHandling().authenticationEntryPoint(authEntryPoint);  
+        return http.build();  
+    }  
+
+    @Bean  
+    public PasswordEncoder passwordEncoder() {  
+        return new BCryptPasswordEncoder();  
+    }  
+
+    @Bean  
+    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {  
+        System.out.println(&quot;Creating AuthenticationManager bean&quot;);  
+        return http.getSharedObject(AuthenticationManagerBuilder.class)  
+                .userDetailsService(customUserDetailsService)  
+                .passwordEncoder(passwordEncoder()).and().build();  
+    }  
+}
+</code></pre>
+<p>Я создала AuthController, где прописала методы регистрации и логина в систему</p>
+<pre><code>@RestController  
+@RequiredArgsConstructor  
+@RequestMapping(&quot;/auth&quot;)  
+@Tag(name = &quot;Authentication&quot;, description = &quot;API для регистрации и авторизации пользователей&quot;)  
+public class AuthController {  
+
+    private final JwtIssuer jwtIssuer;  
+    private final AuthenticationManager authenticationManager;  
+    private final UserService userService;  
+
+    @PostMapping(&quot;/registration&quot;)  
+    @Operation(  
+            summary = &quot;Регистрация пользователя&quot;,  
+            description = &quot;Создает нового пользователя на основе предоставленных данных&quot;,  
+            responses = {  
+                    @ApiResponse(responseCode = &quot;201&quot;, description = &quot;Пользователь успешно зарегистрирован&quot;)  
+            })  
+    public ResponseEntity&lt;UserDto&gt; createAccount(@Valid @RequestBody UserCreateDto userCreateDto) {  
+        UserDto userResponseDto = userService.create(userCreateDto);  
+        return ResponseEntity.status(HttpStatus.CREATED).body(userResponseDto);  
+    }  
+
+    @PostMapping(&quot;/login&quot;)  
+    @Operation(  
+            summary = &quot;Авторизация пользователя&quot;,  
+            description = &quot;Аутентифицирует пользователя и возвращает токен доступа&quot;,  
+            responses = {  
+                    @ApiResponse(responseCode = &quot;200&quot;, description = &quot;Авторизация успешна, токен выдан&quot;),  
+                    @ApiResponse(responseCode = &quot;401&quot;, description = &quot;Неверные учетные данные&quot;)  
+            })  
+    public LoginResponse login(@Valid @RequestBody LoginRequest request) {  
+        var auth = authenticationManager.authenticate(  
+                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())  
+        );  
+        SecurityContextHolder.getContext().setAuthentication(auth);  
+        CustomUserDetails customUserDetails = (CustomUserDetails) auth.getPrincipal();  
+        List&lt;String&gt; roles = customUserDetails.getAuthorities().stream().map(GrantedAuthority::getAuthority).toList();  
+        String token = jwtIssuer.issue(customUserDetails.getUser().getId(), customUserDetails.getUser().getEmail(), roles);  
+        return LoginResponse.builder().accessToken(token).build();  
+    }  
+}
+</code></pre>
+<h1 id="5-swagger">Этап 5. Подключение Swagger</h1>
+<p>Я подключила swagger и добавила документацию путем добавления описаний для каждого эндпоинта.</p>
+<p><img alt="Описание" src="/assets/Pasted image 20250111151446.png" /></p>
+<h1 id="_1">Демонстрация работы</h1>
+<p>В бд уже есть сущности ролей, сейчас будем регистрировать нового админа </p>
+<p><img alt="Описание" src="/assets/Pasted image 20250112154923.png" /></p>
+<p>Вводим информацию о новом пользователе </p>
+<p><img alt="Описание" src="/assets/Pasted image 20250112155050.png" /></p>
+<p>Пользователь успешно создан</p>
+<p><img alt="Описание" src="/assets/Pasted image 20250112155140.png" /></p>
+<p>Пытаемся залогиниться
+<img alt="Описание" src="/assets/Pasted image 20250112155218.png" /></p>
+<p>Сервер возвращает нам accessToken, копируем его и попробуем создать новый фильм
+<img alt="Описание" src="/assets/Pasted image 20250112155229.png" /></p>
+<p><img alt="Описание" src="/assets/Pasted image 20250112155331.png" /></p>
+<p><img alt="Описание" src="/assets/Pasted image 20250112155345.png" /></p>
+<p>Фильм был успешно создан</p>
+<p><img alt="Описание" src="/assets/Pasted image 20250112155409.png" /></p></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../.."</script>
+    
+    <script src="../../js/base.js"></script>
+    <script src="../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>

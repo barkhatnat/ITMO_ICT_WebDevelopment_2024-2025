@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    
+    <title>Практическая работа - web_labs</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../css/base.min.css" rel="stylesheet">
+    <link href="../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../..">web_labs</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lab 1 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../lab1/task1.md">Task 1</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../lab1/task2.md">Task 2</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../lab1/task3.md">Task 3</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../lab1/task4.md">Task 4</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../lab1/task5.md">Task 5</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lab 2 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../lab2/part1/">Описание</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lab 3 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li class="active">
+    <a href="./">Практическая работа</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../lab/">Лабораторная работа</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../../lab2/part1/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../lab/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#31">3.1</a></li>
+            <li class="second-level"><a href="#1">Задание 1. Создание объектов</a></li>
+                
+            <li class="second-level"><a href="#2">Задание 2. Создание простых запросов</a></li>
+                
+            <li class="second-level"><a href="#3">Задание 3. Агрегация и аннотация запросов</a></li>
+                
+        <li class="first-level "><a href="#32">3.2</a></li>
+            <li class="second-level"><a href="#2_1">Задание 2</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="31">3.1</h1>
+<h2 id="1">Задание 1. Создание объектов</h2>
+<p>Для создания объектов я написала скрипт</p>
+<pre><code>import os  
+import django  
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_project_Barkhatova.settings')  
+django.setup()  
+
+from random import choice, randint  
+from django.utils.timezone import now  
+from project_first_app.models import Owner, Car, License, Owning, User  
+
+owners_data = [  
+    {&quot;last_name&quot;: &quot;Иванов&quot;, &quot;first_name&quot;: &quot;Иван&quot;, &quot;birth_date&quot;: &quot;1985-01-01&quot;},  
+    {&quot;last_name&quot;: &quot;Петров&quot;, &quot;first_name&quot;: &quot;Петр&quot;, &quot;birth_date&quot;: &quot;1990-02-02&quot;},  
+    {&quot;last_name&quot;: &quot;Сидоров&quot;, &quot;first_name&quot;: &quot;Сидор&quot;, &quot;birth_date&quot;: &quot;1982-03-03&quot;},  
+    {&quot;last_name&quot;: &quot;Смирнов&quot;, &quot;first_name&quot;: &quot;Алексей&quot;, &quot;birth_date&quot;: &quot;1995-04-04&quot;},  
+    {&quot;last_name&quot;: &quot;Кузнецова&quot;, &quot;first_name&quot;: &quot;Мария&quot;, &quot;birth_date&quot;: &quot;1988-05-05&quot;},  
+    {&quot;last_name&quot;: &quot;Попова&quot;, &quot;first_name&quot;: &quot;Анна&quot;, &quot;birth_date&quot;: &quot;1993-06-06&quot;},  
+]  
+
+owners = []  
+for data in owners_data:  
+    try:  
+        user = User.objects.create_user(  
+            username=data[&quot;last_name&quot;] + data[&quot;first_name&quot;],  
+            password=&quot;password123&quot;,  
+            email=f'{data[&quot;first_name&quot;].lower()}@example.com'  
+        )  
+        owner = Owner.objects.create(  
+            user=user,  
+            last_name=data[&quot;last_name&quot;],  
+            first_name=data[&quot;first_name&quot;],  
+            birth_date=data[&quot;birth_date&quot;]  
+        )  
+        owners.append(owner)  
+    except Exception as e:  
+        print(f&quot;Ошибка при создании владельца: {e}&quot;)  
+        continue  
+
+cars_data = [  
+    {&quot;license_plate&quot;: &quot;A123BC&quot;, &quot;brand&quot;: &quot;Toyota&quot;, &quot;model&quot;: &quot;Camry&quot;, &quot;color&quot;: &quot;Белый&quot;},  
+    {&quot;license_plate&quot;: &quot;B456CD&quot;, &quot;brand&quot;: &quot;Honda&quot;, &quot;model&quot;: &quot;Civic&quot;, &quot;color&quot;: &quot;Черный&quot;},  
+    {&quot;license_plate&quot;: &quot;C789DE&quot;, &quot;brand&quot;: &quot;BMW&quot;, &quot;model&quot;: &quot;X5&quot;, &quot;color&quot;: &quot;Синий&quot;},  
+    {&quot;license_plate&quot;: &quot;D012EF&quot;, &quot;brand&quot;: &quot;Mercedes&quot;, &quot;model&quot;: &quot;C-Class&quot;, &quot;color&quot;: &quot;Серебристый&quot;},  
+    {&quot;license_plate&quot;: &quot;E345FG&quot;, &quot;brand&quot;: &quot;Lada&quot;, &quot;model&quot;: &quot;Granta&quot;, &quot;color&quot;: &quot;Красный&quot;},  
+    {&quot;license_plate&quot;: &quot;F678GH&quot;, &quot;brand&quot;: &quot;Ford&quot;, &quot;model&quot;: &quot;Focus&quot;, &quot;color&quot;: &quot;Зеленый&quot;},  
+]  
+
+cars = []  
+for data in cars_data:  
+    try:  
+        car = Car.objects.create(**data)  
+        cars.append(car)  
+    except Exception as e:  
+        print(f&quot;Ошибка при создании автомобиля: {e}&quot;)  
+        continue  
+
+for owner in owners:  
+    try:  
+        License.objects.create(  
+            owner=owner,  
+            number=f&quot;{randint(100000, 999999)}&quot;,  
+            type=choice([&quot;A&quot;, &quot;B&quot;, &quot;C&quot;]),  
+            date_of_issue=now()  
+        )  
+
+        assigned_cars = [choice(cars) for _ in range(randint(1, 3))]  
+        for car in assigned_cars:  
+            Owning.objects.create(  
+                owner=owner,  
+                car=car,  
+                start_date=now(),  
+                end_date=None  
+            )  
+    except Exception as e:  
+        print(f&quot;Ошибка при создании данных для владельца {owner}: {e}&quot;)
+</code></pre>
+<p>Посмотрим через shell, что создалось</p>
+<p><img alt="Описание" src="/assets/1.png" /></p>
+<h2 id="2">Задание 2. Создание простых запросов</h2>
+<p>Добавила related_names в модель.
+1. <strong>Вывести все машины марки "Toyota"</strong>:
+<img alt="Описание" src="/assets/Pasted image 20250108141147.png" />
+2. <strong>Найти всех водителей с именем "Анна"</strong>:
+<img alt="Описание" src="/assets/Pasted image 20250108141222.png" />
+3. <strong>Получить id случайного владельца и по этому id найти его удостоверение</strong>:
+<img alt="Описание" src="/assets/Pasted image 20250108141327.png" />
+4. <strong>Вывести всех владельцев красных и зеленых машин</strong>:
+<img alt="Описание" src="/assets/Pasted image 20250108141650.png" />
+5. <strong>Найти всех владельцев, чей год владения машиной начинается с 2010</strong>:
+<img alt="Описание" src="/assets/Pasted image 20250108142027.png" /></p>
+<h2 id="3">Задание 3.  Агрегация и аннотация запросов</h2>
+<p>1) <strong>Вывод даты выдачи самого старшего водительского удостоверения</strong>
+<img alt="Описание" src="/assets/Pasted image 20250108142551.png" />
+2) <strong>Укажите самую позднюю дату владения машиной, имеющую какую-то из существующих моделей в вашей базе</strong>
+<img alt="Описание" src="/assets/Pasted image 20250108142651.png" />
+3) <strong>Выведите количество машин для каждого водителя</strong>
+<img alt="Описание" src="/assets/Pasted image 20250108142758.png" />
+4) <strong>Подсчитайте количество машин каждой марки</strong>
+<img alt="Описание" src="/assets/Pasted image 20250108143056.png" />
+5) Отсортируйте всех автовладельцев по дате выдачи удостоверения (с использованием <code>.distinct()</code>)
+<img alt="Описание" src="/assets/Pasted image 20250108143345.png" /></p>
+<h1 id="32">3.2</h1>
+<p>Создадим сериалайзеры для скиллов </p>
+<pre><code>class SkillSerializer(serializers.ModelSerializer):  
+    class Meta:  
+        model = Skill  
+        fields = &quot;__all__&quot;  
+
+
+class SkillCreateSerializer(serializers.ModelSerializer):  
+    class Meta:  
+        model = Skill  
+        fields = ['title']
+</code></pre>
+<p>Создадим view</p>
+<pre><code>class SkillAPIView(APIView):  
+    def get(self, request):  
+        skills = Skill.objects.all()  
+        serializer = SkillSerializer(skills, many=True)  
+        return Response({&quot;Skills&quot;: serializer.data})  
+
+
+class SkillCreateView(APIView):  
+    def post(self, request):  
+        skill = request.data.get(&quot;skill&quot;)  
+        serializer = SkillCreateSerializer(data=skill)  
+        if serializer.is_valid(raise_exception=True):  
+            skill_saved = serializer.save()  
+        return Response({&quot;Success&quot;: f&quot;Profession '{skill_saved.title}' created successfully.&quot;})
+</code></pre>
+<p>И добавим пути в urls.py</p>
+<pre><code>path('skills/', SkillAPIView.as_view()),  
+path('skills/create/', SkillCreateView.as_view()),
+</code></pre>
+<p>Итого:
+<img alt="Описание" src="/assets/Pasted image 20250109171640.png" />
+<img alt="Описание" src="/assets/Pasted image 20250109172023.png" /></p>
+<h2 id="2_1">Задание 2</h2>
+<p>1) <strong>Вывод полной информации о всех войнах и их профессиях (в одном запросе).</strong>
+Напишем serializer</p>
+<pre><code>class WarriorWithProfessionSerializer(serializers.ModelSerializer):  
+    profession = ProfessionSerializer()  
+    skill = serializers.PrimaryKeyRelatedField(many=True, read_only=True)  
+
+    class Meta:  
+        model = Warrior  
+        fields = &quot;__all__&quot;
+</code></pre>
+<p>Напишем view </p>
+<pre><code>class WarriorWithProfessionListView(generics.ListAPIView):  
+    serializer_class = WarriorWithProfessionSerializer  
+    queryset = Warrior.objects.all()
+</code></pre>
+<p>Добавим эндпоинт в urls</p>
+<pre><code>path('warriors/with_professions/', WarriorWithProfessionListView.as_view()),
+</code></pre>
+<p><img alt="Описание" src="/assets/Pasted image 20250109172545.png" />
+2) Вывод полной информации о всех войнах и их скилах (в одном запросе).
+Выполняется аналогично пункту 1)</p>
+<pre><code>class WarriorWithSkillsSerializer(serializers.ModelSerializer):  
+    skill = SkillSerializer(many=True)  
+    profession = serializers.PrimaryKeyRelatedField(read_only=True)  
+
+    class Meta:  
+        model = Warrior  
+        fields = &quot;__all__&quot;
+</code></pre>
+<pre><code>class WarriorWithSkillsListView(generics.ListAPIView):  
+    serializer_class = WarriorWithSkillsSerializer  
+    queryset = Warrior.objects.all()
+</code></pre>
+<pre><code>path('warriors/with_skills/', WarriorWithSkillsListView.as_view()),
+</code></pre>
+<p><img alt="Описание" src="/assets/Pasted image 20250109173123.png" />
+3) <strong>Вывод полной информации о войне (по id), его профессиях и скиллах.</strong>
+Напишем serializer</p>
+<pre><code>class WarriorWithSkillsAndProfessionSerializer(serializers.ModelSerializer):  
+    profession = ProfessionSerializer()  
+    skill = SkillSerializer(many=True)  
+
+    class Meta:  
+        model = Warrior  
+        fields = &quot;__all__&quot;
+</code></pre>
+<p>Напишем view </p>
+<pre><code>class WarriorDetailView(generics.RetrieveAPIView):  
+    serializer_class = WarriorWithSkillsAndProfessionSerializer  
+    queryset = Warrior.objects.all()  
+    lookup_field = 'id'
+</code></pre>
+<p>Добавим эндпоинт в urls</p>
+<pre><code>path('warriors/&lt;int:id&gt;/', WarriorDetailView.as_view()),
+</code></pre>
+<p><img alt="Описание" src="/assets/Pasted image 20250109173424.png" />
+5) Удаление воина 
+Напишем view </p>
+<pre><code>class WarriorDeleteView(generics.DestroyAPIView):  
+    queryset = Warrior.objects.all()  
+    serializer_class = WarriorSerializer
+</code></pre>
+<p>Добавим эндпоинт в urls</p>
+<pre><code>path('warriors/delete/&lt;int:pk&gt;/', WarriorDeleteView.as_view()),
+</code></pre>
+<p><img alt="Описание" src="/assets/Pasted image 20250109173743.png" />
+<img alt="Описание" src="/assets/Pasted image 20250109173801.png" />
+6) Редактирование
+Напишем view </p>
+<pre><code>class WarriorUpdateView(generics.RetrieveUpdateAPIView):  
+    queryset = Warrior.objects.all()  
+    serializer_class = WarriorSerializer
+</code></pre>
+<p>Добавим эндпоинт в urls</p>
+<pre><code>path('warriors/update/&lt;int:pk&gt;/', WarriorUpdateView.as_view()),
+</code></pre>
+<p><img alt="Описание" src="/assets/Pasted image 20250109173934.png" />
+<img alt="Описание" src="/assets/Pasted image 20250109173954.png" /></p></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../.."</script>
+    
+    <script src="../../js/base.js"></script>
+    <script src="../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>
