@@ -189,7 +189,7 @@
 
 <h1 id="1">Этап 1. Создание модели базы данных</h1>
 <p>Задание: Создать систему для управления продажей билетов в кинотеатре. Кинотеатр имеет несколько залов с уникальными конфигурациями мест, которые определяются количеством рядов и мест в каждом ряду. В системе хранится информация о фильмах, включая название, длительность и описание, а также о проводимых сеансах с указанием времени начала, зала, показываемого фильма и стоимости билета. Администратор управляет залами, фильмами и расписанием сеансов, при этом система предотвращает пересечения сеансов в одном зале. Пользователи могут регистрироваться, приобретать билеты на сеансы и управлять своими билетами через личный кабинет (возможен возврат билета), где отображается история покупок.</p>
-<p><img alt="Описание" src="docs/assets/Pasted image 20250111145412.png" /></p>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250111145412.png" /></p>
 <h1 id="2">Этап 2. Создание сущностей в проекте.</h1>
 <p>Я создала 9 сущностей и 3 перечисления</p>
 <p><img alt="Описание" src="../../assets/Pasted%20image%2020250111145722.png" /></p>
@@ -232,13 +232,13 @@ public class Hall {
 <h1 id="3">Этап 3. Создание репозиториев, сервисов и контроллеров</h1>
 <p>Я решила придерживаться традиционного подхода к разработке REST API и не игнорировать необходимость разделения ответственности между слоями репозиториев, сервисов и контроллеров.
 Для каждой модели были созданы JPA репозитории, некоторые из них имеют кастомные методы.</p>
-<p><img alt="Описание" src="/assets/Pasted image 20250111150306.png" /></p>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250111150306.png" /></p>
 <pre><code>public interface TicketRepository extends JpaRepository&lt;Ticket, UUID&gt;, JpaSpecificationExecutor&lt;Ticket&gt; {  
     List&lt;Ticket&gt; findByUserId(UUID id);  
 }
 </code></pre>
 <p>Так же для всех моделей были созданы сервисы, где были описаны CRUD и некоторые другие методы.</p>
-<p><img alt="Описание" src="/assets/Pasted image 20250111150408.png" /></p>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250111150408.png" /></p>
 <pre><code>@Service  
 @RequiredArgsConstructor  
 public class HallService {  
@@ -279,7 +279,7 @@ public class HallService {
 }
 </code></pre>
 <p>Далее я создавала контроллеры для каждой из моделей.</p>
-<p><img alt="Описание" src="/assets/Pasted image 20250111150520.png" /></p>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250111150520.png" /></p>
 <pre><code>@RestController  
 @RequestMapping(&quot;/rest/admin/halls&quot;)  
 @RequiredArgsConstructor  
@@ -315,7 +315,7 @@ public class HallRestController {
 }
 </code></pre>
 <p>Так же я создала множество Dto.</p>
-<p><img alt="Описание" src="/assets/Pasted image 20250111151256.png" /></p>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250111151256.png" /></p>
 <pre><code>public record HallDto(  
         UUID id,  
 
@@ -333,7 +333,7 @@ public class HallRestController {
 </code></pre>
 <h1 id="4">Этап 4. Аутентификация и токены</h1>
 <p>В качестве способа аутентификации я решила использовать JWT токены. Для этого я написала несколько классов, чтобы иметь полный контроль над процессом токенизации.</p>
-<p><img alt="Описание" src="/assets/Pasted image 20250111150802.png" /></p>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250111150802.png" /></p>
 <p>Так же я настраивала SecurityConfig чтобы добавить еще и авторизацию, которая будет работать в зависимости от эндпоинтов (да, сюда еще были добавлены эндпоинты для коррентной работы swagger)</p>
 <pre><code>@Configuration  
 @EnableWebSecurity  
@@ -439,22 +439,22 @@ public class AuthController {
 </code></pre>
 <h1 id="5-swagger">Этап 5. Подключение Swagger</h1>
 <p>Я подключила swagger и добавила документацию путем добавления описаний для каждого эндпоинта.</p>
-<p><img alt="Описание" src="/assets/Pasted image 20250111151446.png" /></p>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250111151446.png" /></p>
 <h1 id="_1">Демонстрация работы</h1>
 <p>В бд уже есть сущности ролей, сейчас будем регистрировать нового админа </p>
-<p><img alt="Описание" src="/assets/Pasted image 20250112154923.png" /></p>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250112154923.png" /></p>
 <p>Вводим информацию о новом пользователе </p>
-<p><img alt="Описание" src="/assets/Pasted image 20250112155050.png" /></p>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250112155050.png" /></p>
 <p>Пользователь успешно создан</p>
-<p><img alt="Описание" src="/assets/Pasted image 20250112155140.png" /></p>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250112155140.png" /></p>
 <p>Пытаемся залогиниться
-<img alt="Описание" src="/assets/Pasted image 20250112155218.png" /></p>
+<img alt="Описание" src="../../assets/Pasted%20image%2020250112155218.png" /></p>
 <p>Сервер возвращает нам accessToken, копируем его и попробуем создать новый фильм
-<img alt="Описание" src="/assets/Pasted image 20250112155229.png" /></p>
-<p><img alt="Описание" src="/assets/Pasted image 20250112155331.png" /></p>
-<p><img alt="Описание" src="/assets/Pasted image 20250112155345.png" /></p>
+<img alt="Описание" src="../../assets/Pasted%20image%2020250112155229.png" /></p>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250112155331.png" /></p>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250112155345.png" /></p>
 <p>Фильм был успешно создан</p>
-<p><img alt="Описание" src="/assets/Pasted image 20250112155409.png" /></p></div>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250112155409.png" /></p></div>
         
         
     </div>

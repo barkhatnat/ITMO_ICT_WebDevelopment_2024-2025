@@ -271,32 +271,32 @@ for owner in owners:
         print(f&quot;Ошибка при создании данных для владельца {owner}: {e}&quot;)
 </code></pre>
 <p>Посмотрим через shell, что создалось</p>
-<p><img alt="Описание" src="/assets/1.png" /></p>
+<p><img alt="Описание" src="../../assets/1.png" /></p>
 <h2 id="2">Задание 2. Создание простых запросов</h2>
 <p>Добавила related_names в модель.</p>
 <ol>
 <li><strong>Вывести все машины марки "Toyota"</strong>:
-<img alt="Описание" src="/assets/Pasted image 20250108141147.png" /></li>
+<img alt="Описание" src="../../assets/Pasted%20image%2020250108141147.png" /></li>
 <li><strong>Найти всех водителей с именем "Анна"</strong>:
-<img alt="Описание" src="/assets/Pasted image 20250108141222.png" /></li>
+<img alt="Описание" src="../../assets/Pasted%20image%2020250108141222.png" /></li>
 <li><strong>Получить id случайного владельца и по этому id найти его удостоверение</strong>:
-<img alt="Описание" src="/assets/Pasted image 20250108141327.png" /></li>
+<img alt="Описание" src="../../assets/Pasted%20image%2020250108141327.png" /></li>
 <li><strong>Вывести всех владельцев красных и зеленых машин</strong>:
-<img alt="Описание" src="/assets/Pasted image 20250108141650.png" /></li>
+<img alt="Описание" src="../../assets/Pasted%20image%2020250108141650.png" /></li>
 <li><strong>Найти всех владельцев, чей год владения машиной начинается с 2010</strong>:
-<img alt="Описание" src="/assets/Pasted image 20250108142027.png" /></li>
+<img alt="Описание" src="../../assets/Pasted%20image%2020250108142027.png" /></li>
 </ol>
 <h2 id="3">Задание 3.  Агрегация и аннотация запросов</h2>
 <p>1) <strong>Вывод даты выдачи самого старшего водительского удостоверения</strong>
-<img alt="Описание" src="/assets/Pasted image 20250108142551.png" />
+<img alt="Описание" src="../../assets/Pasted%20image%2020250108142551.png" />
 2) <strong>Укажите самую позднюю дату владения машиной, имеющую какую-то из существующих моделей в вашей базе</strong>
-<img alt="Описание" src="/assets/Pasted image 20250108142651.png" />
+<img alt="Описание" src="../../assets/Pasted%20image%2020250108142651.png" />
 3) <strong>Выведите количество машин для каждого водителя</strong>
-<img alt="Описание" src="/assets/Pasted image 20250108142758.png" />
+<img alt="Описание" src="../../assets/Pasted%20image%2020250108142758.png" />
 4) <strong>Подсчитайте количество машин каждой марки</strong>
-<img alt="Описание" src="/assets/Pasted image 20250108143056.png" />
+<img alt="Описание" src="../../assets/Pasted%20image%2020250108143056.png" />
 5) Отсортируйте всех автовладельцев по дате выдачи удостоверения (с использованием <code>.distinct()</code>)
-<img alt="Описание" src="/assets/Pasted image 20250108143345.png" /></p>
+<img alt="Описание" src="../../assets/Pasted%20image%2020250108143345.png" /></p>
 <h1 id="32">3.2</h1>
 <p>Создадим сериалайзеры для скиллов </p>
 <pre><code>class SkillSerializer(serializers.ModelSerializer):  
@@ -331,8 +331,8 @@ class SkillCreateView(APIView):
 path('skills/create/', SkillCreateView.as_view()),
 </code></pre>
 <p>Итого:
-<img alt="Описание" src="/assets/Pasted image 20250109171640.png" />
-<img alt="Описание" src="/assets/Pasted image 20250109172023.png" /></p>
+<img alt="Описание" src="../../assets/Pasted%20image%2020250109171640.png" />
+<img alt="Описание" src="../../assets/Pasted%20image%2020250109172023.png" /></p>
 <h2 id="2_1">Задание 2</h2>
 <p>1) <strong>Вывод полной информации о всех войнах и их профессиях (в одном запросе).</strong>
 Напишем serializer</p>
@@ -352,7 +352,7 @@ path('skills/create/', SkillCreateView.as_view()),
 <p>Добавим эндпоинт в urls</p>
 <pre><code>path('warriors/with_professions/', WarriorWithProfessionListView.as_view()),
 </code></pre>
-<p><img alt="Описание" src="/assets/Pasted image 20250109172545.png" />
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250109172545.png" />
 2) Вывод полной информации о всех войнах и их скилах (в одном запросе).
 Выполняется аналогично пункту 1)</p>
 <pre><code>class WarriorWithSkillsSerializer(serializers.ModelSerializer):  
@@ -369,7 +369,7 @@ path('skills/create/', SkillCreateView.as_view()),
 </code></pre>
 <pre><code>path('warriors/with_skills/', WarriorWithSkillsListView.as_view()),
 </code></pre>
-<p><img alt="Описание" src="/assets/Pasted image 20250109173123.png" />
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250109173123.png" />
 3) <strong>Вывод полной информации о войне (по id), его профессиях и скиллах.</strong>
 Напишем serializer</p>
 <pre><code>class WarriorWithSkillsAndProfessionSerializer(serializers.ModelSerializer):  
@@ -389,7 +389,7 @@ path('skills/create/', SkillCreateView.as_view()),
 <p>Добавим эндпоинт в urls</p>
 <pre><code>path('warriors/&lt;int:id&gt;/', WarriorDetailView.as_view()),
 </code></pre>
-<p><img alt="Описание" src="/assets/Pasted image 20250109173424.png" />
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250109173424.png" />
 5) Удаление воина 
 Напишем view </p>
 <pre><code>class WarriorDeleteView(generics.DestroyAPIView):  
@@ -399,8 +399,8 @@ path('skills/create/', SkillCreateView.as_view()),
 <p>Добавим эндпоинт в urls</p>
 <pre><code>path('warriors/delete/&lt;int:pk&gt;/', WarriorDeleteView.as_view()),
 </code></pre>
-<p><img alt="Описание" src="/assets/Pasted image 20250109173743.png" />
-<img alt="Описание" src="/assets/Pasted image 20250109173801.png" />
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250109173743.png" />
+<img alt="Описание" src="../../assets/Pasted%20image%2020250109173801.png" />
 6) Редактирование
 Напишем view </p>
 <pre><code>class WarriorUpdateView(generics.RetrieveUpdateAPIView):  
@@ -410,8 +410,8 @@ path('skills/create/', SkillCreateView.as_view()),
 <p>Добавим эндпоинт в urls</p>
 <pre><code>path('warriors/update/&lt;int:pk&gt;/', WarriorUpdateView.as_view()),
 </code></pre>
-<p><img alt="Описание" src="/assets/Pasted image 20250109173934.png" />
-<img alt="Описание" src="/assets/Pasted image 20250109173954.png" /></p></div>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250109173934.png" />
+<img alt="Описание" src="../../assets/Pasted%20image%2020250109173954.png" /></p></div>
         
         
     </div>
