@@ -8,10 +8,10 @@
     
     
     
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
 
     
-    <title>Home - web_labs</title>
+    <title>Task 5 - web_labs</title>
     
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -19,9 +19,9 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
     <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
-    <link href="css/bootstrap-custom.min.css" rel="stylesheet">
-    <link href="css/base.min.css" rel="stylesheet">
-    <link href="css/cinder.min.css" rel="stylesheet">
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../css/base.min.css" rel="stylesheet">
+    <link href="../../css/cinder.min.css" rel="stylesheet">
 
     
         
@@ -40,7 +40,7 @@
      
 </head>
 
-<body class="homepage" >
+<body>
 
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -59,7 +59,7 @@
             <!-- Main title -->
 
             
-              <a class="navbar-brand" href=".">web_labs</a>
+              <a class="navbar-brand" href="../..">web_labs</a>
             
         </div>
 
@@ -69,43 +69,43 @@
                 <ul class="nav navbar-nav">
                 
                 
-                    <li class="active">
-                        <a href=".">Home</a>
+                    <li >
+                        <a href="../..">Home</a>
                     </li>
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lab 1 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="lab1/task1/">Task 1</a>
+    <a href="../task1/">Task 1</a>
 </li>
 
                         
                             
 <li >
-    <a href="lab1/task2/">Task 2</a>
+    <a href="../task2/">Task 2</a>
 </li>
 
                         
                             
 <li >
-    <a href="lab1/task3/">Task 3</a>
+    <a href="../task3/">Task 3</a>
 </li>
 
                         
                             
 <li >
-    <a href="lab1/task4/">Task 4</a>
+    <a href="../task4/">Task 4</a>
 </li>
 
                         
                             
-<li >
-    <a href="lab1/task5/">Task 5</a>
+<li class="active">
+    <a href="./">Task 5</a>
 </li>
 
                         
@@ -120,7 +120,7 @@
                         
                             
 <li >
-    <a href="lab2/part1/">Описание</a>
+    <a href="../../lab2/part1/">Описание</a>
 </li>
 
                         
@@ -135,13 +135,13 @@
                         
                             
 <li >
-    <a href="lab3/practice/">Практическая работа</a>
+    <a href="../../lab3/practice/">Практическая работа</a>
 </li>
 
                         
                             
 <li >
-    <a href="lab3/lab/">Лабораторная работа</a>
+    <a href="../../lab3/lab/">Лабораторная работа</a>
 </li>
 
                         
@@ -157,13 +157,13 @@
                             <i class="fas fa-search"></i> Search
                         </a>
                     </li>
-                    <li class="disabled">
-                        <a rel="prev" >
+                    <li >
+                        <a rel="prev" href="../task4/">
                             <i class="fas fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="next" href="lab1/task1/">
+                        <a rel="next" href="../../lab2/part1/">
                             Next <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
@@ -177,11 +177,151 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#_1">Задание:</a></li>
+        <li class="first-level "><a href="#_2">Стек:</a></li>
+        <li class="first-level "><a href="#_3">Инструкция по запуску</a></li>
+        <li class="first-level "><a href="#_4">Код</a></li>
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<p>Бархатова Наталья Александровна К3339</p></div>
+<h1 id="_1">Задание:</h1>
+<p>Необходимо написать простой web-сервер для обработки GET и POST http
+запросов</p>
+<h1 id="_2">Стек:</h1>
+<ul>
+<li>ЯП: Java</li>
+<li>Пакет: net, util, io</li>
+<li>Протокол: HTTP</li>
+</ul>
+<h1 id="_3">Инструкция по запуску</h1>
+<p>Выполните команды в папке <code>Lr1\task_1\src\main\java\ru\barkhatnat</code></p>
+<ol>
+<li>Запуск сервера<ul>
+<li><code>cd server</code></li>
+<li><code>javac HttpServer.java</code></li>
+<li><code>java HttpServer.java &lt;ip&gt; &lt;port&gt; &lt;name&gt;</code> (вы можете указать желаемый ip и порт, по умолчанию <code>localhost:1234 SimpleJavaHTTPServer</code>)</li>
+</ul>
+</li>
+<li>POST метод<ul>
+<li>Укажите значения параметров в URI, например <code>localhost:1234/grades?discipline=math&amp;grade=6</code></li>
+</ul>
+</li>
+<li>GET метод<ul>
+<li>Воспользуйтесь URI <code>localhost:1234/grades</code></li>
+</ul>
+</li>
+</ol>
+<h1 id="_4">Код</h1>
+<pre><code>public class HttpHandler implements com.sun.net.httpserver.HttpHandler {
+
+    private final Map&lt;String, String&gt; grades;
+
+    public HttpHandler(Map&lt;String, String&gt; grades) {
+        this.grades = grades;
+    }
+
+    @Override
+    public void handle(HttpExchange exchange) throws IOException {
+        String method = exchange.getRequestMethod();
+
+        if (&quot;GET&quot;.equalsIgnoreCase(method)) {
+            handleGetRequest(exchange);
+        } else if (&quot;POST&quot;.equalsIgnoreCase(method)) {
+            handlePostRequest(exchange);
+        } else {
+            sendResponse(exchange, 405, &quot;Method Not Allowed&quot;);
+        }
+    }
+
+    private void handleGetRequest(HttpExchange exchange) throws IOException {
+        StringBuilder response = new StringBuilder(&quot;&lt;html&gt;&lt;body&gt;&lt;h2&gt;Grades&lt;/h2&gt;&lt;ul&gt;&quot;);
+        for (Map.Entry&lt;String, String&gt; entry : grades.entrySet()) {
+            response.append(&quot;&lt;li&gt;&quot;).append(entry.getKey()).append(&quot;: &quot;).append(entry.getValue()).append(&quot;&lt;/li&gt;&quot;);
+        }
+        response.append(&quot;&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;&quot;);
+        sendResponse(exchange, 200, response.toString());
+    }
+
+    private void handlePostRequest(HttpExchange exchange) throws IOException {
+        String uri = String.valueOf(exchange.getRequestURI());
+        Map&lt;String, String&gt; params = parseQuery(uri);
+
+        String discipline = params.get(&quot;discipline&quot;);
+        String grade = params.get(&quot;grade&quot;);
+        if (discipline != null &amp;&amp; grade != null) {
+            grades.put(discipline, grade);
+            sendResponse(exchange, 200, &quot;Grade saved successfully&quot;);
+        } else {
+            sendResponse(exchange, 400, &quot;Missing discipline or grade&quot;);
+        }
+    }
+
+    private Map&lt;String, String&gt; parseQuery(String uri) {
+        Map&lt;String, String&gt; params = new HashMap&lt;&gt;();
+        String[] uriParts = uri.split(&quot;\\?&quot;, 2);
+        if (uriParts.length &lt; 2 || uriParts[1].isEmpty()) {
+            return params;
+        }
+        String[] pairs = uriParts[1].split(&quot;&amp;&quot;);
+        for (String pair : pairs) {
+            String[] keyValue = pair.split(&quot;=&quot;, 2);
+            if (keyValue.length &gt; 1) {
+                params.put(keyValue[0], keyValue[1]);
+            } else {
+                params.put(keyValue[0], &quot;&quot;);
+            }
+        }
+        return params;
+    }
+
+    private void sendResponse(HttpExchange exchange, int statusCode, String response) throws IOException {
+        exchange.sendResponseHeaders(statusCode, response.length());
+        OutputStream os = exchange.getResponseBody();
+        os.write(response.getBytes());
+        os.close();
+    }
+}
+</code></pre>
+<pre><code>public class HttpServer {
+
+    private final String host;
+    private final int port;
+    private final String name;
+    private static final Map&lt;String, String&gt; grades = new HashMap&lt;&gt;();
+
+    public HttpServer(String host, int port, String name) {
+        this.host = host;
+        this.port = port;
+        this.name = name;
+    }
+
+    public void start() {
+        try {
+            com.sun.net.httpserver.HttpServer server = com.sun.net.httpserver.HttpServer.create(new InetSocketAddress(host, port), 0);
+            System.out.println(name + &quot; started on &quot; + host + &quot;:&quot; + port);
+            server.createContext(&quot;/grades&quot;, new HttpHandler(grades));
+            server.setExecutor(null);
+            server.start();
+        } catch (IOException e) {
+            System.err.println(&quot;Server failed to start: &quot; + e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        final String host = args.length &gt; 0 ? args[0] : &quot;localhost&quot;;
+        final int port = args.length &gt; 1 ? Integer.parseInt(args[1]) : 1234;
+        final String name = args.length &gt; 2 ? args[2] : &quot;SimpleJavaHTTPServer&quot;;
+        HttpServer server = new HttpServer(host, port, name);
+
+        try {
+            server.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre></div>
         
         
     </div>
@@ -201,7 +341,7 @@
       </footer>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
 
     
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
@@ -209,10 +349,10 @@
     <script>hljs.initHighlightingOnLoad();</script>
     
 
-    <script>var base_url = "."</script>
+    <script>var base_url = "../.."</script>
     
-    <script src="js/base.js"></script>
-    <script src="search/main.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../search/main.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -283,8 +423,3 @@
     </body>
 
 </html>
-
-<!--
-MkDocs version : 1.6.1
-Build Date UTC : 2025-01-12 19:21:17.293101+00:00
--->

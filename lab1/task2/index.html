@@ -8,10 +8,10 @@
     
     
     
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
 
     
-    <title>Home - web_labs</title>
+    <title>Task 2 - web_labs</title>
     
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -19,9 +19,9 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
     <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
-    <link href="css/bootstrap-custom.min.css" rel="stylesheet">
-    <link href="css/base.min.css" rel="stylesheet">
-    <link href="css/cinder.min.css" rel="stylesheet">
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../css/base.min.css" rel="stylesheet">
+    <link href="../../css/cinder.min.css" rel="stylesheet">
 
     
         
@@ -40,7 +40,7 @@
      
 </head>
 
-<body class="homepage" >
+<body>
 
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -59,7 +59,7 @@
             <!-- Main title -->
 
             
-              <a class="navbar-brand" href=".">web_labs</a>
+              <a class="navbar-brand" href="../..">web_labs</a>
             
         </div>
 
@@ -69,43 +69,43 @@
                 <ul class="nav navbar-nav">
                 
                 
-                    <li class="active">
-                        <a href=".">Home</a>
+                    <li >
+                        <a href="../..">Home</a>
                     </li>
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lab 1 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="lab1/task1/">Task 1</a>
+    <a href="../task1/">Task 1</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Task 2</a>
 </li>
 
                         
                             
 <li >
-    <a href="lab1/task2/">Task 2</a>
+    <a href="../task3/">Task 3</a>
 </li>
 
                         
                             
 <li >
-    <a href="lab1/task3/">Task 3</a>
+    <a href="../task4/">Task 4</a>
 </li>
 
                         
                             
 <li >
-    <a href="lab1/task4/">Task 4</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="lab1/task5/">Task 5</a>
+    <a href="../task5/">Task 5</a>
 </li>
 
                         
@@ -120,7 +120,7 @@
                         
                             
 <li >
-    <a href="lab2/part1/">Описание</a>
+    <a href="../../lab2/part1/">Описание</a>
 </li>
 
                         
@@ -135,13 +135,13 @@
                         
                             
 <li >
-    <a href="lab3/practice/">Практическая работа</a>
+    <a href="../../lab3/practice/">Практическая работа</a>
 </li>
 
                         
                             
 <li >
-    <a href="lab3/lab/">Лабораторная работа</a>
+    <a href="../../lab3/lab/">Лабораторная работа</a>
 </li>
 
                         
@@ -157,13 +157,13 @@
                             <i class="fas fa-search"></i> Search
                         </a>
                     </li>
-                    <li class="disabled">
-                        <a rel="prev" >
+                    <li >
+                        <a rel="prev" href="../task1/">
                             <i class="fas fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="next" href="lab1/task1/">
+                        <a rel="next" href="../task3/">
                             Next <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
@@ -177,11 +177,122 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#_1">Задание:</a></li>
+        <li class="first-level "><a href="#_2">Стек:</a></li>
+        <li class="first-level "><a href="#_3">Инструкция по запуску</a></li>
+        <li class="first-level "><a href="#_4">Код</a></li>
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<p>Бархатова Наталья Александровна К3339</p></div>
+<h1 id="_1">Задание:</h1>
+<p>Реализовать клиентскую и серверную часть приложения. Клиент запрашивает у
+сервера выполнение математической операции, параметры, которые вводятся с
+клавиатуры. Сервер обрабатывает полученные данные и возвращает результат
+клиенту. <strong>Поиск площади трапеции.</strong> </p>
+<h1 id="_2">Стек:</h1>
+<ul>
+<li>ЯП: Java</li>
+<li>Пакет: net, io</li>
+<li>Протокол: TCP</li>
+</ul>
+<h1 id="_3">Инструкция по запуску</h1>
+<p>Выполните команды в папке <code>Lr1\task_2\src\main\java\ru\barkhatnat</code></p>
+<ol>
+<li>Запуск сервера<ul>
+<li><code>cd server</code></li>
+<li><code>javac ServerTcp.java</code></li>
+<li><code>java ServerTcp.java &lt;ip&gt; &lt;port&gt;</code> (вы можете указать желаемый ip и порт, по умолчанию <code>localhost:1234</code>)</li>
+</ul>
+</li>
+<li>Запуск клиента<ul>
+<li><code>cd client</code></li>
+<li><code>javac ClientTcp.java</code></li>
+<li><code>java ClientTcp.java &lt;ip&gt; &lt;port&gt;</code> (вы можете указать желаемый ip и порт, по умолчанию <code>localhost:1234</code>)</li>
+</ul>
+</li>
+</ol>
+<h1 id="_4">Код</h1>
+<pre><code>public class ClientTcp {
+
+    public static void main(String[] args) {
+        final String address = args.length &gt; 0 ? args[0] : &quot;localhost&quot;;
+        final int port = args.length &gt; 1 ? Integer.parseInt(args[1]) : 1234;
+        try (Socket clientSocket = new Socket(address, port);
+             BufferedReader clientInput = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+             BufferedWriter clientOutput = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+             BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in))) {
+
+            System.out.println(&quot;Подключено к серверу на: &quot; + address + &quot;:&quot; + port);
+            System.out.println(&quot;Введите два основания и высоту трапеции через пробел&quot;);
+            String data = consoleReader.readLine();
+            clientOutput.write(data + &quot;\n&quot;);
+            clientOutput.flush();
+
+            System.out.println(&quot;Ответ сервера:&quot;);
+            String serverResponse;
+            while ((serverResponse = clientInput.readLine()) != null) {
+                System.out.println(serverResponse);
+            }
+        } catch (IOException e) {
+            System.err.printf(&quot;Ошибка передачи данных (%s:%d): %s&quot;, address, port, e.getMessage());
+        }
+    }
+}
+</code></pre>
+<pre><code>public class ServerTcp {
+
+
+    public static void main(String[] args) {
+        final String address = args.length &gt; 0 ? args[0] : &quot;localhost&quot;;
+        final int port = args.length &gt; 1 ? Integer.parseInt(args[1]) : 1234;
+        try (ServerSocket serverSocket = new ServerSocket(port, 0, InetAddress.getByName(address));) {
+            System.out.println(&quot;Сервер запущен на порту &quot; + port);
+            while (true) {
+                try (Socket clientSocket = serverSocket.accept();
+                     BufferedReader serverInput = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+                     BufferedWriter serverOutput = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()))) {
+                    System.out.println(&quot;Клиент приесоединился с порта &quot; + port);
+                    String data = serverInput.readLine();
+                    System.out.println(&quot;Получены данные от клиента: &quot; + data);
+                    String response = processInput(data);
+                    serverOutput.write(response);
+                    serverOutput.flush();
+                }
+            }
+        } catch (IOException e) {
+            System.err.printf(&quot;Ошибка передачи данных (%s:%d): %s&quot;, address, port, e.getMessage());
+        } catch (Exception exception) {
+            System.err.println(&quot;Ошибка приложения:&quot;);
+            exception.printStackTrace(System.err);
+        }
+    }
+
+    private static String processInput(String data) {
+        StringBuilder response = new StringBuilder();
+        try {
+            String[] arguments = data.split(&quot; &quot;);
+            if (arguments.length &lt; 3) {
+                return &quot;Недостаточно аргументов. Ожидается 3 аргумента\n&quot;;
+            }
+            if (arguments.length &gt; 3) {
+                return &quot;Слишком много аргументов. Ожидается 3 аргумента\n&quot;;
+            }
+            float base1 = Float.parseFloat(arguments[0]);
+            float base2 = Float.parseFloat(arguments[1]);
+            float height = Float.parseFloat(arguments[2]);
+            float result = (base1 + base2) * 0.5f * height;
+            response.append(&quot;Основание 1: &quot;).append(arguments[0]).append(&quot;\n&quot;)
+                    .append(&quot;Основание 2: &quot;).append(arguments[1]).append(&quot;\n&quot;)
+                    .append(&quot;Высота: &quot;).append(arguments[2]).append(&quot;\n&quot;)
+                    .append(&quot;Площадь трапеции: &quot;).append(result).append(&quot;\n&quot;);
+        } catch (NumberFormatException e) {
+            return &quot;Ошибка приведения аргумента к числу\n&quot;;
+        }
+        return response.toString();
+    }
+}
+</code></pre></div>
         
         
     </div>
@@ -201,7 +312,7 @@
       </footer>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
 
     
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
@@ -209,10 +320,10 @@
     <script>hljs.initHighlightingOnLoad();</script>
     
 
-    <script>var base_url = "."</script>
+    <script>var base_url = "../.."</script>
     
-    <script src="js/base.js"></script>
-    <script src="search/main.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../search/main.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -283,8 +394,3 @@
     </body>
 
 </html>
-
-<!--
-MkDocs version : 1.6.1
-Build Date UTC : 2025-01-12 19:21:17.293101+00:00
--->

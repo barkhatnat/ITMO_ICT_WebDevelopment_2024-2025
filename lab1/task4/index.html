@@ -8,10 +8,10 @@
     
     
     
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
 
     
-    <title>Home - web_labs</title>
+    <title>Task 4 - web_labs</title>
     
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -19,9 +19,9 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
     <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
-    <link href="css/bootstrap-custom.min.css" rel="stylesheet">
-    <link href="css/base.min.css" rel="stylesheet">
-    <link href="css/cinder.min.css" rel="stylesheet">
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../css/base.min.css" rel="stylesheet">
+    <link href="../../css/cinder.min.css" rel="stylesheet">
 
     
         
@@ -40,7 +40,7 @@
      
 </head>
 
-<body class="homepage" >
+<body>
 
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -59,7 +59,7 @@
             <!-- Main title -->
 
             
-              <a class="navbar-brand" href=".">web_labs</a>
+              <a class="navbar-brand" href="../..">web_labs</a>
             
         </div>
 
@@ -69,43 +69,43 @@
                 <ul class="nav navbar-nav">
                 
                 
-                    <li class="active">
-                        <a href=".">Home</a>
+                    <li >
+                        <a href="../..">Home</a>
                     </li>
                 
                 
                 
-                    <li class="dropdown">
+                    <li class="dropdown active">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lab 1 <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             
 <li >
-    <a href="lab1/task1/">Task 1</a>
+    <a href="../task1/">Task 1</a>
 </li>
 
                         
                             
 <li >
-    <a href="lab1/task2/">Task 2</a>
+    <a href="../task2/">Task 2</a>
 </li>
 
                         
                             
 <li >
-    <a href="lab1/task3/">Task 3</a>
+    <a href="../task3/">Task 3</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Task 4</a>
 </li>
 
                         
                             
 <li >
-    <a href="lab1/task4/">Task 4</a>
-</li>
-
-                        
-                            
-<li >
-    <a href="lab1/task5/">Task 5</a>
+    <a href="../task5/">Task 5</a>
 </li>
 
                         
@@ -120,7 +120,7 @@
                         
                             
 <li >
-    <a href="lab2/part1/">Описание</a>
+    <a href="../../lab2/part1/">Описание</a>
 </li>
 
                         
@@ -135,13 +135,13 @@
                         
                             
 <li >
-    <a href="lab3/practice/">Практическая работа</a>
+    <a href="../../lab3/practice/">Практическая работа</a>
 </li>
 
                         
                             
 <li >
-    <a href="lab3/lab/">Лабораторная работа</a>
+    <a href="../../lab3/lab/">Лабораторная работа</a>
 </li>
 
                         
@@ -157,13 +157,13 @@
                             <i class="fas fa-search"></i> Search
                         </a>
                     </li>
-                    <li class="disabled">
-                        <a rel="prev" >
+                    <li >
+                        <a rel="prev" href="../task3/">
                             <i class="fas fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="next" href="lab1/task1/">
+                        <a rel="next" href="../task5/">
                             Next <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
@@ -177,11 +177,115 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#_1">Задание:</a></li>
+        <li class="first-level "><a href="#_2">Стек:</a></li>
+        <li class="first-level "><a href="#_3">Инструкция по запуску</a></li>
+        <li class="first-level "><a href="#_4">Частичный код</a></li>
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<p>Бархатова Наталья Александровна К3339</p></div>
+<h1 id="_1">Задание:</h1>
+<p>Реализовать многопользовательский чат </p>
+<h1 id="_2">Стек:</h1>
+<ul>
+<li>ЯП: Java</li>
+<li>Пакет: net, io, util</li>
+<li>Протокол: TCP</li>
+</ul>
+<h1 id="_3">Инструкция по запуску</h1>
+<p>Выполните команды в папке <code>Lr1\out\artifacts\task_4_jar\</code></p>
+<ol>
+<li>
+<p>Запуск сервера</p>
+<ul>
+<li><code>java -cp task_4.jar ru.barkhatnat.server.Application &lt;port&gt;</code>вы можете указать желаемый и порт, по умолчанию <code>1234</code>) </li>
+</ul>
+</li>
+<li>
+<p>Запуск клиентов</p>
+<ul>
+<li><code>java -cp task_4.jar ru.barkhatnat.client.Application &lt;ip&gt; &lt;port&gt;</code> (вы можете указать желаемый ip и порт, по умолчанию <code>localhost:1234</code>)</li>
+</ul>
+</li>
+</ol>
+<h1 id="_4">Частичный код</h1>
+<pre><code>public class Application {
+    public static void main(final String[] args) {
+        final BlockingQueue&lt;String&gt; outgoingMessagesQueue = new LinkedBlockingDeque&lt;&gt;(10);
+        final BlockingQueue&lt;Message&gt; incomingMessageQueue = new LinkedBlockingDeque&lt;&gt;(50);
+        final String address = args.length &gt; 0 ? args[0] : &quot;localhost&quot;;
+        final int port = args.length &gt; 1 ? Integer.parseInt(args[1]) : 1234;
+        try (final Socket socket = new Socket(address, port); final Scanner scanner = new Scanner(System.in)) {
+            final String userName = obtainUserName(scanner);
+            final ExecutorService pool = Executors.newFixedThreadPool(4);
+            final Callable&lt;Object&gt; consoleMessageReaderCallable =
+                    Executors.callable(new ConsoleMessageReader(outgoingMessagesQueue, exception -&gt; {
+                        if (Thread.currentThread().isInterrupted()) {
+                            return;
+                        }
+                        if (exception != null &amp;&amp; !(exception instanceof InterruptedException)) {
+                            System.err.println(&quot;Ошибка получения сообщения&quot;);
+                            exception.printStackTrace(System.err);
+                        }
+                        pool.shutdownNow();
+                    }));
+            final Callable&lt;Object&gt; chatMessageSenderCallable =
+                    Executors.callable(new ChatMessageSender(outgoingMessagesQueue, userName, socket, exception -&gt; {
+                        if (Thread.currentThread().isInterrupted()) {
+                            return;
+                        }
+                        if (exception != null &amp;&amp; !(exception instanceof InterruptedException)) {
+                            System.err.println(&quot;Ошибка отправки сообщений на сервер&quot;);
+                            exception.printStackTrace(System.err);
+                        }
+                        pool.shutdownNow();
+                    }));
+            final Callable&lt;Object&gt; consoleMessageWriterCallable =
+                    Executors.callable(new ConsoleMessageWriter(incomingMessageQueue, exception -&gt; {
+                        if (Thread.currentThread().isInterrupted()) {
+                            return;
+                        }
+                        if (!(exception instanceof InterruptedException)) {
+                            System.err.println(exception.getMessage());
+                        }
+                    }));
+            final Callable&lt;Object&gt; chatMessageReceiver =
+                    Executors.callable(new ChatMessageReceiver(incomingMessageQueue, socket, exception -&gt; {
+                        if (Thread.currentThread().isInterrupted()) {
+                            return;
+                        }
+                        if (exception != null) {
+                            if (exception instanceof SocketException) {
+                                System.err.println(&quot;Сервер порвал соединение&quot;);
+                            } else if (!(exception instanceof InterruptedException)) {
+                                System.err.println(&quot;Ошибка обработки данных, полученных от сервера&quot;);
+                                exception.printStackTrace(System.err);
+                            }
+                        }
+
+                        pool.shutdownNow();
+                    }));
+            pool.invokeAll(asList(consoleMessageReaderCallable,
+                    chatMessageSenderCallable,
+                    consoleMessageWriterCallable,
+                    chatMessageReceiver));
+        } catch (final UnknownHostException exception) {
+            System.err.printf(&quot;Неизвестный host: %s\n&quot;, address);
+        } catch (final IOException exception) {
+            System.err.printf(&quot;Ошибка передачи данных (%s:%d): %s&quot;, address, port, exception.getMessage());
+        } catch (final Exception exception) {
+            System.err.println(&quot;Ошибка приложения:&quot;);
+            exception.printStackTrace(System.err);
+        }
+    }
+
+    private static String obtainUserName(final Scanner scanner) {
+        System.out.print(&quot;Введите имя пользователя: &quot;);
+        return scanner.nextLine();
+    }
+}
+</code></pre></div>
         
         
     </div>
@@ -201,7 +305,7 @@
       </footer>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
 
     
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
@@ -209,10 +313,10 @@
     <script>hljs.initHighlightingOnLoad();</script>
     
 
-    <script>var base_url = "."</script>
+    <script>var base_url = "../.."</script>
     
-    <script src="js/base.js"></script>
-    <script src="search/main.js"></script>
+    <script src="../../js/base.js"></script>
+    <script src="../../search/main.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -283,8 +387,3 @@
     </body>
 
 </html>
-
-<!--
-MkDocs version : 1.6.1
-Build Date UTC : 2025-01-12 19:21:17.293101+00:00
--->
