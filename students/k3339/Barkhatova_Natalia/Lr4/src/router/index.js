@@ -1,16 +1,17 @@
 import { createRouter, createWebHistory } from "vue-router";
-import RegistrationForm from "@/components/auth/RegistrationForm.vue"; // Компонент регистрации
+import RegistrationForm from "@/components/auth/RegistrationForm.vue";
 import LoginForm from "@/components/auth/LoginForm.vue";
 import Home from "@/components/Home.vue";
 import {useAuthStore} from "@/stores/auth.js";
 import MovieManager from "@/components/movie/MovieManager.vue";
-import HallManager from "@/components/hall/HallManager.vue"; // Страница логина
+import HallManager from "@/components/hall/HallManager.vue";
+import SessionManager from "@/components/session/SessionManager.vue";
 
 const routes = [
     {
         path: "/register",
         name: "Register",
-        component: RegistrationForm, // Форма регистрации
+        component: RegistrationForm,
     },
     {
         path: "/login",
@@ -33,6 +34,12 @@ const routes = [
         path: "/halls",
         name: "Halls",
         component: HallManager,
+        meta: { requiresAuth: true },
+    },
+    {
+        path: "/sessions",
+        name: "Sessions",
+        component: SessionManager,
         meta: { requiresAuth: true },
     },
 ];

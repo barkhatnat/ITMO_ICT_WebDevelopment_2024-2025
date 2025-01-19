@@ -9,6 +9,10 @@
     <p>
       <router-link to="/movies">Go to Movie Manager</router-link>
     </p>
+
+    <p>
+      <router-link to="/sessions">Go to Session Manager</router-link>
+    </p>
   </div>
 </template>
 

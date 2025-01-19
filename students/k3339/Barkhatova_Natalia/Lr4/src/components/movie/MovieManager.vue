@@ -98,6 +98,10 @@ export default {
       await movieStore.deleteMovie(movieId);
     };
 
+    const closeModal = () => {
+      showModal.value = false;
+    };
+
     onMounted(async () => {
       console.log('Fetching movies on page load...');
       await movieStore.fetchMovies();
@@ -114,6 +118,7 @@ export default {
       editMovie,
       saveMovie,
       deleteMovie,
+      closeModal
     };
   },
 };

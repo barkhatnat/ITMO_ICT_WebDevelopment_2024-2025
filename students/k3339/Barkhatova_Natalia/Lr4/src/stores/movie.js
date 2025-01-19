@@ -23,7 +23,7 @@ export const useMovieStore = defineStore({
         },
 
         async updateMovie(movie) {
-            const response = await api.put(`/rest/admin/movies/${movie.id}`, movie);
+            const response = await api.put('/rest/admin/movies/${movie.id}', movie);
             const index = this.movies.findIndex((m) => m.id === movie.id);
             this.movies[index] = response.data;
         },
@@ -33,7 +33,6 @@ export const useMovieStore = defineStore({
                 await api.delete('/rest/admin/movies', { data: { id: movieId } });
                 this.movies = this.movies.filter((movie) => movie.id !== movieId);
             } catch (error) {
-                debugger;
                 console.error('Failed to delete movie:', error.response.data);
             }
         }

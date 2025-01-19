@@ -30,7 +30,7 @@ export const useHallStore = defineStore({
                 rows: hall.rows
             };
 
-            const response = await api.put(`/rest/admin/halls/${hall.id}`, hallData);
+            const response = await api.put('/rest/admin/halls/${hall.id}', hallData);
 
             const index = this.halls.findIndex((h) => h.id === hall.id);
             this.halls[index] = response.data;
@@ -39,7 +39,7 @@ export const useHallStore = defineStore({
 
         async deleteHall(hallId) {
             try {
-                await api.delete(`/rest/admin/halls`, { data: { id: hallId } });
+                await api.delete('/rest/admin/halls', { data: { id: hallId } });
                 this.halls = this.halls.filter((hall) => hall.id !== hallId);
             } catch (error) {
                 console.error('Failed to delete hall:', error.response.data);
