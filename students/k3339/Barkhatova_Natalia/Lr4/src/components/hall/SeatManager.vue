@@ -7,10 +7,7 @@
     {{ seat.number }}
   </div>
 
-  <Modal
-      v-if="showEditor"
-      @close="closeEditor"
-  >
+  <Modal v-if="showEditor && isAdmin"  @close="closeEditor">
     <h3 class="modal-title">Edit Seat</h3>
     <form @submit.prevent="saveSeat" class="seat-form">
       <label for="seat-number">
@@ -38,7 +35,6 @@
         </select>
       </label>
 
-      <!-- Действия -->
       <div class="modal-actions">
         <button type="submit" class="save-btn">Save</button>
         <button type="button" class="delete-btn" @click="removeSeat">Delete</button>
@@ -48,41 +44,66 @@
 </template>
 
 <script>
-import Modal from "@/components/Modal.vue";
+import {ref, defineComponent, watch, computed} from 'vue';
+import Modal from '@/components/Modal.vue';
+import {useAuthStore} from "@/stores/auth.js";
 
-export default {
-  components: {Modal},
+export default defineComponent({
+  components: { Modal },
   props: {
     seat: {
       type: Object,
       required: true,
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    }
   },
-  emits: ["update", "remove"],
-  data() {
+  emits: ['update', 'remove'],
+  setup(props, { emit }) {
+    const showEditor = ref(false);
+    const editableSeat = ref({ ...props.seat });
+    const authStore = useAuthStore();
+    const isAdmin = computed(() => authStore.isAdmin);
+
+    const openEditor = () => {
+      showEditor.value = true;
+      editableSeat.value = { ...props.seat };
+    };
+
+    const closeEditor = () => {
+      showEditor.value = false;
+    };
+
+    const saveSeat = () => {
+      emit('update', { ...editableSeat.value });
+      closeEditor();
+    };
+
+    const removeSeat = () => {
+      emit('remove');
+      closeEditor();
+    };
+
+    watch(
+        () => props.seat,
+        (newSeat) => {
+          editableSeat.value = { ...newSeat };
+        }
+    );
+
     return {
-      showEditor: false,
-      editableSeat: {...this.seat},
+      showEditor,
+      editableSeat,
+      openEditor,
+      closeEditor,
+      saveSeat,
+      removeSeat,
+      isAdmin
     };
   },
-  methods: {
-    openEditor() {
-      this.showEditor = true;
-      this.editableSeat = {...this.seat};
-    },
-    closeEditor() {
-      this.showEditor = false;
-    },
-    saveSeat() {
-      this.$emit("update", {...this.editableSeat});
-      this.closeEditor();
-    },
-    removeSeat() {
-      this.$emit("remove");
-      this.closeEditor();
-    },
-  },
-};
+});
 </script>
 
 <style scoped>
@@ -163,7 +184,6 @@ export default {
   background-color: #ccc;
 }
 
-
 .seat.standard {
   background-color: #9ef7b2;
 }
@@ -179,5 +199,4 @@ export default {
 .seat.couple {
   background-color: #fbcbcc;
 }
-
 </style>

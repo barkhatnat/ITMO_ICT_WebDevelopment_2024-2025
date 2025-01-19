@@ -2,8 +2,8 @@
   <div class="row-manager">
     <div class="row-header">
       <span>Row #{{ row.number }}</span>
-      <button class="add-seat-btn" @click="addSeat">+ Seat</button>
-      <button class="remove-row-btn" @click="$emit('remove')">Remove Row</button>
+      <button v-if="isAdmin" class="add-seat-btn" @click="addSeat">+ Seat</button>
+      <button v-if="isAdmin" class="remove-row-btn" @click="$emit('remove')">Remove Row</button>
     </div>
     <div>{{ errorMessage }}</div>
     <div class="seats-container">
@@ -24,9 +24,10 @@
 
 
 <script>
-import {defineComponent, ref} from "vue";
+import {computed, defineComponent, ref} from "vue";
 import Modal from "@/components/Modal.vue";
 import SeatManager from "@/components/hall/SeatManager.vue";
+import {useAuthStore} from "@/stores/auth.js";
 
 export default defineComponent({
   components: {SeatManager, Modal},
@@ -39,6 +40,10 @@ export default defineComponent({
       type: Object,
       default: () => ({}),
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    }
   },
 
   computed: {
@@ -52,6 +57,8 @@ export default defineComponent({
     const showSeatEditor = ref(false);
     const currentSeat = ref(null);
     const currentSeatIndex = ref(null);
+    const authStore = useAuthStore();
+    const isAdmin = computed(() => authStore.isAdmin);
 
     const addSeat = () => {
       const newSeat = {number: props.row.seats.length + 1, type: "STANDARD"};
@@ -76,6 +83,7 @@ export default defineComponent({
       addSeat,
       updateSeat,
       removeSeat,
+      isAdmin
     };
   },
 });

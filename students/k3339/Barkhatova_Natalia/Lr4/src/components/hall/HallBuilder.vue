@@ -1,7 +1,8 @@
 <template>
   <div class="hall-builder">
-    <h2>{{ isEditing ? 'Edit Hall' : 'Create Hall' }}</h2>
-    <div class="input-container">
+    <h2 v-if="isAdmin" >{{ isEditing ? 'Edit Hall' : 'Create Hall' }}</h2>
+
+    <div v-if="isAdmin" class="input-container">
       <label for="hall-name">Hall Name:</label>
       <input
           id="hall-name"
@@ -31,7 +32,7 @@
       </div>
     </div>
 
-    <div class="rows-container">
+    <div class="rows-container" v-if="hall?.rows">
       <RowManager
           v-for="(row, index) in hall.rows"
           :key="index"
@@ -43,8 +44,8 @@
       <p v-if="errors.rows" class="error">{{ errors.rows }}</p>
     </div>
 
-    <button class="add-row-btn" @click="addRow">+ Add Row</button>
-    <button class="save-btn" @click="saveHall">Save Hall</button>
+    <button v-if="isAdmin" class="add-row-btn" @click="addRow">+ Add Row</button>
+    <button v-if="isAdmin" class="save-btn" @click="saveHall">Save Hall</button>
   </div>
 </template>
 
@@ -58,9 +59,13 @@ export default defineComponent({
   props: {
     hall: {
       type: Object,
-      required: true,
+      default: () => ({ rows: [] }),
     },
     isEditing: {
+      type: Boolean,
+      default: false,
+    },
+    isAdmin: {
       type: Boolean,
       default: false,
     },
@@ -102,7 +107,6 @@ export default defineComponent({
 
         errors.value = {};
         emit("save", props.hall);
-
       } catch (error) {
         if (error.response && error.response.data) {
           const serverErrors = error.response.data;
