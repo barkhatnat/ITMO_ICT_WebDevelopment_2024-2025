@@ -1,6 +1,6 @@
 <template>
   <div class="hall-builder">
-    <h2>Create Hall</h2>
+    <h2>{{ isEditing ? 'Edit Hall' : 'Create Hall' }}</h2>
     <div class="input-container">
       <label for="hall-name">Hall Name:</label>
       <input
@@ -11,6 +11,7 @@
       />
       <p v-if="errors.name" class="error">{{ errors.name }}</p>
     </div>
+
     <div class="legend">
       <div class="legend-item">
         <div class="color-box standard"></div>
@@ -29,6 +30,7 @@
         <span>COUPLE</span>
       </div>
     </div>
+
     <div class="rows-container">
       <RowManager
           v-for="(row, index) in hall.rows"
@@ -40,62 +42,73 @@
       />
       <p v-if="errors.rows" class="error">{{ errors.rows }}</p>
     </div>
+
     <button class="add-row-btn" @click="addRow">+ Add Row</button>
     <button class="save-btn" @click="saveHall">Save Hall</button>
   </div>
 </template>
 
 <script>
-import {ref} from "vue";
+import { ref, defineComponent } from "vue";
 import RowManager from "./RowManager.vue";
-import {useHallStore} from "@/stores/hall.js";
+import { useHallStore } from "@/stores/hall";
 
-export default {
+export default defineComponent({
   components: { RowManager },
-  emits: ["save", "cancel"],
-  computed: {
-    getRowError() {
-      return (index) => this.errors[`rows[${index}].seats`] || null;
-    }
+  props: {
+    hall: {
+      type: Object,
+      required: true,
+    },
+    isEditing: {
+      type: Boolean,
+      default: false,
+    },
   },
-  setup(_, { emit }) {
-    const hallStore = useHallStore();
-    const hall = ref({
-      name: '',
-      rows: [
-        { number: 1, seats: [{ number: 1, type: 'STANDARD' }] }
-      ],
-    });
+  setup(props, { emit }) {
     const errors = ref({});
+    const showErrors = ref(false);
+    const hallStore = useHallStore();
     const addRow = () => {
-      hall.value.rows.push({
-        number: hall.value.rows.length + 1,
+      props.hall.rows.push({
+        number: props.hall.rows.length + 1,
         seats: [],
       });
     };
 
     const updateRow = (rowIndex, updatedRow) => {
-      hall.value.rows.splice(rowIndex, 1, updatedRow);
+      props.hall.rows.splice(rowIndex, 1, updatedRow);
     };
 
     const removeRow = (rowIndex) => {
-      hall.value.rows.splice(rowIndex, 1);
-      hall.value.rows.forEach((row, index) => {
+      props.hall.rows.splice(rowIndex, 1);
+      props.hall.rows.forEach((row, index) => {
         row.number = index + 1;
       });
     };
 
+    const getRowError = (index) => {
+      return errors.value[`rows[${index}].seats`] || null;
+    };
+
     const saveHall = async () => {
+      showErrors.value = true;
       try {
-        await hallStore.addHall(hall.value);
+        if (props.isEditing) {
+          await hallStore.updateHall(props.hall);
+        } else {
+          await hallStore.addHall(props.hall);
+        }
+
         errors.value = {};
-        emit("save", hall.value);
+        emit("save", props.hall);
+
       } catch (error) {
         if (error.response && error.response.data) {
           const serverErrors = error.response.data;
           for (const key in serverErrors) {
             if (Object.prototype.hasOwnProperty.call(serverErrors, key)) {
-              errors.value[key] = serverErrors[key]; // Заполняем ошибки
+              errors.value[key] = serverErrors[key];
             }
           }
         } else {
@@ -104,18 +117,17 @@ export default {
       }
     };
 
-
-
     return {
-      hall,
       errors,
+      showErrors,
       addRow,
       updateRow,
       removeRow,
       saveHall,
+      getRowError,
     };
   },
-};
+});
 </script>
 
 <style scoped>
@@ -176,5 +188,9 @@ export default {
 
 .color-box.couple {
   background-color: #fbcbcc;
+}
+
+.error {
+  color: red;
 }
 </style>

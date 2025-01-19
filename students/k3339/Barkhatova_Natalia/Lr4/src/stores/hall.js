@@ -23,13 +23,18 @@ export const useHallStore = defineStore({
 
 
         async updateHall(hall) {
-            try {
-                const response = await api.put(`/rest/admin/halls/${hall.id}`, hall);
-                const index = this.halls.findIndex((h) => h.id === hall.id);
-                this.halls[index] = response.data;
-            } catch (error) {
-                console.error('Failed to update hall:', error.response.data);
-            }
+
+
+            const hallData = {
+                name: hall.name,
+                rows: hall.rows
+            };
+
+            const response = await api.put(`/rest/admin/halls/${hall.id}`, hallData);
+
+            const index = this.halls.findIndex((h) => h.id === hall.id);
+            this.halls[index] = response.data;
+
         },
 
         async deleteHall(hallId) {

@@ -12,6 +12,8 @@
 
     <Modal v-if="showModal" @close="closeModal">
       <HallBuilder
+          :hall="hallForm"
+          :isEditing="isEditing"
           @save="saveHall"
           @cancel="closeModal"
           class="modal-content"
@@ -42,6 +44,7 @@ export default {
 
     const showAddHallModal = () => {
       isEditing.value = false;
+      hallForm.value = { name: '', rows: [] };
       showModal.value = true;
     };
 
@@ -81,21 +84,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.hall-manager {
-  padding: 20px;
-}
-
-button {
-  padding: 10px;
-  margin: 10px;
-}
-
-
-.modal-content {
-  max-height: 75vh;
-  overflow-y: auto;
-}
-
-</style>
