@@ -8,6 +8,12 @@ export const useAuthStore = defineStore('auth', {
         loading: false,
         error: null,
     }),
+    getters: {
+        isAuthenticated: (state) => !!state.accessToken,
+        userRole: (state) => state.user?.role?.name || null,
+        isAdmin: (state) => state.userRole === 'ROLE_ADMIN',
+        isUser: (state) => state.userRole === 'ROLE_USER',
+    },
     actions: {
         async login(credentials) {
             this.loading = true;
@@ -23,8 +29,7 @@ export const useAuthStore = defineStore('auth', {
 
                 return true;
             } catch (error) {
-                this.error = 'Login failed';
-                //todo нормально обработать ошибки
+                this.error = error.response?.data?.message || 'Login failed';
                 return false;
             } finally {
                 this.loading = false;

@@ -6,6 +6,7 @@ import {useAuthStore} from "@/stores/auth.js";
 import MovieManager from "@/components/movie/MovieManager.vue";
 import HallManager from "@/components/hall/HallManager.vue";
 import SessionManager from "@/components/session/SessionManager.vue";
+import SessionBoard from "@/components/session/SessionBoard.vue";
 
 const routes = [
     {
@@ -42,6 +43,18 @@ const routes = [
         component: SessionManager,
         meta: { requiresAuth: true },
     },
+    {
+        path: "/session-board",
+        name: "Session Board",
+        component: SessionBoard,
+        meta: { requiresAuth: true },
+    },
+    // {
+    //     path: '/sessions/:sessionId/buy',
+    //     name: 'TicketCreation',
+    //     component: TicketCreation,
+    //     props: true,
+    // },
 ];
 
 const router = createRouter({
