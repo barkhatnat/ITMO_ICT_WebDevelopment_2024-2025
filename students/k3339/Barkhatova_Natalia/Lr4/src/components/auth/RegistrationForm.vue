@@ -99,9 +99,10 @@ export default {
     const submitForm = async () => {
       try {
         form.value.roleId = "223e4567-e89b-12d3-a456-426614174001";
-        const response = await api.post("/auth/registration", form.value);
+        await api.post("/auth/registration", form.value);
         alert("Регистрация прошла успешно!");
         router.push("/login");
+        errors.value = {};
       } catch (error) {
         if (error.response && error.response.data) {
           const serverErrors = error.response.data;
