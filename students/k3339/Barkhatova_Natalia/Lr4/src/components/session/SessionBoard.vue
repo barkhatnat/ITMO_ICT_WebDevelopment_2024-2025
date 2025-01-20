@@ -1,7 +1,7 @@
 <template>
   <div class="session-board">
-    <h2>Movie Sessions</h2>
-    <div v-if="isLoading">Loading...</div>
+    <h2>Киносеансы</h2>
+    <div v-if="isLoading" class="loading">Загрузка...</div>
     <div class="session-grid" v-else>
       <SessionPoster
           v-for="session in sessions"
@@ -26,8 +26,6 @@ export default defineComponent({
   },
   setup() {
     const sessionStore = useSessionStore();
-    const movieStore = useMovieStore();
-    const hallStore = useHallStore();
     const isLoading = ref(true);
     const sessions = computed(() => sessionStore.sessions);
     onMounted(async () => {
@@ -45,21 +43,41 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style>
 .session-board {
   padding: 20px;
+  background-color: #F5F5DC;
+  font-family: 'Pacifico', cursive;
+  color: #800020;
   text-align: center;
+  min-height: 100vh; /* Установите минимальную высоту на 100% от высоты видимой области */
+}
+
+.session-board h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.loading {
+  font-size: 24px;
+  color: #800020;
+  font-family: 'Great Vibes', cursive;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .session-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
-  margin-top: 20px;
-}
-
-.loading {
-  font-size: 1.5rem;
-  color: #888;
+  align-items: stretch;
 }
 </style>

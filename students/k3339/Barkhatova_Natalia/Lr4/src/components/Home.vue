@@ -1,32 +1,34 @@
 <template>
   <div class="home">
-    <h1>Welcome to the Cinema Management System</h1>
+    <h1 v-if="!isAdmin">Погрузитесь в Золотую Эпоху Кино</h1>
 
-    <p v-if="isAdmin">
-      <router-link to="/halls">Hall Manager</router-link>
-    </p>
+    <nav class="menu">
+      <p v-if="isAdmin">
+        <router-link to="/halls">Управление Залами</router-link>
+      </p>
 
-    <p v-if="isAdmin">
-      <router-link to="/movies">Movie Manager</router-link>
-    </p>
+      <p v-if="isAdmin">
+        <router-link to="/movies">Управление Фильмами</router-link>
+      </p>
 
-    <p v-if="isAdmin">
-      <router-link to="/sessions">Session Manager</router-link>
-    </p>
+      <p v-if="isAdmin">
+        <router-link to="/sessions">Управление Сеансами</router-link>
+      </p>
 
-    <p v-if="!isAdmin">
-      <router-link to="/session-board">Active sessions</router-link>
-    </p>
+      <p v-if="!isAdmin">
+        <router-link to="/session-board">Сейчас в Прокате</router-link>
+      </p>
 
-    <p v-if="!isAdmin">
-      <router-link to="/tickets">Your tickets</router-link>
-    </p>
+      <p v-if="!isAdmin">
+        <router-link to="/tickets">Мои Билеты</router-link>
+      </p>
+    </nav>
   </div>
 </template>
 
 <script>
 import {computed} from 'vue';
-import {useAuthStore} from '@/stores/auth.js'; // Импортируем authStore
+import {useAuthStore} from '@/stores/auth.js';
 
 export default {
   name: 'Home',
@@ -40,14 +42,48 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #F5F5DC;
+  font-family: 'Pacifico', cursive;
+  color: #800020;
   padding: 20px;
-  text-align: center;
+  box-sizing: border-box;
 }
 
-button {
-  padding: 10px;
-  margin: 10px;
+h1 {
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu p {
+  margin: 15px 0;
+}
+
+.menu a {
+  display: inline-block;
+  background-color: #FFAA33;
+  color: #fff;
+  padding: 15px 30px;
+  text-decoration: none;
+  font-size: 20px;
+  border-radius: 10px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.menu a:hover {
+  background-color: #800020;
+  transform: scale(1.05);
 }
 </style>

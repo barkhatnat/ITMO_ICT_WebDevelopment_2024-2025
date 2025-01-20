@@ -12,10 +12,10 @@
   </div>
 
   <Modal v-if="showEditor && isAdmin" @close="closeEditor">
-    <h3 class="modal-title">Edit Seat</h3>
+    <h3 class="modal-title">Редактировать Место</h3>
     <form @submit.prevent="saveSeat" class="seat-form">
       <label for="seat-number">
-        Seat Number:
+        Номер Места:
         <input
             id="seat-number"
             v-model="editableSeat.number"
@@ -26,22 +26,22 @@
         />
       </label>
       <label for="seat-type">
-        Seat Type:
+        Тип Места:
         <select
             id="seat-type"
             v-model="editableSeat.type"
             class="form-select"
         >
-          <option value="STANDARD">Standard</option>
+          <option value="STANDARD">Обычное</option>
           <option value="VIP">VIP</option>
-          <option value="HANDICAPPED">Handicapped</option>
-          <option value="COUPLE">Couple</option>
+          <option value="HANDICAPPED">Для людей с инвалидностью</option>
+          <option value="COUPLE">Для пары</option>
         </select>
       </label>
 
       <div class="modal-actions">
-        <button type="submit" class="save-btn">Save</button>
-        <button type="button" class="delete-btn" @click="removeSeat">Delete</button>
+        <button type="submit" class="save-btn">Сохранить</button>
+        <button type="button" class="delete-btn" @click="removeSeat">Удалить</button>
       </div>
     </form>
   </Modal>
@@ -148,46 +148,129 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style>
+/* Стили для мест */
 .seat {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 5px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
-  cursor: pointer;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  padding: 0;
   text-align: center;
-  background-color: #ccc;
+  line-height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Great Vibes', cursive;
+  font-size: 16px;
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.seat.standard {
-  background-color: #9ef7b2;
+.standard {
+  background-color: #39C65C;
 }
 
-.seat.vip {
-  background-color: #c0c9f3;
+.vip {
+  background-color: #FFD700;
 }
 
-.seat.handicapped {
-  background-color: #f7c378;
+.handicapped {
+  background-color: #87CEEB;
 }
 
-.seat.couple {
-  background-color: #fbcbcc;
+.couple {
+  background-color: #FF69B4;
 }
 
-.seat.selected {
-  border: 3px solid #007bff;
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
+.selected {
+  position: relative; /* Для псевдоэлементов */
+  background-color: #FFF8DC; /* Светлый фон для выделенных элементов */
+  border: 2px solid #800020; /* Цвет бордюра для выделенных элементов */
+  box-shadow: 0 4px 15px rgba(128, 0, 32, 0.4); /* Более глубокая и мягкая тень */
+  transition: all 0.3s ease; /* Плавный переход для анимации */
+  transform: scale(1.02); /* Чуть крупнее для акцента */
 }
 
-.seat.occupied {
-  background-color: lightgray;
-  pointer-events: none;
-  opacity: 0.6;
+/* Для создания красивого светового эффекта */
+.selected::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 8px;
+  background: radial-gradient(
+      circle,
+      rgba(255, 170, 51, 0.2) 0%,
+      rgba(255, 170, 51, 0) 60%
+  );
+  z-index: -1; /* Под элементом */
+  opacity: 0;  /* Начальная прозрачность */
+}
+
+.occupied {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.modal-title {
+  font-size: 24px;
+  color: #800020;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.seat-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #CCC;
+  font-family: 'Great Vibes', cursive;
+  font-size: 16px;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #800020;
+  box-shadow: 0 0 8px rgba(128, 0, 32, 0.5);
+  outline: none;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.save-btn,
+.delete-btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.save-btn {
+  background-color: #32CD32;
+  color: #fff;
+}
+
+.delete-btn {
+  background-color: #FF6347;
+  color: #fff;
+}
+
+.save-btn:hover,
+.delete-btn:hover {
+  transform: scale(1.05);
 }
 </style>

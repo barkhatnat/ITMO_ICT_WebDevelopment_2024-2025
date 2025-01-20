@@ -3,10 +3,10 @@
     <table>
       <thead>
       <tr>
-        <th>Name</th>
-        <th>Duration (mins)</th>
-        <th>Description</th>
-        <th>Actions</th>
+        <th>Название</th>
+        <th>Продолжительность (мин)</th>
+        <th>Описание</th>
+        <th>Действия</th>
       </tr>
       </thead>
       <tbody>
@@ -15,9 +15,9 @@
         <td>{{ movie.duration }}</td>
         <td>{{ movie.description }}</td>
         <td>
-          <button @click="edit(movie)" :disabled="isMovieRelatedToSessions(movie.id)">Edit</button>
-          <button @click="deleteMovie(movie.id)" :disabled="isMovieRelatedToSessions(movie.id)">
-            Delete
+          <button class="edit-btn" @click="edit(movie)" :disabled="isMovieRelatedToSessions(movie.id)">Редактировать</button>
+          <button class="delete-btn" @click="deleteMovie(movie.id)" :disabled="isMovieRelatedToSessions(movie.id)">
+            Удалить
           </button>
         </td>
       </tr>
@@ -79,19 +79,62 @@ export default {
 };
 </script>
 
-<style scoped>
-.movie-table table {
+<style>
+.movie-table {
   width: 100%;
-  border-collapse: collapse;
+  margin: 20px 0;
+  overflow-x: auto;
 }
 
-.movie-table th, .movie-table td {
-  padding: 10px;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #FFF8DC;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+thead th {
+  background-color: #800020;
+  color: #fff;
+  font-family: 'Pacifico', cursive;
+  font-size: 20px;
+  padding: 12px;
   text-align: left;
 }
 
-.movie-table button {
-  padding: 5px 10px;
-  margin: 5px;
+tbody td {
+  padding: 12px;
+  font-family: 'Great Vibes', cursive;
+  border-top: 1px solid #CCC;
+  color: #333;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #FFE880;
+}
+
+button {
+  background-color: #FFAA33;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-right: 5px;
+}
+
+button.edit-btn:hover:not(:disabled) {
+  background-color: #006400;
+}
+
+button.delete-btn:hover:not(:disabled) {
+  background-color: #A40000;
+}
+
+button:disabled {
+  background-color: #CCC;
+  cursor: not-allowed;
 }
 </style>

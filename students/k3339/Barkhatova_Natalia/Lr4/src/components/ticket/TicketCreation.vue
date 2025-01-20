@@ -2,19 +2,19 @@
   <div class="ticket-purchase">
     <div class="session-info">
       <h2>{{ session?.movie?.name }}</h2>
-      <p><strong>Time:</strong> {{ formattedStartTime }}</p>
-      <p><strong>Hall:</strong> {{ session?.hall?.name }}</p>
+      <p><strong>Время:</strong> {{ formattedStartTime }}</p>
+      <p><strong>Зал:</strong> {{ session?.hall?.name }}</p>
     </div>
 
     <div class="hall-selection">
-      <h3>Select Your Seats</h3>
+      <h3>Выберите Ваши Места</h3>
       <HallBuilder
           :hall="session?.hall"
           :isEditing="false"
           :sessionId="sessionId"
       />
     </div>
-    <button class="buy-ticket-btn" @click="buyTickets">Buy Ticket</button>
+    <button class="buy-ticket-btn" @click="buyTickets">Купить Билет</button>
   </div>
 </template>
 
@@ -98,52 +98,52 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style>
 .ticket-purchase {
   padding: 20px;
-  background-color: #f4f4f4;
-  border-radius: 10px;
-  max-width: 800px;
-  margin: 0 auto;
+  background-color: #F5F5DC;
+  font-family: 'Pacifico', cursive;
+  color: #800020;
+  text-align: center;
 }
 
 .session-info {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
 
 .session-info h2 {
-  margin: 0;
-  font-size: 24px;
+  font-size: 28px;
+  margin-bottom: 10px;
 }
 
 .session-info p {
-  margin: 5px 0;
-  font-size: 16px;
+  font-size: 18px;
+  margin: 4px 0;
 }
 
-.hall-selection {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.hall-selection h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-family: 'Great Vibes', cursive;
+  color: #800020;
 }
 
 .buy-ticket-btn {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px 20px;
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #FFAA33;
+  color: #fff;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 25px;
+  font-size: 18px;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
   cursor: pointer;
-  width: 100%;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .buy-ticket-btn:hover {
-  background-color: #45a049;
+  background-color: #800020;
+  transform: scale(1.05);
 }
 </style>

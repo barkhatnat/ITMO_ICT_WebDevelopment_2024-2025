@@ -1,49 +1,50 @@
 <template>
   <div class="tickets">
-    <h1>Your Tickets</h1>
+    <h1>Ваши Билеты</h1>
 
-    <div v-if="loading">Loading...</div>
+    <div v-if="loading" class="loading">Загрузка...</div>
     <div v-if="error" class="error">{{ error }}</div>
+
     <Modal v-if="isPurchaseSuccessful" @close="closeModal">
-      <h3>Congratulations!</h3>
-      <p>Your tickets have been successfully purchased.</p>
-      <button @click="closeModal">Close</button>
+      <h3>Поздравления!</h3>
+      <p>Ваши билеты успешно куплены.</p>
+      <button @click="closeModal">Закрыть</button>
     </Modal>
 
     <ul v-if="tickets.length">
       <li v-for="ticket in tickets" :key="ticket.id" class="ticket-item">
-        <div>
-          <strong>Ticket Code:</strong> {{ ticket.ticketCode }}
+        <div class="ticket-code">
+          <strong>Код Билета:</strong> {{ ticket.ticketCode }}
         </div>
         <div>
-          <strong>Movie:</strong> {{ ticket.session.movie.name }}
+          <strong>Фильм:</strong> {{ ticket.session.movie.name }}
         </div>
         <div>
-          <strong>Hall:</strong> {{ ticket.session.hall.name }}
+          <strong>Зал:</strong> {{ ticket.session.hall.name }}
         </div>
         <div>
-          <strong>Session Time:</strong> {{ formatDate(ticket.session.startTime) }}
+          <strong>Время Сеанса:</strong> {{ formatDate(ticket.session.startTime) }}
         </div>
         <div>
-          <strong>Seat:</strong> {{ ticket.seat.number }} ({{ ticket.seat.type }})
+          <strong>Место:</strong> {{ ticket.seat.number }} ({{ translateSeatType(ticket.seat.type) }})
         </div>
         <div>
-          <strong>Purchased At:</strong> {{ formatDate(ticket.purchasedAt) }}
+          <strong>Куплено В:</strong> {{ formatDate(ticket.purchasedAt) }}
         </div>
       </li>
     </ul>
-    <div v-else>No tickets available.</div>
+    <div v-else>Билеты недоступны.</div>
   </div>
 </template>
 
 <script>
-import {onMounted, ref} from 'vue';
-import {useTicketStore} from "@/stores/ticket.js";
+import { onMounted, ref } from 'vue';
+import { useTicketStore } from "@/stores/ticket.js";
 import Modal from "@/components/Modal.vue";
 
 export default {
   name: 'UserTickets',
-  components: {Modal},
+  components: { Modal },
   setup() {
     const ticketStore = useTicketStore();
     const tickets = ref([]);
@@ -84,7 +85,17 @@ export default {
         minute: '2-digit',
         hour12: false,
       };
-      return date.toLocaleString('en-GB', options);
+      return date.toLocaleString('ru', options);
+    };
+
+    const translateSeatType = (type) => {
+      const seatTypes = {
+        STANDARD: 'Обычное',
+        VIP: 'VIP',
+        HANDICAPPED: 'Для инвалидов',
+        COUPLE: 'Парное',
+      };
+      return seatTypes[type] || 'Неизвестно';
     };
 
     onMounted(() => {
@@ -96,31 +107,74 @@ export default {
       loading,
       error,
       formatDate,
+      translateSeatType,
       isPurchaseSuccessful,
-      closeModal
+      closeModal,
     };
   },
 };
 </script>
 
-<style scoped>
+<style>
 .tickets {
   padding: 20px;
+  background-color: #F5F5DC;
+  font-family: 'Pacifico', cursive;
+  color: #800020;
 }
 
-.ticket-item {
-  margin-bottom: 15px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+.tickets h1 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 20px;
 }
 
-.ticket-item strong {
-  display: inline-block;
-  margin-right: 5px;
+.loading,
+.error {
+  font-size: 18px;
+  text-align: center;
+  margin: 20px 0;
 }
 
 .error {
-  color: red;
+  color: #D32F2F;
+}
+
+.ticket-item {
+  background-color: #FFF8DC;
+  border: 1px solid #800020;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  font-family: 'Great Vibes', cursive;
+  color: #333;
+}
+
+.ticket-code {
+  font-weight: bold;
+  background-color: #FFAA33;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.ticket-item {
+  background-color: #FFF8DC;
+  border: 1px solid #800020;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  font-family: 'Great Vibes', cursive;
+  color: #333;
 }
 </style>

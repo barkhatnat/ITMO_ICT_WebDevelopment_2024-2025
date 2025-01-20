@@ -2,7 +2,7 @@
   <div class="hall-manager">
     <h2>Hall Manager</h2>
 
-    <button @click="showAddHallModal">Add New Hall</button>
+    <button class="add-hall-btn" @click="showAddHallModal">Add new hall</button>
 
     <HallTable
         :halls="halls"
@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import { ref, computed, onMounted } from 'vue';
-import { useHallStore } from '@/stores/hall';
+import {computed, onMounted, ref} from 'vue';
+import {useHallStore} from '@/stores/hall';
 import HallTable from './HallTable.vue';
 import Modal from "@/components/Modal.vue";
 import HallBuilder from "./HallBuilder.vue";
@@ -44,7 +44,7 @@ export default {
 
     const showAddHallModal = () => {
       isEditing.value = false;
-      hallForm.value = { name: '', rows: [] };
+      hallForm.value = {name: '', rows: []};
       showModal.value = true;
     };
 
@@ -84,3 +84,41 @@ export default {
   },
 };
 </script>
+<style>
+.hall-manager {
+  padding: 20px;
+  background-color: #F5F5DC;
+  font-family: 'Pacifico', cursive;
+  color: #800020;
+}
+
+.hall-manager h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.add-hall-btn {
+  background-color: #FFAA33;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-bottom: 20px;
+}
+
+.add-hall-btn:hover {
+  background-color: #800020;
+  transform: scale(1.05);
+}
+
+.modal-content {
+  background-color: #FFF8DC;
+  padding: 30px;
+  border-radius: 10px;
+  border: 2px solid #800020;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+</style>

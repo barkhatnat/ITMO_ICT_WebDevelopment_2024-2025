@@ -5,16 +5,15 @@
       <p>{{ session.hall.name }}</p>
     </div>
     <div class="poster-body">
-      <p><strong>Start Time:</strong> {{ formattedStartTime }}</p>
-      <p><strong>Price:</strong> {{ session.price }} $</p>
-      <p><strong>Description:</strong> {{ session.movie.description || 'No description available' }}</p>
+      <p><strong>Время Начала:</strong> {{ formattedStartTime }}</p>
+      <p><strong>Цена:</strong> {{ session.price }} ₽</p>
+      <p><strong>Описание:</strong> {{ session.movie.description || 'Нет описания' }}</p>
     </div>
     <router-link :to="`/sessions/${session.id}/buy`" class="buy-ticket-button">
-      Buy Ticket
+      Купить Билет
     </router-link>
   </div>
 </template>
-
 <script>
 import {computed} from 'vue';
 
@@ -32,7 +31,7 @@ export default {
         minute: '2-digit',
         hour12: false,
       };
-      return date.toLocaleString('en-GB', options);
+      return date.toLocaleString('ru', options);
     });
 
     return {
@@ -43,35 +42,53 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
 .session-poster {
-  width: 250px;
-  height: 250px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  margin: 20px;
-  transition: transform 0.3s ease;
-  justify-content: center;
-  display: compact;
-  align-items: center;
+  background-color: #FFF8DC;
+  border: 2px solid #800020;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Great Vibes', cursive;
 }
 
-.session-poster:hover {
+.poster-header h3 {
+  font-size: 24px;
+  color: #800020;
+  margin: 0;
+  text-align: left;
+}
+
+.poster-header p {
+  margin: 5px 0;
+  color: #555;
+  font-size: 16px;
+  text-align: left;
+}
+
+.poster-body p {
+  margin: 8px 0;
+  color: #333;
+  font-size: 16px;
+  text-align: left;
+}
+
+.buy-ticket-button {
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #FFAA33;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 25px;
+  font-size: 18px;
+  transition: background-color 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+
+.buy-ticket-button:hover {
+  background-color: #800020;
   transform: scale(1.05);
 }
-
-.poster-header {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.poster-body {
-  font-size: 14px;
-  margin-bottom: 15px;
-}
-
 </style>

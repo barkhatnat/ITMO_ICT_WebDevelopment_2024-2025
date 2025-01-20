@@ -1,16 +1,26 @@
 <template>
   <div class="row-manager">
     <div class="row-header">
-      <span>Row #{{ row.number }}</span>
-      <button v-if="isAdmin" class="add-seat-btn" @click="addSeat">+ Seat</button>
-      <button v-if="isAdmin" class="remove-row-btn" @click="$emit('remove')">Remove Row</button>
+      <span class="row-number">Ряд №{{ row.number }}</span>
+      <button
+          v-if="isAdmin"
+          class="add-seat-btn"
+          @click="addSeat">
+        + Место
+      </button>
+      <button
+          v-if="isAdmin"
+          class="remove-row-btn"
+          @click="$emit('remove')">
+        Удалить Ряд
+      </button>
     </div>
-    <div>{{ errorMessage }}</div>
+    <div class="error-message">{{ errorMessage }}</div>
     <div class="seats-container">
       <div
           v-for="(seat, index) in row.seats"
           :key="seat.id"
-          class="seat"
+          class="seat-wrapper"
       >
         <SeatManager
             :seat="seat"
@@ -97,12 +107,13 @@ export default defineComponent({
 </script>
 
 
-<style scoped>
+<style>
 .row-manager {
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  margin-bottom: 20px;
+  border: 1px solid #CCC;
+  border-radius: 10px;
+  padding: 10px 15px;
+  background-color: #FFF8DC;
 }
 
 .row-header {
@@ -112,35 +123,50 @@ export default defineComponent({
   margin-bottom: 10px;
 }
 
+.row-number {
+  font-family: 'Pacifico', cursive;
+  font-size: 18px;
+  color: #800020;
+}
 
-.add-seat-btn,
-.remove-row-btn {
-  background-color: #007bff;
-  color: white;
+button {
+  background-color: #FFAA33;
+  color: #fff;
+  padding: 8px 12px;
   border: none;
-  padding: 5px 10px;
   border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
-  font-size: 12px;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-left: 5px;
 }
 
-.remove-row-btn {
-  background-color: #f44336;
+button.add-seat-btn:hover {
+  background-color: #32CD32;
 }
 
-.add-seat-btn:hover,
-.remove-row-btn:hover {
-  opacity: 0.9;
+button.remove-row-btn:hover {
+  background-color: #FF6347;
 }
 
+/* Сообщение об ошибке */
+.error-message {
+  color: #D32F2F;
+  font-size: 14px;
+  font-family: 'Great Vibes', cursive;
+  margin-bottom: 10px;
+  text-align: center;
+}
 
 .seats-container {
   display: flex;
-  gap: 10px;
   flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
 }
 
-
+.seat-wrapper {
+  flex: 0 0 50px;
+}
 </style>
-
 

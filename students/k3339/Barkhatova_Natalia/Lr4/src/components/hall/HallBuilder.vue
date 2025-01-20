@@ -3,12 +3,12 @@
     <h2 v-if="isAdmin">{{ isEditing ? 'Edit Hall' : 'Create Hall' }}</h2>
 
     <div v-if="isAdmin" class="input-container">
-      <label for="hall-name">Hall Name:</label>
+      <label for="hall-name">Название Зала:</label>
       <input
           id="hall-name"
           v-model="hall.name"
           type="text"
-          placeholder="Enter hall name"
+          placeholder="Введите название зала"
       />
       <p v-if="errors.name" class="error">{{ errors.name }}</p>
     </div>
@@ -16,7 +16,7 @@
     <div class="legend">
       <div class="legend-item">
         <div class="color-box standard"></div>
-        <span>Standard</span>
+        <span>Обычный</span>
       </div>
       <div class="legend-item">
         <div class="color-box vip"></div>
@@ -24,11 +24,11 @@
       </div>
       <div class="legend-item">
         <div class="color-box handicapped"></div>
-        <span>HANDICAPPED</span>
+        <span>Для людей с инвалидностью</span>
       </div>
       <div class="legend-item">
         <div class="color-box couple"></div>
-        <span>COUPLE</span>
+        <span>Для пары</span>
       </div>
     </div>
 
@@ -45,8 +45,8 @@
       <p v-if="errors.rows" class="error">{{ errors.rows }}</p>
     </div>
 
-    <button v-if="isAdmin" class="add-row-btn" @click="addRow">+ Add Row</button>
-    <button v-if="isAdmin" class="save-btn" @click="saveHall">Save Hall</button>
+    <button v-if="isAdmin" class="add-row-btn" @click="addRow">+ Добавить Ряд</button>
+    <button v-if="isAdmin" class="save-btn" @click="saveHall">Сохранить Зал</button>
   </div>
 </template>
 
@@ -145,67 +145,107 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style>
 .hall-builder {
-  padding: 0px;
+  padding: 20px;
+  background-color: #F5F5DC;
+  font-family: 'Pacifico', cursive;
+  color: #800020;
 }
 
-.rows-container {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+.hall-builder h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 20px;
 }
 
-.add-row-btn {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
+.input-container {
+  margin-bottom: 20px;
+}
+
+.input-container label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 12px;
   border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
+  border: 2px solid #CCC;
+  font-family: 'Great Vibes', cursive;
+  font-size: 16px;
+  transition: border 0.3s, box-shadow 0.3s;
 }
 
-.add-row-btn:hover {
-  background-color: #45a049;
+.input-container input:focus {
+  border-color: #800020;
+  box-shadow: 0 0 8px rgba(128, 0, 32, 0.5);
+  outline: none;
 }
 
 .legend {
   display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 20px;
 }
 
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 5px;
+  font-family: 'Great Vibes', cursive;
 }
 
 .color-box {
   width: 20px;
   height: 20px;
+  margin-right: 5px;
   border-radius: 3px;
+  border: 1px solid #333;
 }
 
-.color-box.standard {
-  background-color: #9ef7b2;
+.standard {
+  background-color: #39C65C;
 }
 
-.color-box.vip {
-  background-color: #c0c9f3;
+.vip {
+  background-color: #FFD700;
 }
 
-.color-box.handicapped {
-  background-color: #f7c378;
+.handicapped {
+  background-color: #87CEEB;
 }
 
-.color-box.couple {
-  background-color: #fbcbcc;
+.couple {
+  background-color: #FF69B4;
+}
+
+.button {
+  padding: 12px 25px;
+  border-radius: 25px;
+  border: none;
+  margin-top: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.add-row-btn, .save-btn {
+  background-color: #FFAA33;
+  color: #fff;
+}
+
+.add-row-btn:hover, .save-btn:hover {
+  background-color: #800020;
+  transform: scale(1.05);
 }
 
 .error {
-  color: red;
+  color: #D32F2F;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  font-family: 'Great Vibes', cursive;
 }
 </style>

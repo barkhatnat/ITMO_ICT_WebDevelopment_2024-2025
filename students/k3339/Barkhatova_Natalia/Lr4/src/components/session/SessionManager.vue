@@ -1,8 +1,8 @@
 <template>
   <div class="session-manager">
-    <h2>Session Manager</h2>
+    <h2>Куратор Сеансов</h2>
 
-    <button @click="showAddSessionModal">Add New Session</button>
+    <button class="add-session-btn" @click="showAddSessionModal">Добавить Новый Сеанс</button>
 
     <SessionTable
         :sessions="sessions"
@@ -11,33 +11,33 @@
     />
 
     <Modal v-if="showModal" @close="closeModal">
-      <h3>{{ isEditing ? 'Edit' : 'Add' }} Session</h3>
-      <form @submit.prevent="saveSession">
-        <div>
-          <label for="movie">Movie</label>
-          <select v-model="sessionForm.movieId" id="movie" required>
+      <h3 class="modal-title">{{ isEditing ? 'Редактировать' : 'Добавить' }} Сеанс</h3>
+      <form @submit.prevent="saveSession" class="session-form">
+        <div class="form-group">
+          <label for="movie">Фильм</label>
+          <select v-model="sessionForm.movieId" id="movie" required class="form-select">
             <option v-for="movie in movies" :key="movie.id" :value="movie.id">{{ movie.name }}</option>
           </select>
           <p v-if="errors.movieId" class="error">{{ errors.movieId }}</p>
         </div>
-        <div>
-          <label for="hall">Hall</label>
-          <select v-model="sessionForm.hallId" id="hall" required>
+        <div class="form-group">
+          <label for="hall">Зал</label>
+          <select v-model="sessionForm.hallId" id="hall" required class="form-select">
             <option v-for="hall in halls" :key="hall.id" :value="hall.id">{{ hall.name }}</option>
           </select>
           <p v-if="errors.hallId" class="error">{{ errors.hallId }}</p>
         </div>
-        <div>
-          <label for="start-time">Start Time</label>
-          <input v-model="sessionForm.startTime" type="datetime-local" id="start-time" required />
+        <div class="form-group">
+          <label for="start-time">Время Начала</label>
+          <input v-model="sessionForm.startTime" type="datetime-local" id="start-time" required class="form-input" />
           <p v-if="errors.startTime" class="error">{{ errors.startTime }}</p>
         </div>
-        <div>
-          <label for="price">Price</label>
-          <input v-model="sessionForm.price" type="number" id="price" required min="1" />
+        <div class="form-group">
+          <label for="price">Цена</label>
+          <input v-model="sessionForm.price" type="number" id="price" required min="1" class="form-input" />
           <p v-if="errors.price" class="error">{{ errors.price }}</p>
         </div>
-        <button type="submit">{{ isEditing ? 'Save Changes' : 'Add Session' }}</button>
+        <button type="submit" class="submit-btn">{{ isEditing ? 'Сохранить Изменения' : 'Добавить Сеанс' }}</button>
       </form>
     </Modal>
   </div>
@@ -135,12 +135,94 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .session-manager {
   padding: 20px;
+  background-color: #F5F5DC;
+  font-family: 'Pacifico', cursive;
+  color: #800020;
 }
-button {
+
+.session-manager h2 {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.add-session-btn {
+  display: block;
+  margin: 0 auto 20px;
+  background-color: #FFAA33;
+  color: #fff;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.add-session-btn:hover {
+  background-color: #800020;
+  transform: scale(1.05);
+}
+
+.session-form .form-group {
+  margin-bottom: 15px;
+}
+
+.session-form label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.session-form .form-input,
+.session-form .form-select {
+  width: 100%;
   padding: 10px;
-  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #CCC;
+  font-family: 'Great Vibes', cursive;
+  font-size: 16px;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.session-form .form-input:focus,
+.session-form .form-select:focus {
+  border-color: #800020;
+  box-shadow: 0 0 8px rgba(128, 0, 32, 0.5);
+  outline: none;
+}
+
+.error {
+  color: #D32F2F;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  font-family: 'Great Vibes', cursive;
+}
+
+.submit-btn {
+  display: block;
+  background-color: #32CD32;
+  color: #fff;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 25px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  width: 100%;
+}.submit-btn:hover {
+   background-color: #228B22;
+   transform: scale(1.05);
+ }
+
+.modal-title {
+  font-size: 24px;
+  color: #800020;
+  text-align: center;
+  margin-bottom: 20px;
 }
 </style>
