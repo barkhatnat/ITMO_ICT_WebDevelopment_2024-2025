@@ -44,13 +44,13 @@
 </template>
 
 <script>
-import { ref, defineComponent, watch, computed } from 'vue';
+import {computed, defineComponent, ref} from 'vue';
 import Modal from '@/components/Modal.vue';
-import { useAuthStore } from "@/stores/auth.js";
+import {useAuthStore} from "@/stores/auth.js";
 import {useTicketStore} from "@/stores/ticket.js";
 
 export default defineComponent({
-  components: { Modal },
+  components: {Modal},
   props: {
     seat: {
       type: Object,
@@ -62,10 +62,10 @@ export default defineComponent({
     },
   },
   emits: ['update', 'remove', 'select'],
-  setup(props, { emit }) {
+  setup(props, {emit}) {
     const showEditor = ref(false);
-    const editableSeat = ref({ ...props.seat });
-    const isSelected = ref(false); // Отслеживание выбранности
+    const editableSeat = ref({...props.seat});
+    const isSelected = ref(false);
     const authStore = useAuthStore();
     const ticketStore = useTicketStore();
     const isAdmin = computed(() => authStore.isAdmin);
@@ -73,7 +73,7 @@ export default defineComponent({
     const openEditor = () => {
       if (!isAdmin.value) return;
       showEditor.value = true;
-      editableSeat.value = { ...props.seat };
+      editableSeat.value = {...props.seat};
     };
 
     const closeEditor = () => {
@@ -81,7 +81,7 @@ export default defineComponent({
     };
 
     const saveSeat = () => {
-      emit('update', { ...editableSeat.value });
+      emit('update', {...editableSeat.value});
       closeEditor();
     };
 
@@ -95,16 +95,15 @@ export default defineComponent({
         openEditor();
       } else {
         isSelected.value = !isSelected.value;
-        emit('select', { seat: props.seat, selected: isSelected.value });
+        emit('select', {seat: props.seat, selected: isSelected.value});
+
+        if (isSelected.value) {
+          ticketStore.addSeat(props.seat);
+        } else {
+          ticketStore.removeSeat(props.seat);
+        }
       }
     };
-
-    watch(
-        () => props.seat,
-        (newSeat) => {
-          editableSeat.value = { ...newSeat };
-        }
-    );
 
     return {
       showEditor,
@@ -154,7 +153,6 @@ export default defineComponent({
   background-color: #fbcbcc;
 }
 
-/* Стиль для выбранного места */
 .seat.selected {
   border: 3px solid #007bff;
   box-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
