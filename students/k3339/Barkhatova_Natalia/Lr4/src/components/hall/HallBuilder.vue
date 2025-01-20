@@ -1,6 +1,6 @@
 <template>
   <div class="hall-builder">
-    <h2 v-if="isAdmin" >{{ isEditing ? 'Edit Hall' : 'Create Hall' }}</h2>
+    <h2 v-if="isAdmin">{{ isEditing ? 'Edit Hall' : 'Create Hall' }}</h2>
 
     <div v-if="isAdmin" class="input-container">
       <label for="hall-name">Hall Name:</label>
@@ -38,6 +38,7 @@
           :key="index"
           :row="row"
           :errors="getRowError(index)"
+          :sessionId="sessionId"
           @update="updateRow(index, $event)"
           @remove="removeRow(index)"
       />
@@ -50,16 +51,16 @@
 </template>
 
 <script>
-import { ref, defineComponent } from "vue";
+import {defineComponent, ref} from "vue";
 import RowManager from "./RowManager.vue";
-import { useHallStore } from "@/stores/hall";
+import {useHallStore} from "@/stores/hall";
 
 export default defineComponent({
-  components: { RowManager },
+  components: {RowManager},
   props: {
     hall: {
       type: Object,
-      default: () => ({ rows: [] }),
+      default: () => ({rows: []}),
     },
     isEditing: {
       type: Boolean,
@@ -69,11 +70,16 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    sessionId: {
+      type: String,
+      default: "",
+    }
   },
-  setup(props, { emit }) {
+  setup(props, {emit}) {
     const errors = ref({});
     const showErrors = ref(false);
     const hallStore = useHallStore();
+    const {sessionId} = props;
     const addRow = () => {
       props.hall.rows.push({
         number: props.hall.rows.length + 1,
@@ -129,6 +135,7 @@ export default defineComponent({
       removeRow,
       saveHall,
       getRowError,
+      sessionId
     };
   },
 });

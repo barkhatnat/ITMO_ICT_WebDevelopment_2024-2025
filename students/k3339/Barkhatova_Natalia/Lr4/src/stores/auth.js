@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia';
+import {defineStore} from 'pinia';
 import axios from 'axios';
 
 export const useAuthStore = defineStore('auth', {
@@ -12,7 +12,6 @@ export const useAuthStore = defineStore('auth', {
         isAuthenticated: (state) => !!state.accessToken,
         userRole: (state) => state.user?.role?.name || null,
         isAdmin: (state) => state.userRole === 'ROLE_ADMIN',
-        isUser: (state) => state.userRole === 'ROLE_USER',
     },
     actions: {
         async login(credentials) {

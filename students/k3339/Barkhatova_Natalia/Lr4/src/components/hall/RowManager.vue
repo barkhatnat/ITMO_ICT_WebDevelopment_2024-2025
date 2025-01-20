@@ -14,6 +14,7 @@
       >
         <SeatManager
             :seat="seat"
+            :sessionId="sessionId"
             @update="updateSeat(index, $event)"
             @remove="removeSeat(index)"
         />
@@ -43,6 +44,10 @@ export default defineComponent({
     isAdmin: {
       type: Boolean,
       default: false,
+    },
+    sessionId: {
+      type: String,
+      default: "",
     }
   },
 
@@ -58,6 +63,7 @@ export default defineComponent({
     const currentSeat = ref(null);
     const currentSeatIndex = ref(null);
     const authStore = useAuthStore();
+    const {sessionId} = props;
     const isAdmin = computed(() => authStore.isAdmin);
 
     const addSeat = () => {
@@ -83,7 +89,8 @@ export default defineComponent({
       addSeat,
       updateSeat,
       removeSeat,
-      isAdmin
+      isAdmin,
+      sessionId
     };
   },
 });

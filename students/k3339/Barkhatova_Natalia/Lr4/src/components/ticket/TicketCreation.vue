@@ -11,6 +11,7 @@
       <HallBuilder
           :hall="session?.hall"
           :isEditing="false"
+          :sessionId="sessionId"
       />
     </div>
     <button class="buy-ticket-btn" @click="buyTickets">Buy Ticket</button>
@@ -71,11 +72,9 @@ export default defineComponent({
         });
 
         await Promise.all(ticketPromises);
-        alert("Tickets successfully purchased!");
         ticketStore.clearSelectedSeats();
       } catch (error) {
         console.error("Error purchasing tickets:", error);
-        alert("An error occurred while purchasing tickets.");
       }
     };
 
@@ -90,6 +89,7 @@ export default defineComponent({
       session,
       formattedStartTime,
       buyTickets,
+      sessionId
     };
   },
 });

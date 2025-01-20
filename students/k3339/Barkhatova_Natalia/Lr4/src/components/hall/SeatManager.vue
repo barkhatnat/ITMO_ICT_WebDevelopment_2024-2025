@@ -1,7 +1,11 @@
 <template>
   <div
       class="seat"
-      :class="[seat.type.toLowerCase(), { selected: isSelected }]"
+      :class="[
+        seat.type.toLowerCase(),
+        { selected: isSelected },
+        { occupied: isOccupied }
+      ]"
       @click="handleClick"
   >
     {{ seat.number }}
@@ -44,10 +48,11 @@
 </template>
 
 <script>
-import {computed, defineComponent, ref} from 'vue';
+import {computed, defineComponent, onMounted, ref, watch} from 'vue';
 import Modal from '@/components/Modal.vue';
 import {useAuthStore} from "@/stores/auth.js";
 import {useTicketStore} from "@/stores/ticket.js";
+import {useOccupiedSeatsStore} from "@/stores/occupiedSeats.js";
 
 export default defineComponent({
   components: {Modal},
@@ -60,6 +65,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    sessionId: {
+      type: String,
+      required: true
+    },
   },
   emits: ['update', 'remove', 'select'],
   setup(props, {emit}) {
@@ -69,6 +78,26 @@ export default defineComponent({
     const authStore = useAuthStore();
     const ticketStore = useTicketStore();
     const isAdmin = computed(() => authStore.isAdmin);
+    const seatsStore = useOccupiedSeatsStore();
+    const isOccupied = computed(() => {
+      return seatsStore.occupiedSeats.has(`${props.sessionId}-${props.seat.id}`);
+    });
+
+
+    const fetchStatus = () => {
+      seatsStore.fetchSeatStatus(props.sessionId, props.seat.id);
+    };
+
+
+    onMounted(() => {
+      fetchStatus(props.sessionId, props.seat.id);
+    });
+
+    watch(
+        () => props.ticket,
+        fetchStatus(props.sessionId, props.seat.id),
+        {immediate: true}
+    );
 
     const openEditor = () => {
       if (!isAdmin.value) return;
@@ -91,6 +120,7 @@ export default defineComponent({
     };
 
     const handleClick = () => {
+      if (isOccupied.value) return;
       if (isAdmin.value) {
         openEditor();
       } else {
@@ -115,6 +145,7 @@ export default defineComponent({
       removeSeat,
       handleClick,
       isAdmin,
+      isOccupied,
     };
   },
 });
@@ -156,6 +187,12 @@ export default defineComponent({
 .seat.selected {
   border: 3px solid #007bff;
   box-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
+}
+
+.seat.occupied {
+  background-color: lightgray;
+  pointer-events: none;
+  opacity: 0.6;
 }
 
 </style>

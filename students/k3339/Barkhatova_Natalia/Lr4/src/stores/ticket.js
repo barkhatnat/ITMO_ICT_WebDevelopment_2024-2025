@@ -8,6 +8,15 @@ export const useTicketStore = defineStore({
         selectedSeats: [],
     }),
     actions: {
+        async fetchCurrentUserTickets() {
+            try {
+                const response = await api.get('rest/tickets/user');
+                this.tickets = response.data;
+            } catch (error) {
+                console.error('Failed to fetch tickets:', error.response?.data);
+            }
+        },
+
         async fetchTickets() {
             try {
                 const response = await api.get('/rest/tickets');

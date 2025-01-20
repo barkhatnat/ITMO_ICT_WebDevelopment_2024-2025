@@ -14,23 +14,28 @@
       <router-link to="/sessions">Session Manager</router-link>
     </p>
 
-    <!-- Для обычного пользователя -->
-    <p v-else>
+    <p v-if="!isAdmin">
       <router-link to="/session-board">Active sessions</router-link>
     </p>
 
-
+    <p v-if="!isAdmin">
+      <router-link to="/tickets">Your tickets</router-link>
+    </p>
   </div>
 </template>
 
 <script>
+import {computed} from 'vue';
+import {useAuthStore} from '@/stores/auth.js'; // Импортируем authStore
+
 export default {
   name: 'Home',
-  props: {
-    isAdmin: {
-      type: Boolean,
-      default: false,
-    },
+  setup() {
+    const authStore = useAuthStore();
+    const isAdmin = computed(() => authStore.isAdmin);
+    return {
+      isAdmin,
+    };
   },
 };
 </script>
@@ -40,6 +45,7 @@ export default {
   padding: 20px;
   text-align: center;
 }
+
 button {
   padding: 10px;
   margin: 10px;
