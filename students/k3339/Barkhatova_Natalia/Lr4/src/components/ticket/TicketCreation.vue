@@ -27,6 +27,7 @@ import {useMovieStore} from '@/stores/movie.js';
 import {useHallStore} from '@/stores/hall.js';
 import {useAuthStore} from "@/stores/auth.js";
 import {useTicketStore} from "@/stores/ticket.js";
+import router from "@/router/index.js";
 
 export default defineComponent({
   components: {HallBuilder},
@@ -73,6 +74,8 @@ export default defineComponent({
 
         await Promise.all(ticketPromises);
         ticketStore.clearSelectedSeats();
+        localStorage.setItem('purchaseSuccess', 'true');
+        router.push('/tickets');
       } catch (error) {
         console.error("Error purchasing tickets:", error);
       }

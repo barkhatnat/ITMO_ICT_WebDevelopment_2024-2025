@@ -51,9 +51,10 @@
 </template>
 
 <script>
-import {defineComponent, ref} from "vue";
+import {computed, defineComponent, ref} from "vue";
 import RowManager from "./RowManager.vue";
 import {useHallStore} from "@/stores/hall";
+import {useAuthStore} from "@/stores/auth.js";
 
 export default defineComponent({
   components: {RowManager},
@@ -80,6 +81,8 @@ export default defineComponent({
     const showErrors = ref(false);
     const hallStore = useHallStore();
     const {sessionId} = props;
+    const authStore = useAuthStore();
+    const isAdmin = computed(() => authStore.isAdmin);
     const addRow = () => {
       props.hall.rows.push({
         number: props.hall.rows.length + 1,
@@ -135,7 +138,8 @@ export default defineComponent({
       removeRow,
       saveHall,
       getRowError,
-      sessionId
+      sessionId,
+      isAdmin
     };
   },
 });

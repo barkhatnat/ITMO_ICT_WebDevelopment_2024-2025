@@ -23,7 +23,7 @@ export const useMovieStore = defineStore({
         },
 
         async updateMovie(movie) {
-            const response = await api.put('/rest/admin/movies/${movie.id}', movie);
+            const response = await api.put(`/rest/admin/movies/${movie.id}`, movie);
             const index = this.movies.findIndex((m) => m.id === movie.id);
             this.movies[index] = response.data;
         },

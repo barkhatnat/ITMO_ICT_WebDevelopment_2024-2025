@@ -6,39 +6,62 @@
         <td>{{ hall.name }}</td>
         <td>{{ hall.capacity }}</td>
         <td>
-          <button @click="edit(hall)">Edit</button>
-          <button @click="deleteHall(hall.id)">Delete</button>
-        </td>
-      </tr>
-      <tr v-for="row in hall?.rows" :key="row.id">
-        <td colspan="2">Row {{ row.number }}</td>
-        <td>
-          <ul>
-            <li v-for="seat in row?.seats" :key="seat.id">
-              Seat {{ seat.number }} ({{ seat.type }})
-            </li>
-          </ul>
+          <button
+              @click="edit(hall)" :disabled="isHallRelatedToSession(hall.id)">
+            Edit
+          </button>
+          <button @click="deleteHall(hall.id)" :disabled="isHallRelatedToSession(hall.id)">
+            Delete
+          </button>
         </td>
       </tr>
       </thead>
-      <tbody>
-      </tbody>
+      <tbody></tbody>
     </table>
   </div>
 </template>
 
 <script>
+import {useTicketStore} from '@/stores/ticket';
+import {onMounted, ref} from "vue";
+
 export default {
   props: {
     halls: Array,
   },
-  methods: {
-    edit(hall) {
-      this.$emit('edit', hall);
-    },
-    deleteHall(hallId) {
-      this.$emit('delete', hallId);
-    },
+  setup(props, {emit}) {
+    const ticketStore = useTicketStore();
+
+    const hallSessionsMap = ref(new Map());
+
+    const loadTickets = async () => {
+      await ticketStore.fetchTickets(); // Загружаем билеты
+      ticketStore.tickets.forEach(ticket => {
+        hallSessionsMap.value.set(ticket.session.hall.id, true);
+      });
+    };
+
+    onMounted(() => {
+      loadTickets();
+    });
+
+    const isHallRelatedToSession = (hallId) => {
+      return hallSessionsMap.value.has(hallId);
+    };
+
+    const edit = (hall) => {
+      emit('edit', hall);
+    };
+
+    const deleteHall = (hallId) => {
+      emit('delete', hallId);
+    };
+
+    return {
+      isHallRelatedToSession,
+      edit,
+      deleteHall,
+    };
   },
 };
 </script>

@@ -4,6 +4,11 @@
 
     <div v-if="loading">Loading...</div>
     <div v-if="error" class="error">{{ error }}</div>
+    <Modal v-if="isPurchaseSuccessful" @close="closeModal">
+      <h3>Congratulations!</h3>
+      <p>Your tickets have been successfully purchased.</p>
+      <button @click="closeModal">Close</button>
+    </Modal>
 
     <ul v-if="tickets.length">
       <li v-for="ticket in tickets" :key="ticket.id" class="ticket-item">
@@ -34,19 +39,34 @@
 <script>
 import {onMounted, ref} from 'vue';
 import {useTicketStore} from "@/stores/ticket.js";
+import Modal from "@/components/Modal.vue";
 
 export default {
   name: 'UserTickets',
+  components: {Modal},
   setup() {
     const ticketStore = useTicketStore();
     const tickets = ref([]);
     const loading = ref(true);
     const error = ref(null);
+    const isPurchaseSuccessful = ref(false);
+
+    onMounted(() => {
+      const purchaseStatus = localStorage.getItem('purchaseSuccess');
+      if (purchaseStatus === 'true') {
+        isPurchaseSuccessful.value = true;
+        localStorage.removeItem('purchaseSuccess');
+      }
+    });
+
+    const closeModal = () => {
+      isPurchaseSuccessful.value = false;
+    };
 
     const fetchTickets = async () => {
       try {
-        await ticketStore.fetchCurrentUserTickets();  // Загружаем билеты через store
-        tickets.value = ticketStore.tickets;  // Получаем билеты из хранилища
+        await ticketStore.fetchCurrentUserTickets();
+        tickets.value = ticketStore.tickets;
       } catch (err) {
         error.value = 'Failed to load tickets. Please try again later.';
       } finally {
@@ -76,6 +96,8 @@ export default {
       loading,
       error,
       formatDate,
+      isPurchaseSuccessful,
+      closeModal
     };
   },
 };

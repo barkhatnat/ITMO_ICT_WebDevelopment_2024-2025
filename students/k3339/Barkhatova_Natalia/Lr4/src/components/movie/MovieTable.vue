@@ -15,8 +15,10 @@
         <td>{{ movie.duration }}</td>
         <td>{{ movie.description }}</td>
         <td>
-          <button @click="edit(movie)">Edit</button>
-          <button @click="deleteMovie(movie.id)">Delete</button>
+          <button @click="edit(movie)" :disabled="isMovieRelatedToSessions(movie.id)">Edit</button>
+          <button @click="deleteMovie(movie.id)" :disabled="isMovieRelatedToSessions(movie.id)">
+            Delete
+          </button>
         </td>
       </tr>
       </tbody>
@@ -25,17 +27,54 @@
 </template>
 
 <script>
+import { ref, onMounted } from 'vue';
+import { useSessionStore } from '@/stores/session';
+
 export default {
   props: {
     movies: Array,
   },
-  methods: {
-    edit(movie) {
-      this.$emit('edit', movie);
-    },
-    deleteMovie(movieId) {
-      this.$emit('delete', movieId);
-    },
+  setup(props, { emit }) {
+    const sessionStore = useSessionStore();
+    const movieSessionsMap = ref(new Map());
+
+    const loadSessions = async () => {
+      await sessionStore.fetchSessions(); // Загружаем сеансы
+      sessionStore.sessions.forEach(session => {
+        movieSessionsMap.value.set(session.movie.id, true);
+      });
+    };
+
+    onMounted(() => {
+      loadSessions();
+    });
+
+    const isMovieRelatedToSessions = (movieId) => {
+      return movieSessionsMap.value.has(movieId);
+    };
+
+    const edit = (movie) => {
+      if (isMovieRelatedToSessions(movie.id)) {
+        alert('You cannot edit this movie because it has associated sessions.');
+        return;
+      }
+      emit('edit', movie);
+    };
+
+
+    const deleteMovie = (movieId) => {
+      if (isMovieRelatedToSessions(movieId)) {
+        alert('You cannot delete this movie because it has associated sessions.');
+        return;
+      }
+      emit('delete', movieId);
+    };
+
+    return {
+      isMovieRelatedToSessions,
+      edit,
+      deleteMovie,
+    };
   },
 };
 </script>

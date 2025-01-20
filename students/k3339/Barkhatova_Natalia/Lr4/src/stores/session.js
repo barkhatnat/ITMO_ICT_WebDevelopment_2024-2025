@@ -20,7 +20,7 @@ export const useSessionStore = defineStore({
             this.sessions.push(response.data);
         },
         async updateSession(session) {
-            const response = await api.put('/rest/admin/sessions/${session.id}', session);
+            const response = await api.put(`/rest/admin/sessions/${session.id}`, session);
             const index = this.sessions.findIndex((s) => s.id === session.id);
             this.sessions[index] = response.data;
         },

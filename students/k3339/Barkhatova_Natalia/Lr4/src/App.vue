@@ -2,17 +2,35 @@
   <div id="app">
     <nav>
       <router-link to="/">Home</router-link>
-      <router-link to="/about">About</router-link>
+      <a href="#" @click.prevent="handleLogout">Logout</a>
     </nav>
-    <router-view />
+    <router-view/>
   </div>
 </template>
 
+
+<
 <script>
+import {useAuthStore} from '@/stores/auth';
+import {useRouter} from 'vue-router';
+
 export default {
   name: 'App',
+  setup() {
+    const authStore = useAuthStore();
+    const router = useRouter();
+
+    const handleLogout = async () => {
+      await authStore.logout();
+      router.push('/login');
+    };
+    return {
+      handleLogout
+    };
+  }
 };
 </script>
+
 
 <style>
 nav {

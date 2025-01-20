@@ -19,8 +19,9 @@ export const useTicketStore = defineStore({
 
         async fetchTickets() {
             try {
-                const response = await api.get('/rest/tickets');
+                const response = await api.get('/rest/admin/tickets');
                 this.tickets = response.data;
+
             } catch (error) {
                 console.error('Failed to fetch tickets:', error.response?.data);
             }

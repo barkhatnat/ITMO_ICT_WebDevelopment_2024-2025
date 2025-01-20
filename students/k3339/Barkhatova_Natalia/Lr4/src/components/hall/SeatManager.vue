@@ -2,10 +2,10 @@
   <div
       class="seat"
       :class="[
-        seat.type.toLowerCase(),
-        { selected: isSelected },
-        { occupied: isOccupied }
-      ]"
+      seat.type.toLowerCase(),
+      { selected: isSelected },
+      { occupied: isOccupied }
+    ]"
       @click="handleClick"
   >
     {{ seat.number }}
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import {computed, defineComponent, onMounted, ref, watch} from 'vue';
+import {computed, defineComponent, onMounted, ref} from 'vue';
 import Modal from '@/components/Modal.vue';
 import {useAuthStore} from "@/stores/auth.js";
 import {useTicketStore} from "@/stores/ticket.js";
@@ -67,7 +67,7 @@ export default defineComponent({
     },
     sessionId: {
       type: String,
-      required: true
+      required: true,
     },
   },
   emits: ['update', 'remove', 'select'],
@@ -79,25 +79,23 @@ export default defineComponent({
     const ticketStore = useTicketStore();
     const isAdmin = computed(() => authStore.isAdmin);
     const seatsStore = useOccupiedSeatsStore();
+
     const isOccupied = computed(() => {
+      if (isAdmin.value) {
+        return false;
+      }
       return seatsStore.occupiedSeats.has(`${props.sessionId}-${props.seat.id}`);
     });
-
 
     const fetchStatus = () => {
       seatsStore.fetchSeatStatus(props.sessionId, props.seat.id);
     };
 
-
     onMounted(() => {
+      if (isAdmin.value) return;
       fetchStatus(props.sessionId, props.seat.id);
     });
 
-    watch(
-        () => props.ticket,
-        fetchStatus(props.sessionId, props.seat.id),
-        {immediate: true}
-    );
 
     const openEditor = () => {
       if (!isAdmin.value) return;
@@ -126,7 +124,6 @@ export default defineComponent({
       } else {
         isSelected.value = !isSelected.value;
         emit('select', {seat: props.seat, selected: isSelected.value});
-
         if (isSelected.value) {
           ticketStore.addSeat(props.seat);
         } else {
@@ -149,7 +146,6 @@ export default defineComponent({
     };
   },
 });
-
 </script>
 
 <style scoped>
@@ -194,5 +190,4 @@ export default defineComponent({
   pointer-events: none;
   opacity: 0.6;
 }
-
 </style>
