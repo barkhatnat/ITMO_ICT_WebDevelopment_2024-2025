@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+
+    
+    <title>Практическая работа - web_labs</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../css/base.min.css" rel="stylesheet">
+    <link href="../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../..">web_labs</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lab 1 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../lab1/task1/">Task 1</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../lab1/task2/">Task 2</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../lab1/task3/">Task 3</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../lab1/task4/">Task 4</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../lab1/task5/">Task 5</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lab 2 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../lab2/part1/">Практическая работа</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lab 3 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../lab3/practice/">Практическая работа</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../lab3/lab/">Лабораторная работа</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lab 4 <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li class="active">
+    <a href="./">Практическая работа</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../../lab3/lab/">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li class="disabled">
+                        <a rel="next" >
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#_1">Регистрация</a></li>
+        <li class="first-level "><a href="#_2">Создание залов</a></li>
+        <li class="first-level "><a href="#_3">Создание фильмов</a></li>
+        <li class="first-level "><a href="#_4">Создание сеансов</a></li>
+        <li class="first-level "><a href="#_5">Просмотр доступных сеансов</a></li>
+        <li class="first-level "><a href="#_6">Бронь места на сеанс</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="_1">Регистрация</h1>
+<p>Я использовала pinia для создания stores</p>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250120224810.png" /></p>
+<p>В authStore.js  из самого важного я храню accessToken</p>
+<pre><code>import {defineStore} from 'pinia';  
+import axios from 'axios';  
+
+export const useAuthStore = defineStore('auth', {  
+    state: () =&gt; ({  
+        accessToken: localStorage.getItem('accessToken') || null,  
+        user: null,  
+        loading: false,  
+        error: null,  
+    }),  
+    getters: {  
+        isAuthenticated: (state) =&gt; !!state.accessToken,  
+        userRole: (state) =&gt; state.user?.role?.name || null,  
+        isAdmin: (state) =&gt; state.userRole === 'ROLE_ADMIN',  
+    },  
+    actions: {  
+        async login(credentials) {  
+            this.loading = true;  
+            this.error = null;  
+            try {  
+                const response = await axios.post('http://localhost:8080/auth/login', credentials);  
+                const token = response.data.accessToken;  
+
+                localStorage.setItem('accessToken', token);  
+                this.accessToken = token;  
+
+                await this.fetchUser();  
+
+                return true;  
+            } catch (error) {  
+                this.error = error.response?.data?.message || 'Login failed';  
+                return false;  
+            } finally {  
+                this.loading = false;  
+            }  
+        },  
+        async fetchUser() {  
+            if (!this.accessToken) return;  
+
+            try {  
+                const response = await axios.get('http://localhost:8080/rest/me', {  
+                    headers: {  
+                        Authorization: `Bearer ${this.accessToken}`,  
+                    },  
+                });  
+                this.user = response.data;  
+            } catch (error) {  
+                this.logout();  
+            }  
+        },  
+        logout() {  
+            this.accessToken = null;  
+            this.user = null;  
+            localStorage.removeItem('accessToken');  
+        },  
+    },  
+});
+</code></pre>
+<p>Затем я создавала формы логина и регистрации</p>
+<pre><code>&lt;template&gt;  
+  &lt;div class=&quot;login-container&quot;&gt;  
+    &lt;h1&gt;Добро Пожаловать!&lt;/h1&gt;  
+    &lt;p&gt;Мы рады видеть вас снова!&lt;/p&gt;  
+    &lt;form class=&quot;login-form&quot; @submit.prevent=&quot;handleLogin&quot;&gt;  
+      &lt;input type=&quot;email&quot; v-model=&quot;email&quot; placeholder=&quot;Email&quot; required /&gt;  
+      &lt;input type=&quot;password&quot; v-model=&quot;password&quot; placeholder=&quot;Пароль&quot; required /&gt;  
+      &lt;button type=&quot;submit&quot; :disabled=&quot;authStore.loading&quot;&gt;Войти&lt;/button&gt;  
+    &lt;/form&gt;  
+    &lt;p v-if=&quot;authStore.error&quot; class=&quot;error&quot;&gt;{{ authStore.error }}&lt;/p&gt;  
+    &lt;router-link to=&quot;/register&quot; class=&quot;switch-page-btn&quot;&gt;Еще не зарегистрированы?&lt;/router-link&gt;  
+  &lt;/div&gt;  
+&lt;/template&gt;  
+&lt;script&gt;  
+import {ref} from 'vue';  
+import {useAuthStore} from '@/stores/auth.js';  
+import {useRouter} from 'vue-router';  
+
+export default {  
+  setup() {  
+    const email = ref('');  
+    const password = ref('');  
+    const authStore = useAuthStore();  
+    const router = useRouter();  
+
+    const handleLogin = async () =&gt; {  
+      const success = await authStore.login({email: email.value, password: password.value});  
+      if (success) {  
+        router.push('/');  
+      }  
+    };  
+
+    return {email, password, authStore, handleLogin};  
+  },  
+};  
+</code></pre>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250120225748.png" />
+<img alt="Описание" src="../../assets/Pasted%20image%2020250120225817.png" /></p>
+<h1 id="_2">Создание залов</h1>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250120225015.png" /></p>
+<p>HallManager это общий компонент для управления залами. Внутри него содержится HallTable, которая отвечает за отображение залов, а при нажатии на кнопки создания и редактирования в модальном окне открывается компонент HallBuilder, внутри которого есть RowManager, отвечающий за ряды и SeatManager, отвечающий за сиденья</p>
+<pre><code>&lt;template&gt;  
+  &lt;div class=&quot;hall-builder&quot;&gt;  
+    &lt;h2 v-if=&quot;isAdmin&quot;&gt;{{ isEditing ? 'Изменить зал' : 'Создать зал' }}&lt;/h2&gt;  
+
+    &lt;div v-if=&quot;isAdmin&quot; class=&quot;input-container&quot;&gt;  
+      &lt;label for=&quot;hall-name&quot;&gt;Название зала:&lt;/label&gt;  
+      &lt;input  
+          id=&quot;hall-name&quot;  
+          v-model=&quot;hall.name&quot;  
+          type=&quot;text&quot;  
+          placeholder=&quot;Введите название зала&quot;  
+      /&gt;  
+      &lt;p v-if=&quot;errors.name&quot; class=&quot;error&quot;&gt;{{ errors.name }}&lt;/p&gt;  
+    &lt;/div&gt;  
+
+    &lt;div class=&quot;legend&quot;&gt;  
+      &lt;div class=&quot;legend-item&quot;&gt;  
+        &lt;div class=&quot;color-box standard&quot;&gt;&lt;/div&gt;  
+        &lt;span&gt;Обычный&lt;/span&gt;  
+      &lt;/div&gt;  
+      &lt;div class=&quot;legend-item&quot;&gt;  
+        &lt;div class=&quot;color-box vip&quot;&gt;&lt;/div&gt;  
+        &lt;span&gt;VIP&lt;/span&gt;  
+      &lt;/div&gt;  
+      &lt;div class=&quot;legend-item&quot;&gt;  
+        &lt;div class=&quot;color-box handicapped&quot;&gt;&lt;/div&gt;  
+        &lt;span&gt;Для людей с инвалидностью&lt;/span&gt;  
+      &lt;/div&gt;  
+      &lt;div class=&quot;legend-item&quot;&gt;  
+        &lt;div class=&quot;color-box couple&quot;&gt;&lt;/div&gt;  
+        &lt;span&gt;Для пары&lt;/span&gt;  
+      &lt;/div&gt;  
+    &lt;/div&gt;  
+
+    &lt;div class=&quot;rows-container&quot; v-if=&quot;hall?.rows&quot;&gt;  
+      &lt;RowManager  
+          v-for=&quot;(row, index) in hall.rows&quot;  
+          :key=&quot;index&quot;  
+          :row=&quot;row&quot;  
+          :errors=&quot;getRowError(index)&quot;  
+          :sessionId=&quot;sessionId&quot;  
+          @update=&quot;updateRow(index, $event)&quot;  
+          @remove=&quot;removeRow(index)&quot;  
+      /&gt;  
+      &lt;p v-if=&quot;errors.rows&quot; class=&quot;error&quot;&gt;{{ errors.rows }}&lt;/p&gt;  
+    &lt;/div&gt;  
+
+    &lt;button v-if=&quot;isAdmin&quot; class=&quot;add-row-btn&quot; @click=&quot;addRow&quot;&gt;+ Добавить ряд&lt;/button&gt;  
+    &lt;button v-if=&quot;isAdmin&quot; class=&quot;save-btn&quot; @click=&quot;saveHall&quot;&gt;Сохранить зал&lt;/button&gt;  
+  &lt;/div&gt;  
+&lt;/template&gt;  
+
+&lt;script&gt;  
+import {computed, defineComponent, ref} from &quot;vue&quot;;  
+import RowManager from &quot;./RowManager.vue&quot;;  
+import {useHallStore} from &quot;@/stores/hall&quot;;  
+import {useAuthStore} from &quot;@/stores/auth.js&quot;;  
+
+export default defineComponent({  
+  components: {RowManager},  
+  props: {  
+    hall: {  
+      type: Object,  
+      default: () =&gt; ({rows: []}),  
+    },  
+    isEditing: {  
+      type: Boolean,  
+      default: false,  
+    },  
+    isAdmin: {  
+      type: Boolean,  
+      default: false,  
+    },  
+    sessionId: {  
+      type: String,  
+      default: &quot;&quot;,  
+    }  
+  },  
+  setup(props, {emit}) {  
+    const errors = ref({});  
+    const showErrors = ref(false);  
+    const hallStore = useHallStore();  
+    const {sessionId} = props;  
+    const authStore = useAuthStore();  
+    const isAdmin = computed(() =&gt; authStore.isAdmin);  
+    const addRow = () =&gt; {  
+      props.hall.rows.push({  
+        number: props.hall.rows.length + 1,  
+        seats: [],  
+      });  
+    };  
+
+    const updateRow = (rowIndex, updatedRow) =&gt; {  
+      props.hall.rows.splice(rowIndex, 1, updatedRow);  
+    };  
+
+    const removeRow = (rowIndex) =&gt; {  
+      props.hall.rows.splice(rowIndex, 1);  
+      props.hall.rows.forEach((row, index) =&gt; {  
+        row.number = index + 1;  
+      });  
+    };  
+
+    const getRowError = (index) =&gt; {  
+      return errors.value[`rows[${index}].seats`] || null;  
+    };  
+
+    const saveHall = async () =&gt; {  
+      showErrors.value = true;  
+      try {  
+        if (props.isEditing) {  
+          await hallStore.updateHall(props.hall);  
+        } else {  
+          await hallStore.addHall(props.hall);  
+        }  
+
+        errors.value = {};  
+        emit(&quot;save&quot;, props.hall);  
+      } catch (error) {  
+        if (error.response &amp;&amp; error.response.data) {  
+          const serverErrors = error.response.data;  
+          for (const key in serverErrors) {  
+            if (Object.prototype.hasOwnProperty.call(serverErrors, key)) {  
+              errors.value[key] = serverErrors[key];  
+            }  
+          }  
+        } else {  
+          console.error(&quot;Ошибка при сохранении:&quot;, error);  
+        }  
+      }  
+    };  
+
+    return {  
+      errors,  
+      showErrors,  
+      addRow,  
+      updateRow,  
+      removeRow,  
+      saveHall,  
+      getRowError,  
+      sessionId,  
+      isAdmin  
+    };  
+  },  
+});  
+&lt;/script&gt;
+</code></pre>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250120225837.png" />
+<img alt="Описание" src="../../assets/Pasted%20image%2020250120225903.png" /></p>
+<h1 id="_3">Создание фильмов</h1>
+<p>MovieManager это общий компонент для управления фильмами. Внутри него содержится MovieTable, которая отвечает за отображение фильмов</p>
+<pre><code>&lt;template&gt;  
+  &lt;div class=&quot;movie-manager&quot;&gt;  
+    &lt;h2&gt;Управление фильмами&lt;/h2&gt;  
+
+    &lt;button class=&quot;add-movie-btn&quot; @click=&quot;showAddMovieModal&quot;&gt;Добавить новый фильм&lt;/button&gt;  
+
+    &lt;MovieTable  
+        :movies=&quot;movies&quot;  
+        @edit=&quot;editMovie&quot;  
+        @delete=&quot;deleteMovie&quot;  
+    /&gt;  
+
+    &lt;Modal v-if=&quot;showModal&quot; @close=&quot;closeModal&quot;&gt;  
+      &lt;h3 class=&quot;modal-title&quot;&gt;{{ isEditing ? 'Редактировать фильм' : 'Добавить фильм' }} Фильм&lt;/h3&gt;  
+      &lt;form @submit.prevent=&quot;saveMovie&quot; class=&quot;movie-form&quot;&gt;  
+        &lt;div class=&quot;form-group&quot;&gt;  
+          &lt;label for=&quot;name&quot;&gt;Название&lt;/label&gt;  
+          &lt;input v-model=&quot;movieForm.name&quot; type=&quot;text&quot; id=&quot;name&quot; required class=&quot;form-input&quot;/&gt;  
+          &lt;p v-if=&quot;errors.name&quot; class=&quot;error&quot;&gt;{{ errors.name }}&lt;/p&gt;  
+        &lt;/div&gt;  
+        &lt;div class=&quot;form-group&quot;&gt;  
+          &lt;label for=&quot;description&quot;&gt;Описание&lt;/label&gt;  
+          &lt;textarea v-model=&quot;movieForm.description&quot; id=&quot;description&quot; required class=&quot;form-textarea&quot;&gt;&lt;/textarea&gt;  
+          &lt;p v-if=&quot;errors.description&quot; class=&quot;error&quot;&gt;{{ errors.description }}&lt;/p&gt;  
+        &lt;/div&gt;  
+        &lt;div class=&quot;form-group&quot;&gt;  
+          &lt;label for=&quot;duration&quot;&gt;Продолжительность (в минутах)&lt;/label&gt;  
+          &lt;input v-model=&quot;movieForm.duration&quot; type=&quot;number&quot; id=&quot;duration&quot; required min=&quot;1&quot; class=&quot;form-input&quot;/&gt;  
+          &lt;p v-if=&quot;errors.duration&quot; class=&quot;error&quot;&gt;{{ errors.duration }}&lt;/p&gt;  
+        &lt;/div&gt;  
+        &lt;button type=&quot;submit&quot; class=&quot;submit-btn&quot;&gt;{{ isEditing ? 'Сохранить Изменения' : 'Добавить Фильм' }}&lt;/button&gt;  
+      &lt;/form&gt;  
+    &lt;/Modal&gt;  
+  &lt;/div&gt;  
+&lt;/template&gt;  
+&lt;script&gt;  
+import {computed, onMounted, ref} from 'vue';  
+import {useMovieStore} from '@/stores/movie.js';  
+import MovieTable from './MovieTable.vue';  
+import Modal from '../Modal.vue';  
+
+export default {  
+  components: {  
+    MovieTable,  
+    Modal,  
+  },  
+  setup() {  
+    const movieStore = useMovieStore();  
+    const movies = computed(() =&gt; movieStore.movies);  
+    const showModal = ref(false);  
+    const isEditing = ref(false);  
+    const errors = ref({});  
+    const movieForm = ref({  
+      title: '',  
+      description: '',  
+      releaseDate: '',  
+    });  
+
+    const showAddMovieModal = () =&gt; {  
+      isEditing.value = false;  
+      movieForm.value = {title: '', description: '', releaseDate: ''};  
+      showModal.value = true;  
+    };  
+
+    const editMovie = (movie) =&gt; {  
+      isEditing.value = true;  
+      movieForm.value = {...movie};  
+      showModal.value = true;  
+    };  
+
+    const saveMovie = async () =&gt; {  
+      try {  
+        if (isEditing.value) {  
+          await movieStore.updateMovie(movieForm.value);  
+        } else {  
+          await movieStore.addMovie(movieForm.value);  
+        }  
+        showModal.value = false;  
+        movieForm.value = {title: '', description: '', releaseDate: ''};  
+        errors.value = {};  
+      } catch (error) {  
+        if (error.response &amp;&amp; error.response.data) {  
+          const serverErrors = error.response.data;  
+          for (const key in serverErrors) {  
+            if (Object.prototype.hasOwnProperty.call(serverErrors, key)) {  
+              errors.value[key] = serverErrors[key];  
+            }  
+          }  
+        } else {  
+          console.error(&quot;Ошибка при сохранении:&quot;, error);  
+        }  
+      }  
+    };  
+
+
+    const deleteMovie = async (movieId) =&gt; {  
+      await movieStore.deleteMovie(movieId);  
+    };  
+
+    const closeModal = () =&gt; {  
+      showModal.value = false;  
+    };  
+
+    onMounted(async () =&gt; {  
+      console.log('Fetching movies on page load...');  
+      await movieStore.fetchMovies();  
+      console.log(movieStore.movies);  
+    });  
+
+    return {  
+      movies,  
+      errors,  
+      showModal,  
+      isEditing,  
+      movieForm,  
+      showAddMovieModal,  
+      editMovie,  
+      saveMovie,  
+      deleteMovie,  
+      closeModal  
+    };  
+  },  
+};  
+&lt;/script&gt;  
+</code></pre>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250120225922.png" />
+<img alt="Описание" src="../../assets/Pasted%20image%2020250120230041.png" /></p>
+<h1 id="_4">Создание сеансов</h1>
+<p>Аналогично происходит создание сеансов</p>
+<pre><code>&lt;template&gt;  
+  &lt;div class=&quot;session-manager&quot;&gt;  
+    &lt;h2&gt;Управление сеансами&lt;/h2&gt;  
+
+    &lt;button class=&quot;add-session-btn&quot; @click=&quot;showAddSessionModal&quot;&gt;Добавить новый сеанс&lt;/button&gt;  
+
+    &lt;SessionTable  
+        :sessions=&quot;sessions&quot;  
+        @edit=&quot;editSession&quot;  
+        @delete=&quot;deleteSession&quot;  
+    /&gt;  
+
+    &lt;Modal v-if=&quot;showModal&quot; @close=&quot;closeModal&quot;&gt;  
+      &lt;h3 class=&quot;modal-title&quot;&gt;{{ isEditing ? 'Редактировать сеанс' : 'Добавить сеанс' }} Сеанс&lt;/h3&gt;  
+      &lt;form @submit.prevent=&quot;saveSession&quot; class=&quot;session-form&quot;&gt;  
+        &lt;div class=&quot;form-group&quot;&gt;  
+          &lt;label for=&quot;movie&quot;&gt;Фильм&lt;/label&gt;  
+          &lt;select v-model=&quot;sessionForm.movieId&quot; id=&quot;movie&quot; required class=&quot;form-select&quot;&gt;  
+            &lt;option v-for=&quot;movie in movies&quot; :key=&quot;movie.id&quot; :value=&quot;movie.id&quot;&gt;{{ movie.name }}&lt;/option&gt;  
+          &lt;/select&gt;  
+          &lt;p v-if=&quot;errors.movieId&quot; class=&quot;error&quot;&gt;{{ errors.movieId }}&lt;/p&gt;  
+        &lt;/div&gt;  
+        &lt;div class=&quot;form-group&quot;&gt;  
+          &lt;label for=&quot;hall&quot;&gt;Зал&lt;/label&gt;  
+          &lt;select v-model=&quot;sessionForm.hallId&quot; id=&quot;hall&quot; required class=&quot;form-select&quot;&gt;  
+            &lt;option v-for=&quot;hall in halls&quot; :key=&quot;hall.id&quot; :value=&quot;hall.id&quot;&gt;{{ hall.name }}&lt;/option&gt;  
+          &lt;/select&gt;  
+          &lt;p v-if=&quot;errors.hallId&quot; class=&quot;error&quot;&gt;{{ errors.hallId }}&lt;/p&gt;  
+        &lt;/div&gt;  
+        &lt;div class=&quot;form-group&quot;&gt;  
+          &lt;label for=&quot;start-time&quot;&gt;Время начала&lt;/label&gt;  
+          &lt;input v-model=&quot;sessionForm.startTime&quot; type=&quot;datetime-local&quot; id=&quot;start-time&quot; required class=&quot;form-input&quot; /&gt;  
+          &lt;p v-if=&quot;errors.startTime&quot; class=&quot;error&quot;&gt;{{ errors.startTime }}&lt;/p&gt;  
+        &lt;/div&gt;  
+        &lt;div class=&quot;form-group&quot;&gt;  
+          &lt;label for=&quot;price&quot;&gt;Цена&lt;/label&gt;  
+          &lt;input v-model=&quot;sessionForm.price&quot; type=&quot;number&quot; id=&quot;price&quot; required min=&quot;1&quot; class=&quot;form-input&quot; /&gt;  
+          &lt;p v-if=&quot;errors.price&quot; class=&quot;error&quot;&gt;{{ errors.price }}&lt;/p&gt;  
+        &lt;/div&gt;  
+        &lt;button type=&quot;submit&quot; class=&quot;submit-btn&quot;&gt;{{ isEditing ? 'Сохранить Изменения' : 'Добавить Сеанс' }}&lt;/button&gt;  
+      &lt;/form&gt;  
+    &lt;/Modal&gt;  
+  &lt;/div&gt;  
+&lt;/template&gt;  
+
+&lt;script&gt;  
+import { computed, onMounted, ref } from 'vue';  
+import { useSessionStore } from '@/stores/session.js';  
+import { useMovieStore } from '@/stores/movie.js';  
+import SessionTable from './SessionTable.vue';  
+import Modal from '../Modal.vue';  
+import {useHallStore} from &quot;@/stores/hall.js&quot;;  
+
+export default {  
+  components: { SessionTable, Modal },  
+  setup() {  
+    const sessionStore = useSessionStore();  
+    const movieStore = useMovieStore();  
+    const hallStore = useHallStore();  
+    const sessions = computed(() =&gt; sessionStore.sessions);  
+    const movies = computed(() =&gt; movieStore.movies);  
+    const halls = computed(() =&gt; hallStore.halls);  
+
+    const showModal = ref(false);  
+    const isEditing = ref(false);  
+    const errors = ref({});  
+    const sessionForm = ref({  
+      movieId: '',  
+      hallId: '',  
+      startTime: '',  
+      price: '',  
+    });  
+
+    const showAddSessionModal = () =&gt; {  
+      isEditing.value = false;  
+      sessionForm.value = { movieId: '', hallId: '', startTime: '', price: '' };  
+      showModal.value = true;  
+    };  
+
+    const editSession = (session) =&gt; {  
+      isEditing.value = true;  
+      sessionForm.value = {  
+        movieId: session.movie.id,  
+        hallId: session.hall.id,  
+        startTime: session.startTime.slice(0, 16),  
+        price: session.price,  
+      };  
+      showModal.value = true;  
+    };  
+
+    const saveSession = async () =&gt; {  
+      try {  
+        if (isEditing.value) {  
+          await sessionStore.updateSession(sessionForm.value);  
+        } else {  
+          await sessionStore.addSession(sessionForm.value);  
+        }  
+        showModal.value = false;  
+        sessionForm.value = { movieId: '', hallId: '', startTime: '', price: '' };  
+        errors.value = {};  
+      } catch (error) {  
+        errors.value = error.response?.data || {};  
+      }  
+    };  
+
+    const deleteSession = async (sessionId) =&gt; {  
+      await sessionStore.deleteSession(sessionId);  
+    };  
+
+    const closeModal = () =&gt; {  
+      showModal.value = false;  
+    };  
+
+    onMounted(async () =&gt; {  
+      await movieStore.fetchMovies();  
+      await hallStore.fetchHalls();  
+      await sessionStore.fetchSessions();  
+    });  
+
+    return {  
+      sessions,  
+      movies,  
+      halls,  
+      showModal,  
+      isEditing,  
+      sessionForm,  
+      errors,  
+      showAddSessionModal,  
+      editSession,  
+      saveSession,  
+      deleteSession,  
+      closeModal  
+    };  
+  },  
+};  
+&lt;/script&gt;  
+</code></pre>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250120230136.png" />
+<img alt="Описание" src="../../assets/Pasted%20image%2020250120230151.png" /></p>
+<h1 id="_5">Просмотр доступных сеансов</h1>
+<p>Для юзера я реализовала возможность просматривать сеансы через SessionBoard, каждый сеанс представляет собой SessionPoster</p>
+<pre><code>&lt;template&gt;  
+  &lt;div class=&quot;session-board&quot;&gt;  
+    &lt;h2&gt;Киносеансы&lt;/h2&gt;  
+    &lt;div v-if=&quot;isLoading&quot; class=&quot;loading&quot;&gt;Загрузка...&lt;/div&gt;  
+    &lt;div class=&quot;session-grid&quot; v-else&gt;  
+      &lt;SessionPoster  
+          v-for=&quot;session in sessions&quot;  
+          :key=&quot;session.id&quot;  
+          :session=&quot;session&quot;  
+      /&gt;  
+    &lt;/div&gt;  
+  &lt;/div&gt;  
+&lt;/template&gt;  
+
+&lt;script&gt;  
+import { defineComponent, computed, onMounted, ref } from 'vue';  
+import SessionPoster from './SessionPoster.vue';  
+import { useSessionStore } from &quot;@/stores/session.js&quot;;  
+import { useMovieStore } from &quot;@/stores/movie.js&quot;;  
+import { useHallStore } from &quot;@/stores/hall.js&quot;;  
+
+export default defineComponent({  
+  name: 'SessionBoard',  
+  components: {  
+    SessionPoster,  
+  },  
+  setup() {  
+    const sessionStore = useSessionStore();  
+    const isLoading = ref(true);  
+    const sessions = computed(() =&gt; sessionStore.sessions);  
+    onMounted(async () =&gt; {  
+      if (sessionStore.sessions.length === 0) {  
+        await sessionStore.fetchSessions();  
+      }  
+      isLoading.value = false;  
+    });  
+
+    return {  
+      sessions,  
+      isLoading,  
+    };  
+  },  
+});  
+&lt;/script&gt;  
+</code></pre>
+<h1 id="_6">Бронь места на сеанс</h1>
+<p>Через постер сеанса можно забронировать место. Здесь так же показывается HallBuilder и его внутренности, но поля редактирования скрыты</p>
+<pre><code>&lt;template&gt;  
+  &lt;div class=&quot;ticket-purchase&quot;&gt;  
+    &lt;div class=&quot;session-info&quot;&gt;  
+      &lt;h2&gt;{{ session?.movie?.name }}&lt;/h2&gt;  
+      &lt;p&gt;&lt;strong&gt;Время:&lt;/strong&gt; {{ formattedStartTime }}&lt;/p&gt;  
+      &lt;p&gt;&lt;strong&gt;Зал:&lt;/strong&gt; {{ session?.hall?.name }}&lt;/p&gt;  
+    &lt;/div&gt;  
+
+    &lt;div class=&quot;hall-selection&quot;&gt;  
+      &lt;h3&gt;Выберите ваши места&lt;/h3&gt;  
+      &lt;HallBuilder  
+          :hall=&quot;session?.hall&quot;  
+          :isEditing=&quot;false&quot;  
+          :sessionId=&quot;sessionId&quot;  
+      /&gt;  
+    &lt;/div&gt;  
+    &lt;button class=&quot;buy-ticket-btn&quot; @click=&quot;buyTickets&quot;&gt;Забронировать билет&lt;/button&gt;  
+  &lt;/div&gt;  
+&lt;/template&gt;  
+
+&lt;script&gt;  
+import {computed, defineComponent, onMounted} from 'vue';  
+import HallBuilder from '@/components/hall/HallBuilder.vue';  
+import {useRoute} from 'vue-router';  
+import {useSessionStore} from '@/stores/session.js';  
+import {useMovieStore} from '@/stores/movie.js';  
+import {useHallStore} from '@/stores/hall.js';  
+import {useAuthStore} from &quot;@/stores/auth.js&quot;;  
+import {useTicketStore} from &quot;@/stores/ticket.js&quot;;  
+import router from &quot;@/router/index.js&quot;;  
+
+export default defineComponent({  
+  components: {HallBuilder},  
+  setup() {  
+    const route = useRoute();  
+    const sessionId = route.params.sessionId;  
+
+    const sessionStore = useSessionStore();  
+    const authStore = useAuthStore();  
+    const ticketStore = useTicketStore();  
+    const movieStore = useMovieStore();  
+    const hallStore = useHallStore();  
+    const selectedSeats = computed(() =&gt; ticketStore.selectedSeats);  
+    const session = computed(() =&gt; {  
+      return sessionStore.sessions.find(s =&gt; s.id === sessionId);  
+    });  
+
+    const formattedStartTime = computed(() =&gt; {  
+      if (!session.value) return '';  
+      const date = new Date(session.value.startTime);  
+      return date.toLocaleString('en-GB', {  
+        weekday: 'short',  
+        day: 'numeric',  
+        month: 'short',  
+        hour: '2-digit',  
+        minute: '2-digit',  
+      });  
+    });  
+
+    const buyTickets = async () =&gt; {  
+      if (!session.value || selectedSeats.length === 0) {  
+        alert(&quot;Please select at least one seat.&quot;);  
+        return;  
+      }  
+      try {  
+        const ticketPromises = selectedSeats.value.map(seat =&gt; {  
+          const ticket = {  
+            userId: authStore.user.id,  
+            sessionId: session.value.id,  
+            seatId: seat.id,  
+          };  
+          return ticketStore.addTicket(ticket);  
+        });  
+
+        await Promise.all(ticketPromises);  
+        ticketStore.clearSelectedSeats();  
+        localStorage.setItem('purchaseSuccess', 'true');  
+        router.push('/tickets');  
+      } catch (error) {  
+        console.error(&quot;Error purchasing tickets:&quot;, error);  
+      }  
+    };  
+
+
+    onMounted(() =&gt; {  
+      sessionStore.fetchSessions();  
+      movieStore.fetchMovies();  
+      hallStore.fetchHalls();  
+    })  
+
+    return {  
+      session,  
+      formattedStartTime,  
+      buyTickets,  
+      sessionId  
+    };  
+  },  
+});  
+&lt;/script&gt;  
+</code></pre>
+<p><img alt="Описание" src="../../assets/Pasted%20image%2020250120230342.png" />
+Выберем все места на последнем ряду 
+<img alt="Описание" src="../../assets/Pasted%20image%2020250120230404.png" />
+Пользователь бронирует место и телепортируется в список своих билетов.
+<img alt="Описание" src="../../assets/Pasted%20image%2020250120230419.png" />
+А вот и наши билеты 
+<img alt="Описание" src="../../assets/Pasted%20image%2020250120230518.png" />
+Если зайти на сеанс снова, то купленные места будут недоступны
+<img alt="Описание" src="../../assets/Pasted%20image%2020250120230534.png" /></p></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../.."</script>
+    
+    <script src="../../js/base.js"></script>
+    <script src="../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>
