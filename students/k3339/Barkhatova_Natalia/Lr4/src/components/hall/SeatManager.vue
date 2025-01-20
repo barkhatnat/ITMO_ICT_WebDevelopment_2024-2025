@@ -1,13 +1,13 @@
 <template>
   <div
       class="seat"
-      :class="seat.type.toLowerCase()"
-      @click="openEditor"
+      :class="[seat.type.toLowerCase(), { selected: isSelected }]"
+      @click="handleClick"
   >
     {{ seat.number }}
   </div>
 
-  <Modal v-if="showEditor && isAdmin"  @close="closeEditor">
+  <Modal v-if="showEditor && isAdmin" @close="closeEditor">
     <h3 class="modal-title">Edit Seat</h3>
     <form @submit.prevent="saveSeat" class="seat-form">
       <label for="seat-number">
@@ -44,9 +44,10 @@
 </template>
 
 <script>
-import {ref, defineComponent, watch, computed} from 'vue';
+import { ref, defineComponent, watch, computed } from 'vue';
 import Modal from '@/components/Modal.vue';
-import {useAuthStore} from "@/stores/auth.js";
+import { useAuthStore } from "@/stores/auth.js";
+import {useTicketStore} from "@/stores/ticket.js";
 
 export default defineComponent({
   components: { Modal },
@@ -58,16 +59,19 @@ export default defineComponent({
     isAdmin: {
       type: Boolean,
       default: false,
-    }
+    },
   },
-  emits: ['update', 'remove'],
+  emits: ['update', 'remove', 'select'],
   setup(props, { emit }) {
     const showEditor = ref(false);
     const editableSeat = ref({ ...props.seat });
+    const isSelected = ref(false); // Отслеживание выбранности
     const authStore = useAuthStore();
+    const ticketStore = useTicketStore();
     const isAdmin = computed(() => authStore.isAdmin);
 
     const openEditor = () => {
+      if (!isAdmin.value) return;
       showEditor.value = true;
       editableSeat.value = { ...props.seat };
     };
@@ -86,6 +90,15 @@ export default defineComponent({
       closeEditor();
     };
 
+    const handleClick = () => {
+      if (isAdmin.value) {
+        openEditor();
+      } else {
+        isSelected.value = !isSelected.value;
+        emit('select', { seat: props.seat, selected: isSelected.value });
+      }
+    };
+
     watch(
         () => props.seat,
         (newSeat) => {
@@ -96,79 +109,20 @@ export default defineComponent({
     return {
       showEditor,
       editableSeat,
+      isSelected,
       openEditor,
       closeEditor,
       saveSeat,
       removeSeat,
-      isAdmin
+      handleClick,
+      isAdmin,
     };
   },
 });
+
 </script>
 
 <style scoped>
-.modal-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 15px;
-}
-
-.seat-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.form-input,
-.form-select {
-  padding: 10px;
-  font-size: 14px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-top: 5px;
-}
-
-.form-input:focus,
-.form-select:focus {
-  border-color: #007bff;
-  outline: none;
-}
-
-.modal-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-}
-
-.save-btn,
-.delete-btn {
-  padding: 8px 15px;
-  border-radius: 5px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.save-btn {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-}
-
-.save-btn:hover {
-  background-color: #45a049;
-}
-
-.delete-btn {
-  background-color: #f44336;
-  color: white;
-  border: none;
-}
-
-.delete-btn:hover {
-  background-color: #e53935;
-}
-
 .seat {
   display: flex;
   justify-content: center;
@@ -199,4 +153,11 @@ export default defineComponent({
 .seat.couple {
   background-color: #fbcbcc;
 }
+
+/* Стиль для выбранного места */
+.seat.selected {
+  border: 3px solid #007bff;
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
+}
+
 </style>
