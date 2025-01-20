@@ -1,26 +1,26 @@
 <template>
   <div class="home">
-    <h1 v-if="!isAdmin">Погрузитесь в Золотую Эпоху Кино</h1>
+    <h1 v-if="!isAdmin">Погрузитесь в золотую эпоху кино</h1>
 
     <nav class="menu">
       <p v-if="isAdmin">
-        <router-link to="/halls">Управление Залами</router-link>
+        <router-link to="/halls">Управление залами</router-link>
       </p>
 
       <p v-if="isAdmin">
-        <router-link to="/movies">Управление Фильмами</router-link>
+        <router-link to="/movies">Управление фильмами</router-link>
       </p>
 
       <p v-if="isAdmin">
-        <router-link to="/sessions">Управление Сеансами</router-link>
+        <router-link to="/sessions">Управление сеансами</router-link>
       </p>
 
       <p v-if="!isAdmin">
-        <router-link to="/session-board">Сейчас в Прокате</router-link>
+        <router-link to="/session-board">Сейчас в прокате</router-link>
       </p>
 
       <p v-if="!isAdmin">
-        <router-link to="/tickets">Мои Билеты</router-link>
+        <router-link to="/tickets">Мои билеты</router-link>
       </p>
     </nav>
   </div>

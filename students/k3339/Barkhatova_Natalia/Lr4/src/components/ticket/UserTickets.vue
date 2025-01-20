@@ -1,20 +1,20 @@
 <template>
   <div class="tickets">
-    <h1>Ваши Билеты</h1>
+    <h1>Ваши билеты</h1>
 
     <div v-if="loading" class="loading">Загрузка...</div>
     <div v-if="error" class="error">{{ error }}</div>
 
     <Modal v-if="isPurchaseSuccessful" @close="closeModal">
-      <h3>Поздравления!</h3>
-      <p>Ваши билеты успешно куплены.</p>
+      <h3>Поздравляем!</h3>
+      <p>Ваши билеты успешно забронированы</p>
       <button @click="closeModal">Закрыть</button>
     </Modal>
 
     <ul v-if="tickets.length">
       <li v-for="ticket in tickets" :key="ticket.id" class="ticket-item">
         <div class="ticket-code">
-          <strong>Код Билета:</strong> {{ ticket.ticketCode }}
+          <strong>Код билета:</strong> {{ ticket.ticketCode }}
         </div>
         <div>
           <strong>Фильм:</strong> {{ ticket.session.movie.name }}
@@ -23,13 +23,13 @@
           <strong>Зал:</strong> {{ ticket.session.hall.name }}
         </div>
         <div>
-          <strong>Время Сеанса:</strong> {{ formatDate(ticket.session.startTime) }}
+          <strong>Время сеанса:</strong> {{ formatDate(ticket.session.startTime) }}
         </div>
         <div>
           <strong>Место:</strong> {{ ticket.seat.number }} ({{ translateSeatType(ticket.seat.type) }})
         </div>
         <div>
-          <strong>Куплено В:</strong> {{ formatDate(ticket.purchasedAt) }}
+          <strong>Дата и время бронирования:</strong> {{ formatDate(ticket.purchasedAt) }}
         </div>
       </li>
     </ul>

@@ -1,8 +1,8 @@
 <template>
   <div class="session-manager">
-    <h2>Куратор Сеансов</h2>
+    <h2>Управление сеансами</h2>
 
-    <button class="add-session-btn" @click="showAddSessionModal">Добавить Новый Сеанс</button>
+    <button class="add-session-btn" @click="showAddSessionModal">Добавить новый сеанс</button>
 
     <SessionTable
         :sessions="sessions"
@@ -11,7 +11,7 @@
     />
 
     <Modal v-if="showModal" @close="closeModal">
-      <h3 class="modal-title">{{ isEditing ? 'Редактировать' : 'Добавить' }} Сеанс</h3>
+      <h3 class="modal-title">{{ isEditing ? 'Редактировать сеанс' : 'Добавить сеанс' }} Сеанс</h3>
       <form @submit.prevent="saveSession" class="session-form">
         <div class="form-group">
           <label for="movie">Фильм</label>
@@ -28,7 +28,7 @@
           <p v-if="errors.hallId" class="error">{{ errors.hallId }}</p>
         </div>
         <div class="form-group">
-          <label for="start-time">Время Начала</label>
+          <label for="start-time">Время начала</label>
           <input v-model="sessionForm.startTime" type="datetime-local" id="start-time" required class="form-input" />
           <p v-if="errors.startTime" class="error">{{ errors.startTime }}</p>
         </div>

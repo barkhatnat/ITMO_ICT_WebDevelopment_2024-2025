@@ -7,14 +7,14 @@
     </div>
 
     <div class="hall-selection">
-      <h3>Выберите Ваши Места</h3>
+      <h3>Выберите ваши места</h3>
       <HallBuilder
           :hall="session?.hall"
           :isEditing="false"
           :sessionId="sessionId"
       />
     </div>
-    <button class="buy-ticket-btn" @click="buyTickets">Купить Билет</button>
+    <button class="buy-ticket-btn" @click="buyTickets">Забронировать билет</button>
   </div>
 </template>
 

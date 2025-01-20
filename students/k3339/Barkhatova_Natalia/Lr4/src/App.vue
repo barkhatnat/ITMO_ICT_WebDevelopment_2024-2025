@@ -35,7 +35,7 @@ export default {
 
 <style>
 body {
-  background-color: #FFFFFF;
+  background-color: #F5F5DC;
   font-family: 'Pacifico', cursive;
   color: #333;
   margin: 0;

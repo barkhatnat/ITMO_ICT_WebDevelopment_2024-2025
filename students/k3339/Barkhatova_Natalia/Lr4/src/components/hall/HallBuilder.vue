@@ -1,9 +1,9 @@
 <template>
   <div class="hall-builder">
-    <h2 v-if="isAdmin">{{ isEditing ? 'Edit Hall' : 'Create Hall' }}</h2>
+    <h2 v-if="isAdmin">{{ isEditing ? 'Изменить зал' : 'Создать зал' }}</h2>
 
     <div v-if="isAdmin" class="input-container">
-      <label for="hall-name">Название Зала:</label>
+      <label for="hall-name">Название зала:</label>
       <input
           id="hall-name"
           v-model="hall.name"
@@ -45,8 +45,8 @@
       <p v-if="errors.rows" class="error">{{ errors.rows }}</p>
     </div>
 
-    <button v-if="isAdmin" class="add-row-btn" @click="addRow">+ Добавить Ряд</button>
-    <button v-if="isAdmin" class="save-btn" @click="saveHall">Сохранить Зал</button>
+    <button v-if="isAdmin" class="add-row-btn" @click="addRow">+ Добавить ряд</button>
+    <button v-if="isAdmin" class="save-btn" @click="saveHall">Сохранить зал</button>
   </div>
 </template>
 

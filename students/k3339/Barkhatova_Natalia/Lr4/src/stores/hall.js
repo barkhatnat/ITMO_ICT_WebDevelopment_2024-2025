@@ -18,6 +18,7 @@ export const useHallStore = defineStore({
 
         async addHall(hall) {
             const response = await api.post('/rest/admin/halls', hall);
+            debugger;
             this.halls.push(response.data);
         },
 

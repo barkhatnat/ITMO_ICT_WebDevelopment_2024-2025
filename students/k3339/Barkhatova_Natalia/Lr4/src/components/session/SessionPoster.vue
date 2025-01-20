@@ -5,12 +5,12 @@
       <p>{{ session.hall.name }}</p>
     </div>
     <div class="poster-body">
-      <p><strong>Время Начала:</strong> {{ formattedStartTime }}</p>
+      <p><strong>Время начала:</strong> {{ formattedStartTime }}</p>
       <p><strong>Цена:</strong> {{ session.price }} ₽</p>
       <p><strong>Описание:</strong> {{ session.movie.description || 'Нет описания' }}</p>
     </div>
     <router-link :to="`/sessions/${session.id}/buy`" class="buy-ticket-button">
-      Купить Билет
+      Забронировать билет
     </router-link>
   </div>
 </template>

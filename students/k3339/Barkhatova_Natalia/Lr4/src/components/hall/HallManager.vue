@@ -1,8 +1,8 @@
 <template>
   <div class="hall-manager">
-    <h2>Hall Manager</h2>
+    <h2>Управление залами</h2>
 
-    <button class="add-hall-btn" @click="showAddHallModal">Add new hall</button>
+    <button class="add-hall-btn" @click="showAddHallModal">Добавить новый зал</button>
 
     <HallTable
         :halls="halls"

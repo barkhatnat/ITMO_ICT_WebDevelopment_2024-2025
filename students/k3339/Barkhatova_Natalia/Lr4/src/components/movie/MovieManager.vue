@@ -11,7 +11,7 @@
     />
 
     <Modal v-if="showModal" @close="closeModal">
-      <h3 class="modal-title">{{ isEditing ? 'Редактировать' : 'Добавить' }} Фильм</h3>
+      <h3 class="modal-title">{{ isEditing ? 'Редактировать фильм' : 'Добавить фильм' }} Фильм</h3>
       <form @submit.prevent="saveMovie" class="movie-form">
         <div class="form-group">
           <label for="name">Название</label>

@@ -26,7 +26,7 @@
         />
       </label>
       <label for="seat-type">
-        Тип Места:
+        Тип места:
         <select
             id="seat-type"
             v-model="editableSeat.type"
